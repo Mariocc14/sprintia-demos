@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tueste · Café de especialidad en la Judería</title>
+<meta name="description" content="Tostado cada semana en Córdoba. Grano de más de diez orígenes para llevar a casa y repostería hecha aquí.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#120E0C">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--tostado:#120E0C;--humo:#1B1512;--humo2:#241C18;--cobre:#B8763A;--cobre2:#D9A066;--crema:#EFE4D2;--c60:rgba(239,228,210,.62);--c30:rgba(239,228,210,.26);--c12:rgba(239,228,210,.12);--verde:#1DB954;
+--fr:"Fraunces",Georgia,serif;--sans:"Instrument Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--pad:clamp(18px,3.2vw,44px);
+--r1:8px;--r2:14px;--r3:22px}
+*{box-sizing:border-box}
+html{background:var(--tostado);overflow-x:clip}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--tostado);color:var(--crema);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--fr);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:800;letter-spacing:-.04em;line-height:.9;text-wrap:balance}
+h2 em,h1 em{font-style:italic;font-weight:500}
+.cu{color:var(--cobre2)}
+.mono{font-family:var(--mono)}
+.wrap{padding-left:var(--pad);padding-right:var(--pad);max-width:1640px;margin-left:auto;margin-right:auto}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cobre2);margin:0 0 16px;display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--cobre);flex:none}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;font-weight:600;padding:15px 22px;background:var(--cobre);color:var(--tostado);border:1px solid var(--cobre);border-radius:var(--r1);transition:background .2s,color .2s,border-color .2s;will-change:transform}
+.btn:hover{background:var(--cobre2);border-color:var(--cobre2)}
+.btn.alt{background:transparent;color:var(--crema);border-color:var(--c30)}
+.btn.alt:hover{background:var(--crema);color:var(--tostado);border-color:var(--crema)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--cobre2);outline-offset:3px}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.11;mix-blend-mode:overlay;z-index:50;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+.fl{position:absolute;pointer-events:none;will-change:transform}
+.fl i{display:block;will-change:transform;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.fl img{width:100%;height:auto}
+
+/* header */
+.hd{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);transition:background .3s,padding .3s,transform .4s}
+.hd.solid{background:rgba(18,14,12,.82);backdrop-filter:blur(10px);padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--c12)}
+.hd.hide{transform:translateY(-110%)}
+.hd .wm{height:22px;width:auto}
+.hd nav{display:none;gap:28px;font-size:13px;font-weight:500;color:var(--c60)}
+.hd nav a{text-decoration:none;transition:color .2s}
+.hd nav a:hover,.hd nav a.on{color:var(--crema)}
+.hd .tel{font-family:var(--mono);font-size:12px;letter-spacing:.04em;border:1px solid var(--c30);border-radius:999px;padding:9px 14px;text-decoration:none;white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.hd .tel .lab{font-family:var(--sans);font-weight:600;font-size:13px}
+.hd .tel .num{display:none}
+@media (min-width:860px){.hd nav{display:flex}.hd .tel .num{display:inline}.hd .tel .lab{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;overflow:hidden;display:grid;align-items:end}
+.hero .media{position:absolute;inset:0;will-change:transform}
+.hero .media picture,.hero .media video{position:absolute;inset:0;will-change:transform}
+.hero .media img,.hero .media video{width:100%;height:100%;object-fit:cover;object-position:66% 50%}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,12,.9) 0,rgba(18,14,12,.6) 40%,rgba(18,14,12,.05) 70%),linear-gradient(0deg,rgba(18,14,12,.88) 0,rgba(18,14,12,0) 45%)}
+.hero .tx{position:relative;z-index:2;padding:120px var(--pad) 56px;will-change:transform}
+.hero h1{font-size:clamp(58px,10.4vw,150px);line-height:.86;max-width:11ch;margin-bottom:28px}
+.hero .row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero .sub{font-size:clamp(15px,1.3vw,19px);line-height:1.45;color:var(--c60);max-width:38ch;margin:0}
+.hero .sub b{color:var(--crema);font-weight:500}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .tag{position:absolute;right:var(--pad);top:110px;z-index:2;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);line-height:2}
+.hero .tag b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:400;font-style:italic;font-size:clamp(28px,3vw,44px);letter-spacing:0;text-transform:none;color:var(--cobre2);line-height:1}
+.hero .cue{position:absolute;left:50%;bottom:22px;z-index:2;width:1px;height:48px;background:linear-gradient(180deg,var(--c30),transparent);display:none}
+.hero .fl{z-index:2}
+@media (min-width:860px){.hero .cue{display:block}}
+@media (max-width:600px){
+  .hero .media img{object-position:50% 100%}
+  .hero .veil{background:linear-gradient(0deg,rgba(18,14,12,.2) 0,rgba(18,14,12,0) 30%),linear-gradient(180deg,rgba(18,14,12,.92) 0,rgba(18,14,12,.75) 42%,rgba(18,14,12,0) 62%)}
+  .hero{align-items:start}
+  .hero .tx{padding:88px 18px 0}
+  .hero .tag,.hero .fl{display:none}
+  .hero h1{margin-bottom:18px}
+  .hero .row{display:grid;gap:18px}
+}
+
+/* ticker */
+.tk{border-top:1px solid var(--c12);border-bottom:1px solid var(--c12);padding:14px 0;overflow:hidden;white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--c60);background:var(--tostado);position:relative;z-index:3}
+.tk .in{display:inline-flex;will-change:transform}
+.tk span{padding:0 28px;display:inline-flex;align-items:center;gap:28px}
+.tk span::after{content:"◆";color:var(--cobre);font-size:8px}
+.tk b{color:var(--cobre2);font-weight:500}
+
+/* marquesina gigante scrub */
+.mq{position:relative;overflow:hidden;padding:clamp(40px,6vw,90px) 0 0;user-select:none}
+.mq .line{white-space:nowrap;font-family:var(--fr);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:800;font-size:clamp(64px,11vw,160px);line-height:.95;letter-spacing:-.04em;will-change:transform}
+.mq .line span{display:inline-block;padding-right:.35em}
+.mq .line.o span{color:transparent;-webkit-text-stroke:1.5px var(--cobre2)}
+.mq .line em{font-style:italic;font-weight:500;color:var(--cobre2)}
+
+/* secciones */
+.sec{position:relative;padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px)}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:clamp(28px,4vw,48px);flex-wrap:wrap}
+.sh h2{font-size:clamp(44px,6.2vw,92px)}
+.sh p{margin:0;max-width:36ch;font-size:16px;line-height:1.5;color:var(--c60)}
+.sh p b{color:var(--crema);font-weight:500}
+@media (min-width:860px){.sh p{text-align:right}}
+
+/* fichas · scrollytelling sin pin: texto en flujo, imagen pegajosa */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.stexts{display:grid}
+.step{min-height:78svh;display:grid;align-content:center;gap:12px;opacity:.28;transition:opacity .5s;padding:6vh 0}
+.step.on{opacity:1}
+.step .pais{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cobre2)}
+.step h3{font-size:clamp(40px,4.6vw,70px);line-height:.92}
+.step .notas{margin:0;font-size:clamp(16px,1.3vw,19px);color:var(--crema);max-width:40ch}
+.step .proc{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--c60)}
+.spec{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--c12);border-radius:var(--r1);overflow:hidden;background:rgba(18,14,12,.75);max-width:560px}
+.spec div{padding:10px 12px;border-right:1px solid var(--c12)}
+.spec div:last-child{border-right:0}
+.spec small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--c60);margin-bottom:4px}
+.spec b{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--crema)}
+.step .pr{display:flex;gap:18px;align-items:baseline;font-family:var(--mono);font-size:12px;color:var(--c60);letter-spacing:.06em;margin-top:6px}
+.step .pr b{color:var(--crema);font-weight:500;font-size:20px;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1}
+.svis{position:sticky;top:10svh;height:80svh;display:grid;align-items:center}
+.svis .vis{position:relative;height:min(76svh,720px);border-radius:var(--r3);overflow:hidden;border:1px solid var(--c12);background:var(--humo)}
+.svis .vis img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 70%;opacity:0;will-change:transform,opacity;filter:saturate(.92)}
+.svis .vis img.bg:first-child{opacity:1}
+.svis .vis::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,.35) 0,rgba(18,14,12,0) 35%,rgba(18,14,12,0) 70%,rgba(18,14,12,.6) 100%);pointer-events:none}
+.svis .sca{position:absolute;right:26px;top:22px;z-index:2;text-align:right;line-height:1}
+.svis .sca b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:500;font-size:clamp(64px,7vw,110px);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.svis .sca small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60)}
+.svis .dots{position:absolute;left:26px;right:26px;bottom:22px;z-index:2;height:2px;background:var(--c30);border-radius:2px;overflow:hidden}
+.svis .dots i{display:block;height:100%;width:100%;background:var(--cobre2);transform-origin:0 50%;transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.svis .hint{position:absolute;right:26px;bottom:22px;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);display:none}
+.svis .bag{position:absolute;left:3%;bottom:-6%;width:30%;z-index:4;filter:drop-shadow(0 30px 40px rgba(0,0,0,.65));will-change:transform}
+@media (max-width:899px){.story{display:none}}
+
+/* fichas · móvil (tarjetas) */
+.galm{display:none}
+@media (max-width:899px){
+  .galm{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad));padding:0 var(--pad);scrollbar-width:none;height:clamp(480px,70svh,600px)}
+  .galm::-webkit-scrollbar{display:none}
+}
+.card{position:relative;overflow:hidden;background:var(--humo);border:1px solid var(--c12);border-radius:var(--r2);flex:0 0 82vw;scroll-snap-align:start;text-align:left;padding:0;color:inherit;font:inherit}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;filter:saturate(.92)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,.35) 0,rgba(18,14,12,0) 30%,rgba(18,14,12,0) 50%,rgba(18,14,12,.94) 100%)}
+.card .sca{position:absolute;top:16px;right:16px;z-index:2;text-align:right;line-height:1}
+.card .sca b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:500;font-size:56px;letter-spacing:-.03em}
+.card .sca small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60)}
+.card .pais{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60)}
+.card .bot{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:grid;gap:8px}
+.card h3{font-size:40px;line-height:.95}
+.card .notas{margin:0;font-size:15px;color:var(--crema);line-height:1.4}
+.card .spec{grid-template-columns:1fr 1fr;max-width:none}
+.card .spec div:nth-child(2n){border-right:0}.card .spec div{border-bottom:1px solid var(--c12)}
+.card .pr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--c60)}
+.card .pr b{color:var(--crema);font-weight:500}
+
+/* todos los orígenes */
+.todos{margin-top:clamp(24px,3vw,40px)}
+.todos .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);margin-bottom:14px}
+.tlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--c12)}
+.tlist li{display:grid;grid-template-columns:56px minmax(0,1.2fr) minmax(0,1.6fr) auto;gap:18px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--c12);transition:padding .25s}
+.tlist li:hover{padding-left:8px}
+.tlist .s{font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:500;font-size:22px;color:var(--cobre2);font-variant-numeric:tabular-nums}
+.tlist .n{font-weight:600;font-size:15px}
+.tlist .n small{display:block;font-family:var(--mono);font-size:11px;color:var(--c60);font-weight:400;letter-spacing:.04em;margin-top:2px}
+.tlist .t{font-family:var(--fr);font-style:italic;font-size:15px;color:var(--c60)}
+.tlist .p{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+@media (max-width:700px){.tlist li{grid-template-columns:44px 1fr auto}.tlist .t{display:none}}
+
+/* barra: tres cosas */
+.barra{position:relative;overflow:hidden}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;perspective:1200px}
+.tres figure{margin:0;position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--humo);border:1px solid var(--c12);border-radius:var(--r2);will-change:transform;transform-style:preserve-3d}
+.tres img{width:100%;height:112%;object-fit:cover;will-change:transform}
+.tres figcaption{position:absolute;left:18px;right:18px;bottom:18px;z-index:2}
+.tres figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,0) 50%,rgba(18,14,12,.9) 100%)}
+.tres .k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cobre2);margin:0 0 8px}
+.tres h3{font-size:clamp(28px,3vw,42px);font-weight:700;margin-bottom:6px}
+.tres p{margin:0;font-size:14px;color:var(--c60)}
+.tres .pr{font-family:var(--mono);font-size:12px;color:var(--crema);margin-top:10px;display:block}
+.mas{margin-top:26px;display:flex;justify-content:flex-end}
+@media (max-width:860px){.tres{grid-template-columns:1fr;gap:10px}.tres figure{aspect-ratio:4/5}}
+
+/* sonoro · tocadiscos */
+.deck{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center}
+.player{position:relative;display:grid;gap:22px;justify-items:center}
+.plinth{position:relative;width:min(100%,460px);aspect-ratio:1;display:grid;place-items:center}
+.vinyl{position:relative;width:86%;aspect-ratio:1;border-radius:50%;background:
+  radial-gradient(circle at 50% 50%,transparent 0 30%,rgba(239,228,210,.06) 30.5% 31%,transparent 31.5%),
+  repeating-radial-gradient(circle at 50% 50%,#17110e 0 1.6px,#221a15 1.6px 3.4px);
+  box-shadow:inset 0 0 0 1px rgba(239,228,210,.07),0 50px 90px -40px rgba(0,0,0,.9);animation:spin 3.2s linear infinite;animation-play-state:paused;will-change:transform}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,transparent 0 40deg,rgba(239,228,210,.10) 55deg,transparent 70deg,transparent 220deg,rgba(239,228,210,.07) 235deg,transparent 250deg);pointer-events:none}
+.vinyl .label{position:absolute;inset:32%;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--cobre2),var(--cobre) 60%,#7E2F21);display:grid;place-items:center;text-align:center;color:var(--tostado);padding:14%}
+.vinyl .label b{font-family:var(--fr);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:800;font-size:clamp(18px,2vw,30px);letter-spacing:-.03em;line-height:.95;display:block}
+.vinyl .label small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;margin-top:6px;opacity:.75}
+.vinyl .label::after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--tostado);left:50%;top:50%;transform:translate(-50%,-50%)}
+.playing .vinyl{animation-play-state:running}
+.arm{position:absolute;right:2%;top:-2%;width:14px;height:58%;transform-origin:50% 9%;transform:rotate(-30deg);transition:transform .9s cubic-bezier(.3,.7,.2,1);z-index:2}
+.arm::before{content:"";position:absolute;left:50%;top:0;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#8a7c6c,#3a312b);transform:translate(-50%,-30%);box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.arm::after{content:"";position:absolute;left:50%;top:6%;width:8px;height:100%;background:linear-gradient(90deg,#b7ab99,#6e6357);border-radius:6px;transform:translateX(-50%)}
+.arm i{position:absolute;left:50%;bottom:-4%;width:24px;height:40px;background:linear-gradient(#3a312b,#1c1613);border-radius:5px;transform:translateX(-50%) rotate(14deg);transform-origin:50% 0}
+.playing .arm{transform:rotate(-8deg)}
+.ctrl{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;width:min(100%,460px);border:1px solid var(--c12);border-radius:var(--r2);padding:14px 16px;background:var(--humo)}
+.play{width:56px;height:56px;border-radius:50%;border:0;background:var(--cobre);cursor:pointer;display:grid;place-items:center;transition:transform .2s,background .2s;flex:none}
+.play:hover{background:var(--cobre2);transform:scale(1.05)}
+.play .ico{width:0;height:0;border-left:16px solid var(--tostado);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.playing .play .ico{width:16px;height:18px;border:0;margin:0;background:linear-gradient(90deg,var(--tostado) 0 35%,transparent 35% 65%,var(--tostado) 65%)}
+.now{min-width:0}
+.now small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c60)}
+.now b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:600;font-size:20px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 8px}
+.eq{display:flex;gap:3px;align-items:flex-end;height:26px}
+.eq i{width:4px;height:18%;background:var(--cobre2);border-radius:2px;transform-origin:50% 100%;animation:eq 1s ease-in-out infinite alternate;animation-play-state:paused;opacity:.9}
+.playing .eq i{animation-play-state:running}
+@keyframes eq{from{height:12%}to{height:100%}}
+.ctrl .btn{padding:12px 16px;font-size:12px}
+.crates{display:grid;gap:22px;min-width:0}
+.crates .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);margin-bottom:12px}
+.crate{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;padding:64px 4px 28px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.crate::-webkit-scrollbar{display:none}
+.sleeve{position:relative;display:block;text-decoration:none;flex:0 0 138px;height:176px;background:none;border:0;padding:0;margin:0;cursor:pointer;scroll-snap-align:start;font:inherit;color:inherit;text-align:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.sleeve .mv{position:absolute;left:50%;top:0;width:78%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-30%);background:radial-gradient(circle,var(--cobre) 0 23%,#17110e 24% 27%,transparent 27.5%),repeating-radial-gradient(circle,#17110e 0 1.2px,#241c18 1.2px 2.6px);box-shadow:0 10px 24px -8px rgba(0,0,0,.9);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:0}
+.sleeve .cover{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;border:1px solid var(--c12);border-radius:var(--r2);background:linear-gradient(160deg,rgba(239,228,210,.05),transparent 40%),var(--humo2);overflow:hidden;transition:border-color .3s,background .3s}
+.sleeve b{font-family:var(--fr);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:700;font-size:19px;letter-spacing:-.02em;line-height:1;text-wrap:balance}
+.sleeve small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--c60);margin-top:6px;line-height:1.3}
+.sleeve:hover{transform:translateY(-6px)}
+.sleeve:hover .mv,.sleeve.on .mv{transform:translate(-50%,-56%)}
+.sleeve.on .cover{border-color:var(--cobre);background:linear-gradient(160deg,#2c1f17,var(--humo2))}
+.sleeve.on .mv{animation:spin 5s linear infinite}
+.sleeve.f{flex-basis:168px;height:190px}
+.sleeve.f .mv{background:radial-gradient(circle,var(--crema) 0 23%,#17110e 24% 27%,transparent 27.5%),repeating-radial-gradient(circle,#17110e 0 1.2px,#241c18 1.2px 2.6px)}
+.emb{border:1px solid var(--c12);border-radius:var(--r2);background:var(--humo);overflow:hidden;width:min(100%,460px)}
+.emb:empty{display:none}
+.emb iframe{display:block;width:100%;height:152px;border:0}
+@media (max-width:900px){.deck{grid-template-columns:1fr;gap:26px}.plinth{width:min(78vw,340px)}.ctrl{grid-template-columns:auto 1fr}.ctrl .btn{display:none}.sleeve{flex-basis:120px;height:150px}.sleeve.f{flex-basis:140px;height:160px}.crate{padding-top:52px}}
+
+/* feed: segunda pantalla, fotos reales + tipos de café */
+.feed{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,72px)}
+.fh{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,36px)}
+.fh h2{font-size:clamp(40px,5.4vw,80px)}
+.fh p{margin:0;max-width:34ch;color:var(--c60);font-size:16px}
+.fh p b{color:var(--crema);font-weight:500}
+@media (min-width:860px){.fh p{text-align:right}}
+.carrete{position:relative;z-index:2;display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;padding-bottom:10px;max-width:none}
+.carrete::-webkit-scrollbar{display:none}
+.carrete.drag{cursor:grabbing;scroll-snap-type:none}
+.carrete>*{flex:0 0 auto;height:clamp(300px,42vh,460px);position:relative;overflow:hidden;border-radius:var(--r2);border:1px solid var(--c12);scroll-snap-align:start;background:var(--humo2);margin:0;text-decoration:none;color:inherit}
+.carrete .pc{width:clamp(220px,22vw,330px)}
+.carrete .tc{width:clamp(260px,28vw,400px);display:block}
+.carrete img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1);will-change:transform;display:block}
+.carrete>*:hover img{transform:scale(1.05)}
+.carrete figcaption{position:absolute;left:14px;right:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--crema);text-shadow:0 2px 12px rgba(0,0,0,.8);display:flex;gap:10px;align-items:center}
+.carrete figcaption::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cobre2);flex:none}
+.carrete .tag{position:absolute;left:14px;top:12px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);border:1px solid var(--c30);border-radius:999px;padding:5px 9px;background:rgba(18,14,12,.55)}
+.tc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,.1) 0,rgba(18,14,12,0) 40%,rgba(18,14,12,.92) 100%)}
+.tc .tt{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:grid;gap:6px}
+.tc small{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre2)}
+.tc b{font-family:var(--fr);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:800;font-size:clamp(30px,3vw,44px);letter-spacing:-.03em;line-height:.95}
+.tc i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c60);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.tc:hover i{opacity:1;transform:none}
+@media (max-width:600px){.carrete>*{height:min(58vh,420px)}.carrete .pc{width:64vw}.carrete .tc{width:74vw}}
+
+/* aula de café */
+.aula .lbl{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);margin-bottom:14px}
+.shelfw{margin-bottom:clamp(36px,5vw,64px)}
+.books{position:relative;display:flex;align-items:flex-end;gap:10px;height:clamp(240px,30vw,360px);padding:0 24px 14px;perspective:900px}
+.book{position:relative;z-index:1;flex:1 1 0;max-width:120px;height:var(--h);border-radius:4px 6px 6px 4px;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 18%,transparent 82%,rgba(0,0,0,.3)),var(--bg);box-shadow:inset 0 0 0 1px rgba(239,228,210,.08),-6px 0 14px -8px rgba(0,0,0,.8);transform-origin:50% 100%;transition:transform .5s cubic-bezier(.2,.7,.2,1);cursor:default}
+.book:hover{transform:translateY(-14px) rotate(-2deg)}
+.book.b0{--bg:#3a2a20}.book.b1{--bg:var(--cobre)}.book.b2{--bg:#241c18}.book.b3{--bg:#8f6a48}
+.book .sp{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;writing-mode:vertical-rl;transform:rotate(180deg);padding:14px 0;text-align:center}
+.book b{font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:600;font-size:clamp(12px,1.05vw,15px);letter-spacing:-.01em;color:var(--crema);line-height:1.1;max-height:100%;overflow:hidden}
+.book.b1 b,.book.b3 b{color:var(--tostado)}
+.book small{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,228,210,.6);margin-top:8px}
+.book.b1 small,.book.b3 small{color:rgba(18,14,12,.65)}
+.plank{position:absolute;z-index:0;left:0;right:0;bottom:0;height:14px;border-radius:3px;background:linear-gradient(180deg,#3b2c22,#1d1512);box-shadow:0 18px 30px -12px rgba(0,0,0,.9)}
+.aula2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.res{list-style:none;margin:0;padding:0;border-top:1px solid var(--c12)}
+.res a{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--c12);text-decoration:none;transition:padding .25s,background .25s}
+.res a:hover{padding-left:12px}
+.res b{display:block;font-weight:600;font-size:16px}
+.res small{display:block;font-size:13px;color:var(--c60);margin-top:2px}
+.res i{font-style:normal;font-family:var(--mono);color:var(--cobre2)}
+.res .pl{width:34px;height:34px;border-radius:50%;border:1px solid var(--c30);display:grid;place-items:center;flex:none}
+.res .pl::before{content:"";border-left:9px solid var(--cobre2);border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}
+.res .pl.dot::before{border:0;width:8px;height:8px;border-radius:50%;background:var(--cobre2);margin:0}
+@media (max-width:860px){.aula2{grid-template-columns:1fr}.books{gap:6px;padding:0 10px 12px}.book{max-width:none}.book b{font-size:11px}.book small{display:none}}
+
+/* llevar */
+.llevar{background:var(--humo);border-top:1px solid var(--c12);border-bottom:1px solid var(--c12);position:relative;overflow:hidden}
+.llevar .fl{z-index:3;display:none}
+@media (min-width:1560px){.llevar .fl{display:block}}
+.llevar .wrap{max-width:1240px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:56px;position:relative;z-index:2}
+.blk{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.blk figure{margin:0;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--c12);border-radius:var(--r2)}
+.blk img{width:100%;height:112%;object-fit:cover}
+.blk h3{font-size:clamp(28px,2.6vw,38px);font-weight:700;margin-bottom:8px}
+.blk .d{margin:0 0 14px;font-size:14px;color:var(--c60);line-height:1.45}
+.blk .fmt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobre2);margin:0 0 8px}
+.lst{list-style:none;margin:0;padding:0}
+.lst li{display:flex;align-items:baseline;gap:8px;padding:7px 0;border-bottom:1px solid var(--c12);font-size:14px}
+.lst li:last-child{border-bottom:0}
+.lst .n{font-weight:500}
+.lst .n small{display:block;font-size:12px;color:var(--c60);font-weight:400}
+.lst .dots{flex:1;border-bottom:1px dotted var(--c30);transform:translateY(-4px);min-width:14px}
+.lst .p{font-family:var(--mono);font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:1000px){.dos{grid-template-columns:1fr;gap:40px}}
+@media (max-width:600px){.blk{grid-template-columns:1fr}.blk figure{aspect-ratio:16/10}.llevar .fl{display:none}}
+
+/* sobre */
+.sobre{position:relative;min-height:88svh;overflow:hidden;display:grid;align-items:end}
+.sobre .bg{position:absolute;inset:0}
+.sobre .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;will-change:transform}
+.sobre .veil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,14,12,.94) 0,rgba(18,14,12,.4) 50%,rgba(18,14,12,.2) 100%)}
+.sobre .in{position:relative;z-index:2;padding:clamp(72px,10vw,140px) var(--pad) clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end}
+.sobre h2{font-size:clamp(44px,6.2vw,92px);margin-bottom:18px}
+.sobre p{margin:0;font-size:17px;line-height:1.5;max-width:52ch;color:var(--crema)}
+.sobre .foto{margin:0;border:1px solid var(--c30);border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);will-change:transform}
+.sobre .foto img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) contrast(1.05) brightness(.82) saturate(.85)}
+@media (max-width:860px){.sobre .in{grid-template-columns:1fr;gap:28px}.sobre .foto{max-width:240px}}
+
+/* visita */
+.vis2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:stretch}
+.vis2 h2{font-size:clamp(44px,6.2vw,92px);margin-bottom:24px}
+.vis2 dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px;font-size:16px}
+.vis2 dt{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--c60);padding-top:5px}
+.vis2 dd{margin:0}
+.vis2 dd a{text-decoration:none;border-bottom:1px solid var(--c30)}
+.vis2 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.map{position:relative;min-height:360px;border:1px solid var(--c12);border-radius:var(--r3);background:var(--humo);overflow:hidden}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:invert(.92) hue-rotate(180deg) saturate(.3) brightness(.85) contrast(1.05)}
+.map .st{position:absolute;inset:0;display:grid;place-items:center;text-decoration:none}
+.map .st img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:transform 1.2s}
+.map .st:hover img{transform:scale(1.04)}
+.map .st span{position:relative;z-index:1;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--crema);border-radius:999px;padding:12px 18px;background:rgba(18,14,12,.7)}
+@media (max-width:860px){.vis2{grid-template-columns:1fr;gap:28px}.map{min-height:280px}}
+
+/* footer con logotipo gigante */
+.ft{border-top:1px solid var(--c12);padding:26px var(--pad) 0;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--c60)}
+.ft a{text-decoration:none;border-bottom:1px solid var(--c12)}
+.ft .by{font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+.big{overflow:hidden;padding:clamp(24px,4vw,56px) var(--pad) 0;line-height:0}
+.big img{width:100%;height:auto;opacity:.92;will-change:transform;transform:translateY(20%)}
+.big.static img{transform:none}
+
+/* cajón lateral de carta */
+.scrim{position:fixed;inset:0;background:rgba(10,7,6,.6);backdrop-filter:blur(2px);opacity:0;pointer-events:none;z-index:60;transition:opacity .4s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);z-index:61;background:var(--humo);border-left:1px solid var(--c12);display:grid;grid-template-rows:auto 1fr auto;transform:translateX(104%);will-change:transform;box-shadow:-40px 0 80px rgba(0,0,0,.5)}
+.dr-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:26px 28px 18px;border-bottom:1px solid var(--c12)}
+.dr-head h3{font-size:clamp(34px,3.4vw,48px)}
+.dr-head .x{width:44px;height:44px;border-radius:50%;border:1px solid var(--c30);background:transparent;color:var(--crema);font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s;flex:none}
+.dr-head .x:hover{background:var(--crema);color:var(--tostado)}
+.dr-body{overflow-y:auto;padding:10px 28px 20px;overscroll-behavior:contain;scrollbar-width:thin}
+.dr-body .cs{margin:22px 0 0}
+.dr-body .cs h3{font-size:22px;font-weight:700;margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid var(--c30);display:flex;align-items:baseline;gap:10px}
+.dr-body .cs h3 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobre2);font-weight:400}
+.dr-body .lst li{font-size:15px;padding:9px 0}
+.dr-body .lst .p{font-size:13px}
+.dr-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 28px 22px;border-top:1px solid var(--c12);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--c60)}
+.dr-foot .btn{padding:12px 16px;font-size:12px}
+@media (max-width:600px){.dr-head{padding:20px 18px 14px}.dr-body{padding:6px 18px 16px}.dr-foot{padding:14px 18px 20px;flex-wrap:wrap}}
+
+/* carta.html */
+.cpage{padding:120px 0 80px}
+.cpage h1{font-size:clamp(48px,7vw,110px);margin-bottom:12px}
+.cpage .lead{color:var(--c60);max-width:52ch;margin:0 0 40px}
+.ccols{columns:1;column-gap:56px}
+@media (min-width:760px){.ccols{columns:2}}
+.cs{break-inside:avoid;margin:0 0 34px}
+.cs h3{font-size:26px;font-weight:700;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--c30);display:flex;align-items:baseline;gap:10px}
+.cs h3 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobre2);font-weight:400}
+.cs .lst li{font-size:15px}
+.cs .lst .p{font-size:13px}
+.back{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--c60);margin-bottom:28px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.big img{transform:none}.step{opacity:1}.svis .vis img.bg{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="hd" id="hd">
+  <a href="#top" aria-label="Tueste"><img class="wm" src="img/wordmark.png" alt="Tueste"></a>
+  <nav aria-label="Secciones">
+    <a href="carta.html" data-carta="*" data-title="La carta">Carta</a>
+    <a href="#grano">Café en grano</a>
+    <a href="#sonoro">Café Sonoro</a>
+    <a href="#aula">Aula</a>
+    <a href="#visita">Visítanos</a>
+  </nav>
+  <a class="tel" href="tel:+34659751455"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6.2 6.2l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="num">+34 659 751 455</span><span class="lab">Llamar</span></a>
+</header>
+<main id="top">
+
+<section class="hero" id="hero">
+  <div class="media" id="heromedia">
+    <picture>
+      <source media="(max-width:600px)" srcset="img/hero-m.webp">
+      <img src="img/hero-poster.webp" alt="Barra de Tueste de noche con una taza humeante bajo la luz" fetchpriority="high" width="2048" height="1152">
+    </picture>
+    <video id="herovideo" muted loop playsinline autoplay preload="metadata" poster="img/hero-poster.webp" aria-hidden="true" style="position:absolute;inset:0;opacity:0;transition:opacity 1.2s"><source src="img/hero.mp4" type="video/mp4"></video>
+  </div>
+  <div class="veil"></div>
+  <span class="fl" data-depth="0.6" data-rot="20" style="width:64px;left:56%;top:22%"><i><img src="img/cut-grano1.webp" alt="" loading="lazy"></i></span>
+  <span class="fl" data-depth="1.1" data-rot="-35" style="width:44px;left:47%;top:64%"><i><img src="img/cut-grano2.webp" alt="" loading="lazy"></i></span>
+  <span class="fl" data-depth="0.8" data-rot="60" style="width:54px;left:84%;top:40%"><i><img src="img/cut-grano3.webp" alt="" loading="lazy"></i></span>
+  <div class="tag"><span data-h>Calle Deanes 12</span><br><span data-h>Judería de Córdoba</span><b data-h>abierto hasta las 19</b></div>
+  <div class="tx" id="herotx">
+    <h1 id="h1">Café de especialidad<br>en <span class="cu">la Judería</span></h1>
+    <div class="row">
+      <p class="sub" data-h><b>Tostado cada semana en Córdoba.</b> Veintitrés orígenes en grano, latas selladas al momento y cookies hechas aquí.</p>
+      <div class="cta" data-h><a class="btn mag" href="carta.html" data-carta="*" data-title="La carta">Ver la carta</a><a class="btn alt mag" href="https://www.google.com/maps/search/?api=1&query=Tueste%20Specialty%20Coffee%2C%20Calle%20Deanes%2012%2C%20C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a></div>
+    </div>
+  </div>
+  <span class="cue" aria-hidden="true"></span>
+</section>
+
+<div class="tk" aria-hidden="true"><div class="in" id="tk"><span>Nicaragua Montecristo <b>SCA 86,25</b></span><span>Brasil Albus <b>SCA 83</b></span><span>Brasil Serrano <b>SCA 83</b></span><span>México descafeinado <b>SCA 84</b></span><span>Colombia Huila Premium <b>SCA 84</b></span><span>Colombia orgánico <b>SCA 84</b></span><span>Etiopía Sidamo <b>SCA 80</b></span><span>Vietnam Hoa Mai <b>SCA 83</b></span><span>Nicaragua Sacuanjoche <b>SCA 82</b></span><span>Honduras Cataquilles <b>SCA 85</b></span><span>Costa Rica Guaria Morada <b>SCA 83</b></span><span>Costa Rica La Pantera <b>SCA 85</b></span><span>Etiopía Kata Maduga <b>SCA 86</b></span><span>Honduras Geisha Finca San José <b>SCA 87</b></span><span>Honduras Icatú <b>SCA 86</b></span><span>Honduras Montecillos <b>SCA 87</b></span><span>Honduras Opatoro <b>SCA 85</b></span><span>Honduras Yucazapa <b>SCA 84</b></span><span>Nicaragua Montecristo <b>SCA 86,25</b></span><span>Brasil Albus <b>SCA 83</b></span><span>Brasil Serrano <b>SCA 83</b></span><span>México descafeinado <b>SCA 84</b></span><span>Colombia Huila Premium <b>SCA 84</b></span><span>Colombia orgánico <b>SCA 84</b></span><span>Etiopía Sidamo <b>SCA 80</b></span><span>Vietnam Hoa Mai <b>SCA 83</b></span><span>Nicaragua Sacuanjoche <b>SCA 82</b></span><span>Honduras Cataquilles <b>SCA 85</b></span><span>Costa Rica Guaria Morada <b>SCA 83</b></span><span>Costa Rica La Pantera <b>SCA 85</b></span><span>Etiopía Kata Maduga <b>SCA 86</b></span><span>Honduras Geisha Finca San José <b>SCA 87</b></span><span>Honduras Icatú <b>SCA 86</b></span><span>Honduras Montecillos <b>SCA 87</b></span><span>Honduras Opatoro <b>SCA 85</b></span><span>Honduras Yucazapa <b>SCA 84</b></span></div></div>
+
+<section class="feed" id="feed">
+  <div class="wrap fh"><div><p class="eyebrow">La barra, hoy</p><h2>Lo que hay <em class="cu">detrás de la puerta.</em></h2></div><p><b>Fotos del local y lo que se sirve.</b> Desliza o arrastra. Toca un tipo de café para ir a la carta.</p></div>
+  <div class="carrete wrap" id="carrete" aria-label="El local y la carta">
+    <figure class="pc"><img src="img/real-latas.webp" alt="Expositor de latas selladas" loading="lazy"><span class="tag">Foto real</span><figcaption>Las latas, en el expositor</figcaption></figure><a class="tc" href="carta.html" data-carta="Espresso" data-title="Espresso"><img src="img/espresso.webp" alt="" loading="lazy"><span class="tt"><small>Desde 2,20 €</small><b>Espresso</b><i>Ver en la carta →</i></span></a><figure class="pc"><img src="img/real-cookies.webp" alt="Cookies sobre tablas" loading="lazy"><span class="tag">Foto real</span><figcaption>Cookies recién horneadas</figcaption></figure><a class="tc" href="carta.html" data-carta="Espresso" data-title="Filtro de la semana"><img src="img/v60.webp" alt="" loading="lazy"><span class="tt"><small>3,50 € · hoy Etiopía</small><b>Filtro de la semana</b><i>Ver en la carta →</i></span></a><figure class="pc"><img src="img/real-matcha.webp" alt="Matcha latte en la barra" loading="lazy"><span class="tag">Foto real</span><figcaption>Matcha en la barra</figcaption></figure><a class="tc" href="carta.html" data-carta="Con leche" data-title="Con leche"><img src="img/flatwhite.webp" alt="" loading="lazy"><span class="tt"><small>Flat white 3,80 €</small><b>Con leche</b><i>Ver en la carta →</i></span></a><figure class="pc"><img src="img/real-bolsas.webp" alt="Bolsas de café en grano" loading="lazy"><span class="tag">Foto real</span><figcaption>Grano de 250 g</figcaption></figure><a class="tc" href="carta.html" data-carta="Matcha y chai" data-title="Matcha y chai"><img src="img/real-matcha.webp" alt="" loading="lazy"><span class="tt"><small>Desde 3,50 €</small><b>Matcha y chai</b><i>Ver en la carta →</i></span></a><figure class="pc"><img src="img/real-rotulo.webp" alt="Vaso para llevar frente al rótulo" loading="lazy"><span class="tag">Foto real</span><figcaption>Para llevar, frente al rótulo</figcaption></figure><a class="tc" href="carta.html" data-carta="__latas" data-title="Latas selladas"><img src="img/lata.webp" alt="" loading="lazy"><span class="tt"><small>Desde 4,90 €</small><b>Latas selladas</b><i>Ver en la carta →</i></span></a><figure class="pc"><img src="img/real-socios.webp" alt="Pepe y Ricardo en la puerta" loading="lazy"><span class="tag">Foto real</span><figcaption>Pepe y Ricardo, calle Deanes</figcaption></figure><a class="tc" href="carta.html" data-carta="Cookies" data-title="Cookies"><img src="img/cookies-noche.webp" alt="" loading="lazy"><span class="tt"><small>3,50 € · horneadas aquí</small><b>Cookies</b><i>Ver en la carta →</i></span></a>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true">
+  <div class="line" data-dir="-1"><span>Tostado esta semana</span><span><em>servido hoy</em></span><span>Tostado esta semana</span><span><em>servido hoy</em></span></div>
+  <div class="line o" data-dir="1"><span>23 orígenes</span><span>una barra</span><span>23 orígenes</span><span>una barra</span><span>23 orígenes</span></div>
+</div>
+
+<section class="sec" id="grano">
+  <div class="wrap sh"><div><p class="eyebrow">Café en grano · 250 g</p><h2>Elige tu origen.<br><em class="cu">Tostado esta semana.</em></h2></div>
+  <p><b>23 cafés tostados esta semana en Córdoba,</b> con puntuación SCA, proceso, variedad y altitud. Sigue bajando: cada paso es un café.</p></div>
+
+  <div class="story wrap" id="story">
+    <div class="stexts" id="steps"><div class="step on" data-i="0">
+    <span class="pais">Etiopía · Jimma</span>
+    <h3>Etiopía Kata Maduga</h3>
+    <p class="notas">Floral intenso y taza limpia</p>
+    <span class="proc">Lavado · Jimma</span>
+    <span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Heirloom</b></div><div><small>Altitud</small><b>1.900–2.100 m</b></div><div><small>Para</small><b>Filtro · V60</b></div></span>
+    <span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span>
+  </div><div class="step" data-i="1">
+    <span class="pais">Honduras · Santa Bárbara</span>
+    <h3>Honduras Geisha Finca San José</h3>
+    <p class="notas">Jazmín, azahar y taza elegante</p>
+    <span class="proc">Lavado · Santa Bárbara · Geisha</span>
+    <span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Geisha</b></div><div><small>Altitud</small><b>1.500–1.700 m</b></div><div><small>Para</small><b>Filtro</b></div></span>
+    <span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span>
+  </div><div class="step" data-i="2">
+    <span class="pais">Costa Rica · Tarrazú</span>
+    <h3>Costa Rica La Pantera</h3>
+    <p class="notas">Frutas rojas, chocolate y nueces, acidez brillante</p>
+    <span class="proc">Fermentación 16 h · Tarrazú · Fairtrade y Rainforest</span>
+    <span class="spec"><div><small>Proceso</small><b>Ferm. 16 h</b></div><div><small>Variedad</small><b>Caturra · Catuai</b></div><div><small>Altitud</small><b>1.400–1.900 m</b></div><div><small>Para</small><b>Filtro · espresso</b></div></span>
+    <span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span>
+  </div><div class="step" data-i="3">
+    <span class="pais">Colombia · Pitalito</span>
+    <h3>Colombia Huila Premium</h3>
+    <p class="notas">Chocolate, almendra tostada, manzana roja y limón</p>
+    <span class="proc">Lavado · Pitalito · Caturra y Castillo · 1.000–1.200 m</span>
+    <span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Caturra · Castillo</b></div><div><small>Altitud</small><b>1.000–1.200 m</b></div><div><small>Para</small><b>Espresso</b></div></span>
+    <span class="pr"><span>250 g · grano o molido</span><b>14,00 €</b></span>
+  </div></div>
+    <div class="svis">
+      <div class="vis" id="visual">
+        <img class="bg on" src="img/ficha-etiopia.webp" alt="" data-i="0" ><img class="bg" src="img/ficha-honduras.webp" alt="" data-i="1" loading="lazy"><img class="bg" src="img/ficha-costarica.webp" alt="" data-i="2" loading="lazy"><img class="bg" src="img/ficha-colombia.webp" alt="" data-i="3" loading="lazy">
+        <div class="sca"><b id="scanum">86</b><small>SCA</small></div>
+        <div class="dots" id="dots"><i id="prog"></i></div>
+        <span class="hint">Sigue bajando</span>
+        <img class="bag" id="bag" src="img/cut-bolsa.webp" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap galm" id="galm"><article class="card">
+    <img src="img/ficha-etiopia.webp" alt="" loading="lazy">
+    <span class="pais">Etiopía · Jimma</span>
+    <span class="sca"><b>86</b><small>SCA</small></span>
+    <div class="bot"><h3>Etiopía Kata Maduga</h3><p class="notas">Floral intenso y taza limpia</p><span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Heirloom</b></div><div><small>Altitud</small><b>1.900–2.100 m</b></div><div><small>Para</small><b>Filtro · V60</b></div></span><span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span></div>
+  </article><article class="card">
+    <img src="img/ficha-honduras.webp" alt="" loading="lazy">
+    <span class="pais">Honduras · Santa Bárbara</span>
+    <span class="sca"><b>87</b><small>SCA</small></span>
+    <div class="bot"><h3>Honduras Geisha Finca San José</h3><p class="notas">Jazmín, azahar y taza elegante</p><span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Geisha</b></div><div><small>Altitud</small><b>1.500–1.700 m</b></div><div><small>Para</small><b>Filtro</b></div></span><span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span></div>
+  </article><article class="card">
+    <img src="img/ficha-costarica.webp" alt="" loading="lazy">
+    <span class="pais">Costa Rica · Tarrazú</span>
+    <span class="sca"><b>85</b><small>SCA</small></span>
+    <div class="bot"><h3>Costa Rica La Pantera</h3><p class="notas">Frutas rojas, chocolate y nueces, acidez brillante</p><span class="spec"><div><small>Proceso</small><b>Ferm. 16 h</b></div><div><small>Variedad</small><b>Caturra · Catuai</b></div><div><small>Altitud</small><b>1.400–1.900 m</b></div><div><small>Para</small><b>Filtro · espresso</b></div></span><span class="pr"><span>250 g · grano o molido</span><b>18,00 €</b></span></div>
+  </article><article class="card">
+    <img src="img/ficha-colombia.webp" alt="" loading="lazy">
+    <span class="pais">Colombia · Pitalito</span>
+    <span class="sca"><b>84</b><small>SCA</small></span>
+    <div class="bot"><h3>Colombia Huila Premium</h3><p class="notas">Chocolate, almendra tostada, manzana roja y limón</p><span class="spec"><div><small>Proceso</small><b>Lavado</b></div><div><small>Variedad</small><b>Caturra · Castillo</b></div><div><small>Altitud</small><b>1.000–1.200 m</b></div><div><small>Para</small><b>Espresso</b></div></span><span class="pr"><span>250 g · grano o molido</span><b>14,00 €</b></span></div>
+  </article></div>
+
+  <div class="wrap todos">
+    <div class="lbl"><span>Los 23 orígenes de esta semana</span><span>Tueste semanal · Café Sin Intermediarios</span></div>
+    <ul class="tlist" id="tlist"><li><span class="s">86,25</span><span class="n">Nicaragua Montecristo<small>Lavado · Cajamarca · Typica · 1.200–1.500 m · orgánico</small></span><span class="t">Jazmín y frutas de hueso</span><span class="p">12,00 €</span></li><li><span class="s">83</span><span class="n">Brasil Albus<small>Natural</small></span><span class="t">Dulce y fácil, para espresso</span><span class="p">13,00 €</span></li><li><span class="s">83</span><span class="n">Brasil Serrano<small>Natural · Cerrado Mineiro · Catuai, Mundo Novo · 1.200 m</small></span><span class="t">Chocolate, caramelo y cítrico</span><span class="p">13,00 €</span></li><li><span class="s">84</span><span class="n">México descafeinado<small>Water process · Chiapas · 800–1.200 m</small></span><span class="t">Chocolate y tabaco</span><span class="p">13,00 €</span></li><li><span class="s">—</span><span class="n">Rosa<small>Mezcla Uganda y Brasil</small></span><span class="t">Suave y equilibrado</span><span class="p">13,00 €</span></li><li><span class="s">—</span><span class="n">Blend Brasil e India<small>Mezcla de origen</small></span><span class="t">Cuerpo redondo, notas achocolatadas</span><span class="p">14,00 €</span></li><li><span class="s">84</span><span class="n">Colombia Huila Premium<small>Lavado · Pitalito · Caturra y Castillo · 1.000–1.200 m</small></span><span class="t">Chocolate, almendra tostada, manzana roja y limón</span><span class="p">14,00 €</span></li><li><span class="s">84</span><span class="n">Colombia orgánico<small>Lavado · Secado al sol</small></span><span class="t">Caramelo, limón, cereza y cacao</span><span class="p">14,00 €</span></li><li><span class="s">80</span><span class="n">Etiopía Sidamo<small>Lavado · Sidamo</small></span><span class="t">Floral a jazmín, ciruela amarilla y cítricos</span><span class="p">14,00 €</span></li><li><span class="s">83</span><span class="n">Vietnam Hoa Mai<small>Café de especialidad</small></span><span class="t">Intenso y persistente</span><span class="p">14,00 €</span></li><li><span class="s">82</span><span class="n">Nicaragua Sacuanjoche<small>Lavado · Typica · pequeños productores · 1.200–1.500 m</small></span><span class="t">Chocolate, caramelo y cítrico, perfil complejo</span><span class="p">15,00 €</span></li><li><span class="s">—</span><span class="n">Besos<small>Mezcla Uganda y Colombia</small></span><span class="t">Dulzor redondo y cuerpo sedoso</span><span class="p">16,00 €</span></li><li><span class="s">—</span><span class="n">Caricias<small>Mezcla Nicaragua y Vietnam</small></span><span class="t">Dulzor y especias suaves</span><span class="p">16,00 €</span></li><li><span class="s">85</span><span class="n">Honduras Cataquilles<small>Natural · Santa Bárbara</small></span><span class="t">Fruta madura y cacao</span><span class="p">16,00 €</span></li><li><span class="s">—</span><span class="n">Jaleo<small>Mezcla Brasil, Colombia y Etiopía</small></span><span class="t">Vibrante y frutal, muy bueno en filtro</span><span class="p">16,00 €</span></li><li><span class="s">83</span><span class="n">Costa Rica Guaria Morada<small>San Marcos de Tarrazú · Caturra y Catuai · 1.400–1.900 m</small></span><span class="t">Frutas y cítricos con fondo de chocolate y nueces</span><span class="p">17,50 €</span></li><li><span class="s">85</span><span class="n">Costa Rica La Pantera<small>Fermentación 16 h · Tarrazú · Fairtrade y Rainforest</small></span><span class="t">Frutas rojas, chocolate y nueces, acidez brillante</span><span class="p">18,00 €</span></li><li><span class="s">86</span><span class="n">Etiopía Kata Maduga<small>Lavado · Jimma</small></span><span class="t">Floral intenso y taza limpia</span><span class="p">18,00 €</span></li><li><span class="s">87</span><span class="n">Honduras Geisha Finca San José<small>Lavado · Santa Bárbara · Geisha</small></span><span class="t">Jazmín, azahar y taza elegante</span><span class="p">18,00 €</span></li><li><span class="s">86</span><span class="n">Honduras Icatú<small>Lavado</small></span><span class="t">Lulo, durazno y miel</span><span class="p">18,00 €</span></li><li><span class="s">87</span><span class="n">Honduras Montecillos<small>Natural · Marcala</small></span><span class="t">Fruta y dulzor largo</span><span class="p">18,00 €</span></li><li><span class="s">85</span><span class="n">Honduras Opatoro<small>Café de especialidad</small></span><span class="t">Equilibrado, de los de cada día</span><span class="p">18,00 €</span></li><li><span class="s">84</span><span class="n">Honduras Yucazapa<small>Honey doble fermentación · Marcala · 1.450–1.850 m</small></span><span class="t">Chocolate negro, vainilla y pimienta negra</span><span class="p">18,00 €</span></li></ul>
+  </div>
+</section>
+
+<section class="sec barra wrap" id="barra">
+  <span class="fl" data-depth="0.9" data-rot="-14" style="width:min(22vw,260px);right:-3%;top:6%"><i><img src="img/cut-taza.webp" alt="" loading="lazy"></i></span>
+  <div class="sh"><div><p class="eyebrow">En la barra</p><h2>Lo que se pide <em class="cu">aquí.</em></h2></div>
+  <p><b>Espresso, filtro, matcha, chai y las latas.</b> La carta completa, con precios, está a un toque.</p></div>
+  <div class="tres" id="tres">
+    <figure class="tilt"><img class="par" src="img/v60.webp" alt="Filtro V60 en preparación" loading="lazy"><figcaption><p class="k">Filtro de la semana</p><h3>Etiopía en V60</h3><p>Cambia cada semana. Pregunta cuál toca.</p><span class="pr">3,50 €</span></figcaption></figure><figure class="tilt"><img class="par" src="img/flatwhite.webp" alt="Flat white con arte latte" loading="lazy"><figcaption><p class="k">El de siempre</p><h3>Flat white</h3><p>Doble espresso, leche texturizada, taza pequeña.</p><span class="pr">3,80 €</span></figcaption></figure><figure class="tilt"><img class="par" src="img/lata.webp" alt="Lata sellada con condensación" loading="lazy"><figcaption><p class="k">Para el camino</p><h3>Lata sellada</h3><p>Vanilla latte, cold brew, matcha con mango. Frías y selladas al momento.</p><span class="pr">desde 4,90 €</span></figcaption></figure>
+  </div>
+  <div class="mas"><a class="btn alt mag" href="carta.html" data-carta="*" data-title="La carta">Ver la carta completa</a></div>
+</section>
+
+<section class="sec wrap" id="sonoro">
+  <div class="sh"><div><p class="eyebrow">Café Sonoro</p><h2>Cada origen<br>tiene <em class="cu">su pulso.</em></h2></div>
+  <p><b>La música forma parte de la barra.</b> Hay una playlist por cada país de donde viene nuestro café, una lista que crece con lo que traen los clientes y otra con el sonido de Córdoba.</p></div>
+  <div class="deck" id="deck">
+    <div class="player" id="player">
+      <div class="plinth">
+        <div class="vinyl" id="vinyl"><div class="label"><b id="vname">Brasil</b><small>Café Sonoro · Tueste</small></div></div>
+        <div class="arm" aria-hidden="true"><i></i></div>
+      </div>
+      <div class="ctrl">
+        <button class="play" id="play" type="button" aria-pressed="false" aria-label="Reproducir"><span class="ico"></span></button>
+        <div class="now"><small id="nowlbl">Playlist</small><b id="nowname">Brasil</b><div class="eq" aria-hidden="true"><i style="animation-duration:0.55s;animation-delay:-0s"></i><i style="animation-duration:1.13s;animation-delay:-0.5s"></i><i style="animation-duration:0.97s;animation-delay:-0.3s"></i><i style="animation-duration:0.80s;animation-delay:-0.1s"></i><i style="animation-duration:0.63s;animation-delay:-0.6s"></i><i style="animation-duration:1.22s;animation-delay:-0.4s"></i><i style="animation-duration:1.05s;animation-delay:-0.2s"></i><i style="animation-duration:0.88s;animation-delay:-0s"></i><i style="animation-duration:0.72s;animation-delay:-0.5s"></i><i style="animation-duration:0.55s;animation-delay:-0.3s"></i><i style="animation-duration:1.13s;animation-delay:-0.1s"></i><i style="animation-duration:0.97s;animation-delay:-0.6s"></i><i style="animation-duration:0.80s;animation-delay:-0.4s"></i><i style="animation-duration:0.63s;animation-delay:-0.2s"></i><i style="animation-duration:1.22s;animation-delay:-0s"></i><i style="animation-duration:1.05s;animation-delay:-0.5s"></i><i style="animation-duration:0.88s;animation-delay:-0.3s"></i><i style="animation-duration:0.72s;animation-delay:-0.1s"></i><i style="animation-duration:0.55s;animation-delay:-0.6s"></i><i style="animation-duration:1.13s;animation-delay:-0.4s"></i><i style="animation-duration:0.97s;animation-delay:-0.2s"></i><i style="animation-duration:0.80s;animation-delay:-0s"></i></div></div>
+        <a class="btn alt" id="splink" href="https://open.spotify.com/playlist/7zgcE5RFla8CeU332dQn8u" target="_blank" rel="noopener">Abrir en Spotify</a>
+      </div>
+      <div class="emb" id="emb"></div>
+    </div>
+    <div class="crates">
+      <div>
+        <div class="lbl"><span>Listas de la casa</span><span>3</span></div>
+        <div class="crate">
+          <a class="sleeve f" href="https://open.spotify.com/playlist/23ZNZ6K37urp2BZl7sMolD" target="_blank" rel="noopener" data-n="Tueste en bucle" data-url="https://open.spotify.com/playlist/23ZNZ6K37urp2BZl7sMolD" data-id="23ZNZ6K37urp2BZl7sMolD"><span class="mv"></span><span class="cover"><b>Tueste en bucle</b><small>Colaborativa · añade tu tema</small></span></a>
+          <a class="sleeve f" href="https://open.spotify.com/playlist/4duPb6itCcEXAXnZlViXES" target="_blank" rel="noopener" data-n="Córdoba · Andalucía" data-url="https://open.spotify.com/playlist/4duPb6itCcEXAXnZlViXES" data-id="4duPb6itCcEXAXnZlViXES"><span class="mv"></span><span class="cover"><b>Córdoba · Andalucía</b><small>El sonido del lugar</small></span></a>
+          <a class="sleeve f" href="https://open.spotify.com/playlist/4duPb6itCcEXAXnZlViXES" target="_blank" rel="noopener" data-n="Café en canciones" data-url="https://open.spotify.com/playlist/4duPb6itCcEXAXnZlViXES" data-id="4duPb6itCcEXAXnZlViXES"><span class="mv"></span><span class="cover"><b>Café en canciones</b><small>Temas sobre café</small></span></a>
+        </div>
+      </div>
+      <div>
+        <div class="lbl"><span>Una playlist por origen</span><span>19 países · pasa los discos</span></div>
+        <div class="crate" id="crate"><a class="sleeve on" href="https://open.spotify.com/playlist/7zgcE5RFla8CeU332dQn8u" target="_blank" rel="noopener" data-n="Brasil" data-url="https://open.spotify.com/playlist/7zgcE5RFla8CeU332dQn8u" data-id="7zgcE5RFla8CeU332dQn8u"><span class="mv"></span><span class="cover"><b>Brasil</b><small>Cerrado Mineiro</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/4t4yIvzSiWoY91QtWIp8CY" target="_blank" rel="noopener" data-n="Colombia" data-url="https://open.spotify.com/playlist/4t4yIvzSiWoY91QtWIp8CY" data-id="4t4yIvzSiWoY91QtWIp8CY"><span class="mv"></span><span class="cover"><b>Colombia</b><small>Huila</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/1a8QWAogYxy8ULfcuI181A" target="_blank" rel="noopener" data-n="Etiopía" data-url="https://open.spotify.com/playlist/1a8QWAogYxy8ULfcuI181A" data-id="1a8QWAogYxy8ULfcuI181A"><span class="mv"></span><span class="cover"><b>Etiopía</b><small>Jimma · Sidamo</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/15CtLW008TNRbw0oZEj0Uk" target="_blank" rel="noopener" data-n="Honduras" data-url="https://open.spotify.com/playlist/15CtLW008TNRbw0oZEj0Uk" data-id="15CtLW008TNRbw0oZEj0Uk"><span class="mv"></span><span class="cover"><b>Honduras</b><small>Santa Bárbara · Marcala</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/3Yzhq2ndfT1m3mg5D0sqXV" target="_blank" rel="noopener" data-n="Nicaragua" data-url="https://open.spotify.com/playlist/3Yzhq2ndfT1m3mg5D0sqXV" data-id="3Yzhq2ndfT1m3mg5D0sqXV"><span class="mv"></span><span class="cover"><b>Nicaragua</b><small>Cajamarca</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/6JHTVu3u7kOXLolwL1Rg1f" target="_blank" rel="noopener" data-n="Costa Rica" data-url="https://open.spotify.com/playlist/6JHTVu3u7kOXLolwL1Rg1f" data-id="6JHTVu3u7kOXLolwL1Rg1f"><span class="mv"></span><span class="cover"><b>Costa Rica</b><small>Tarrazú</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/0GlHS79uCM5Jinmo6IFhHN" target="_blank" rel="noopener" data-n="México" data-url="https://open.spotify.com/playlist/0GlHS79uCM5Jinmo6IFhHN" data-id="0GlHS79uCM5Jinmo6IFhHN"><span class="mv"></span><span class="cover"><b>México</b><small>Chiapas</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/37i9dQZEVXbLdGSmz6xilI" target="_blank" rel="noopener" data-n="Vietnam" data-url="https://open.spotify.com/playlist/37i9dQZEVXbLdGSmz6xilI" data-id="37i9dQZEVXbLdGSmz6xilI"><span class="mv"></span><span class="cover"><b>Vietnam</b><small>Hoa Mai</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/1e7kvZfdOagkErRXirU39E" target="_blank" rel="noopener" data-n="Uganda" data-url="https://open.spotify.com/playlist/1e7kvZfdOagkErRXirU39E" data-id="1e7kvZfdOagkErRXirU39E"><span class="mv"></span><span class="cover"><b>Uganda</b><small>Mezclas</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/37i9dQZF1DX3LrQBSMX6aK" target="_blank" rel="noopener" data-n="India" data-url="https://open.spotify.com/playlist/37i9dQZF1DX3LrQBSMX6aK" data-id="37i9dQZF1DX3LrQBSMX6aK"><span class="mv"></span><span class="cover"><b>India</b><small>Mezclas</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/0Hy9rITSl0a8n2bNBbFcta" target="_blank" rel="noopener" data-n="Indonesia" data-url="https://open.spotify.com/playlist/0Hy9rITSl0a8n2bNBbFcta" data-id="0Hy9rITSl0a8n2bNBbFcta"><span class="mv"></span><span class="cover"><b>Indonesia</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/4F19GCNWMODsqMGCQMb7U9" target="_blank" rel="noopener" data-n="Perú" data-url="https://open.spotify.com/playlist/4F19GCNWMODsqMGCQMb7U9" data-id="4F19GCNWMODsqMGCQMb7U9"><span class="mv"></span><span class="cover"><b>Perú</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/3vtmU2Z4hEJTWQbYEuwG6s" target="_blank" rel="noopener" data-n="Guatemala" data-url="https://open.spotify.com/playlist/3vtmU2Z4hEJTWQbYEuwG6s" data-id="3vtmU2Z4hEJTWQbYEuwG6s"><span class="mv"></span><span class="cover"><b>Guatemala</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/2tDBNFOnSAY4LjX0s1OALz" target="_blank" rel="noopener" data-n="Kenia" data-url="https://open.spotify.com/playlist/2tDBNFOnSAY4LjX0s1OALz" data-id="2tDBNFOnSAY4LjX0s1OALz"><span class="mv"></span><span class="cover"><b>Kenia</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/4CaDH8L1J3Pi3QECNbkI55" target="_blank" rel="noopener" data-n="Tanzania" data-url="https://open.spotify.com/playlist/4CaDH8L1J3Pi3QECNbkI55" data-id="4CaDH8L1J3Pi3QECNbkI55"><span class="mv"></span><span class="cover"><b>Tanzania</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/6l6X13EYuQyuFBU6c6JRJM" target="_blank" rel="noopener" data-n="China" data-url="https://open.spotify.com/playlist/6l6X13EYuQyuFBU6c6JRJM" data-id="6l6X13EYuQyuFBU6c6JRJM"><span class="mv"></span><span class="cover"><b>China</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/54ZA9LXFvvFujmOVWXpHga" target="_blank" rel="noopener" data-n="Costa de Marfil" data-url="https://open.spotify.com/playlist/54ZA9LXFvvFujmOVWXpHga" data-id="54ZA9LXFvvFujmOVWXpHga"><span class="mv"></span><span class="cover"><b>Costa de Marfil</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/1P9XoRjC7t3W9iZs5nAIx4" target="_blank" rel="noopener" data-n="R. D. del Congo" data-url="https://open.spotify.com/playlist/1P9XoRjC7t3W9iZs5nAIx4" data-id="1P9XoRjC7t3W9iZs5nAIx4"><span class="mv"></span><span class="cover"><b>R. D. del Congo</b><small>Playlist</small></span></a><a class="sleeve" href="https://open.spotify.com/playlist/1EbVc8fl9r51zeZNYiHFvB" target="_blank" rel="noopener" data-n="Venezuela" data-url="https://open.spotify.com/playlist/1EbVc8fl9r51zeZNYiHFvB" data-id="1EbVc8fl9r51zeZNYiHFvB"><span class="mv"></span><span class="cover"><b>Venezuela</b><small>Playlist</small></span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap aula" id="aula">
+  <div class="sh"><div><p class="eyebrow">Aula de café</p><h2>Aprender <em class="cu">sin ruido.</em></h2></div><p><b>Lo que leemos y vemos para entender el café.</b> Libros, canales y recursos abiertos que usamos en la barra para entender el café. Ordenados y sin relleno.</p></div>
+  <div class="shelfw">
+    <div class="lbl mono"><span>Libros esenciales</span><span>6 en la estantería</span></div>
+    <div class="books" id="books"><div class="book b0" style="--h:92%"><span class="sp"><b>The World Atlas of Coffee</b><small>James Hoffmann</small></span></div><div class="book b1" style="--h:78%"><span class="sp"><b>How to Make the Best Coffee at Home</b><small>James Hoffmann</small></span></div><div class="book b2" style="--h:86%"><span class="sp"><b>The Coffee Roaster&#39;s Companion</b><small>Scott Rao</small></span></div><div class="book b3" style="--h:70%"><span class="sp"><b>The Blue Bottle Craft of Coffee</b><small>Freeman · Freeman · Duggan</small></span></div><div class="book b0" style="--h:96%"><span class="sp"><b>Craft Coffee</b><small>Jessica Easto</small></span></div><div class="book b1" style="--h:82%"><span class="sp"><b>The Coffee Dictionary</b><small>Maxwell Colonna-Dashwood</small></span></div><div class="plank"></div></div>
+  </div>
+  <div class="aula2">
+    <div><div class="lbl mono"><span>Vídeos y canales</span></div><ul class="res"><li><a href="https://www.youtube.com/@jameshoffmann" target="_blank" rel="noopener"><span class="pl"></span><span><b>James Hoffmann</b><small>El canal de referencia. Métodos, comparativas, ciencia sin dramas.</small></span><i>↗</i></a></li><li><a href="https://europeancoffeetrip.com" target="_blank" rel="noopener"><span class="pl"></span><span><b>European Coffee Trip</b><small>Cafeterías y tostadores de toda Europa.</small></span><i>↗</i></a></li><li><a href="https://www.youtube.com/@RealChrisBaca" target="_blank" rel="noopener"><span class="pl"></span><span><b>The Real Chris Baca</b><small>Barismo de competición contado en directo.</small></span><i>↗</i></a></li><li><a href="https://www.youtube.com/@SeattleCoffeeGear" target="_blank" rel="noopener"><span class="pl"></span><span><b>Seattle Coffee Gear</b><small>Máquinas y molinos, probados a fondo.</small></span><i>↗</i></a></li><li><a href="https://www.baristahustle.com" target="_blank" rel="noopener"><span class="pl"></span><span><b>Barista Hustle</b><small>Cursos y recursos para afinar técnica.</small></span><i>↗</i></a></li></ul></div>
+    <div><div class="lbl mono"><span>Recursos abiertos</span></div><ul class="res"><li><a href="https://sca.coffee/research/coffee-tasters-flavor-wheel" target="_blank" rel="noopener"><span class="pl dot"></span><span><b>SCA Flavor Wheel</b><small>La rueda de sabores que usamos para las notas de cata.</small></span><i>↗</i></a></li><li><a href="https://coffeeadastra.com" target="_blank" rel="noopener"><span class="pl dot"></span><span><b>Coffee Ad Astra</b><small>Física del café explicada por un astrofísico.</small></span><i>↗</i></a></li><li><a href="https://bluebottlecoffee.com/us/eng/brew-guides" target="_blank" rel="noopener"><span class="pl dot"></span><span><b>Blue Bottle · Brew Guides</b><small>Guías de preparación paso a paso.</small></span><i>↗</i></a></li></ul></div>
+  </div>
+</section>
+
+<section class="sec llevar" id="llevar">
+  <span class="fl" data-depth="1" data-rot="-22" style="width:min(9vw,150px);left:calc(50% - 620px - 9vw - 80px);bottom:16%"><i><img src="img/cut-lata.webp" alt="" loading="lazy"></i></span>
+  <span class="fl" data-depth="0.7" data-rot="18" style="width:min(7.5vw,120px);right:calc(50% - 620px - 8vw - 80px);top:44%"><i><img src="img/cut-lata.webp" alt="" loading="lazy"></i></span>
+  <span class="fl" data-depth="1.3" data-rot="30" style="width:40px;left:46%;top:10%"><i><img src="img/cut-grano2.webp" alt="" loading="lazy"></i></span>
+  <div class="wrap">
+  <div class="sh"><div><p class="eyebrow">Para llevar</p><h2>Latas selladas.<br><em class="cu">Cookies de aquí.</em></h2></div>
+  <p><b>330 ml · 500 ml.</b> Se preparan al momento, se sellan y se agitan en máquina para que la textura aguante hasta el último sorbo.</p></div>
+  <div class="dos">
+    <div class="blk"><figure><img class="par" src="img/real-latas.webp" alt="Latas selladas en el expositor" loading="lazy"></figure><div><h3>Latas selladas y agitadas</h3><p class="fmt">330 ml · 500 ml</p><ul class="lst"><li><span class="n">Vanilla latte<small>Espresso, leche, vainilla y un toque de canela</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li><li><span class="n">Caramel latte<small>Espresso con leche y caramelo</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li><li><span class="n">Hazelnut choco-latte<small>Espresso, leche, avellana y cacao</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li><li><span class="n">Brownie protein latte<small>Cacao y proteína, sin azúcar</small></span><span class="dots" aria-hidden="true"></span><span class="p">5,90 · 6,90 €</span></li><li><span class="n">Citrus coffee<small>Espresso con zumo de naranja</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li><li><span class="n">Mango oat matcha<small>Matcha, mango y bebida de avena</small></span><span class="dots" aria-hidden="true"></span><span class="p">5,40 · 6,40 €</span></li><li><span class="n">Raspberry summer matcha<small>Matcha con frambuesa y leche</small></span><span class="dots" aria-hidden="true"></span><span class="p">5,40 · 6,40 €</span></li><li><span class="n">Raspberry mint lemonade<small>Limonada, frambuesa y menta fresca</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li><li><span class="n">Cold brew latte<small>Con leche o bebida vegetal</small></span><span class="dots" aria-hidden="true"></span><span class="p">5,40 · 6,40 €</span></li><li><span class="n">Cold brew<small>Solo, limpio y frío</small></span><span class="dots" aria-hidden="true"></span><span class="p">4,90 · 5,90 €</span></li></ul></div></div>
+    <div class="blk"><figure><img class="par" src="img/real-cookies.webp" alt="Cookies artesanas" loading="lazy"></figure><div><h3>Cookies horneadas aquí</h3><p class="d">Pensadas para el café. Se acaban.</p><ul class="lst"><li><span class="n">Café y avellana</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Clásica</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Dubai</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Red velvet y chocolate blanco</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Pistacho y chocolate blanco</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Limón</span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li></ul></div></div>
+  </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="bg"><img id="sobrebg" src="img/calle.webp" alt="" loading="lazy"></div>
+  <div class="veil"></div>
+  <div class="in">
+    <div><p class="eyebrow">Sobre Tueste</p><h2>Dos amigos y una calle</h2><p>Pepe y Ricardo crecieron en Córdoba, se fueron a dar vueltas por el mundo y volvieron con la misma idea: un café pequeño en la calle Deanes donde el café se entienda, se disfrute y se comparta. Trabajan con Café Sin Intermediarios, tuestan aquí cada semana y hornean su propia repostería.</p></div>
+    <figure class="foto" id="foto"><img src="img/socios-noche.webp" alt="Pepe y Ricardo en la puerta de Tueste, en la calle Deanes" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec wrap" id="visita">
+  <div class="vis2">
+    <div>
+      <p class="eyebrow">Visítanos</p>
+      <h2>Calle Deanes, <em class="cu">12.</em></h2>
+      <dl>
+        <dt>Dirección</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Tueste%20Specialty%20Coffee%2C%20Calle%20Deanes%2012%2C%20C%C3%B3rdoba" target="_blank" rel="noopener">Calle Deanes 12, 14003 Córdoba</a></dd>
+        <dt>Horario</dt><dd>Lunes a domingo · 9:00 – 19:00</dd>
+        <dt>Teléfono</dt><dd><a href="tel:+34659751455">+34 659 751 455</a></dd>
+        <dt>Instagram</dt><dd><a href="https://instagram.com/tuestecoffee" target="_blank" rel="noopener">@tuestecoffee</a></dd>
+      </dl>
+      <div class="cta"><a class="btn mag" href="https://wa.me/34659751455?text=Hola%2C%20" target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="btn alt mag" href="tel:+34659751455">Llamar</a></div>
+    </div>
+    <div class="map"><iframe title="Mapa de Tueste" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Tueste%20Specialty%20Coffee%2C%20Calle%20Deanes%2012%2C%20C%C3%B3rdoba&output=embed"></iframe></div>
+  </div>
+</section>
+</main>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Carta" data-lenis-prevent>
+  <div class="dr-head"><div><p class="eyebrow" id="drk">La carta</p><h3 id="drt">Carta</h3></div><button class="x" id="drx" type="button" aria-label="Cerrar">×</button></div>
+  <div class="dr-body" id="drb"></div>
+  <div class="dr-foot"><span class="mono">Leches vegetales sin coste en barra</span><a class="btn alt" href="carta.html">Carta completa en página</a></div>
+</aside>
+
+<footer>
+  <div class="ft">
+    <span>Tueste Specialty Coffee · Calle Deanes 12, 14003 Córdoba</span>
+    <span><a href="https://instagram.com/tuestecoffee" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34659751455?text=Hola%2C%20" target="_blank" rel="noopener">WhatsApp</a> · <a href="carta.html">Carta completa</a></span>
+    <span class="by">Web por Sprintia · Propuesta con imágenes de muestra</span>
+  </div>
+  <div class="big" id="big"><img src="img/wordmark.png" alt="" loading="lazy"></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+window.__DEST = [{"sca":"86"},{"sca":"87"},{"sca":"85"},{"sca":"84"}];
+window.__SPOTIFY_EMBED = true;
+window.__CARTA = {"secciones":[{"seccion":"Espresso","nota":"","items":[{"n":"Ristretto","p":"2,20"},{"n":"Espresso","p":"2,20"},{"n":"Espresso doble","p":"2,70"},{"n":"Lungo","p":"2,20"},{"n":"Cortado","p":"2,50"},{"n":"Macchiato","p":"2,50"},{"n":"Americano","d":"XL 4,00 · XXL 5,00","p":"3,00"},{"n":"Filtro de la semana","d":"Pregunta por el origen","p":"3,50"}]},{"seccion":"Con leche","nota":"","items":[{"n":"Cappuccino","d":"XL 4,40","p":"3,40"},{"n":"Latte","d":"XL 4,50 · XXL 5,50","p":"3,00"},{"n":"Flat white","p":"3,80"},{"n":"Moca","p":"3,50"},{"n":"Taza de cacao","p":"2,50"}]},{"seccion":"Fríos","nota":"","items":[{"n":"Cold brew","d":"XL 5,00","p":"3,50"},{"n":"Cold brew latte","d":"XL 5,50","p":"4,00"},{"n":"Iced latte","d":"XL 5,50","p":"4,50"},{"n":"Iced americano","d":"XL 5,50","p":"4,00"},{"n":"Espresso tonic","p":"4,50"}]},{"seccion":"Matcha y chai","nota":"","items":[{"n":"Matcha latte","d":"XL 5,00 · XXL 6,00","p":"4,40"},{"n":"Iced matcha latte","d":"XL 6,00","p":"5,30"},{"n":"Chai latte","d":"XL 4,50 · XXL 5,50","p":"3,50"},{"n":"Iced chai latte","d":"XL 5,50","p":"4,80"}]},{"seccion":"Tés e infusiones","nota":"","items":[{"n":"English breakfast","p":"2,50"},{"n":"Sencha bio","p":"2,50"},{"n":"Menta marroquí","p":"2,50"},{"n":"Pai mu tan bio","p":"2,50"},{"n":"Manzanilla","p":"2,50"},{"n":"Rooibos canela y vainilla","p":"2,50"},{"n":"Jengibre y limón","p":"2,50"}]},{"seccion":"Cookies","nota":"Horneadas aquí","items":[{"n":"Café y avellana","p":"3,50"},{"n":"Clásica","p":"3,50"},{"n":"Dubai","p":"3,50"},{"n":"Red velvet y chocolate blanco","p":"3,50"},{"n":"Pistacho y chocolate blanco","p":"3,50"},{"n":"Limón","p":"3,50"}]},{"seccion":"Extras","nota":"","items":[{"n":"Scoop de proteína","p":"2,00"},{"n":"Siropes","p":"0,50"},{"n":"Leches vegetales","d":"Solo en latas","p":"0,50"}]}],"latas":{"seccion":"Latas selladas y agitadas","nota":"330 ml · 500 ml","items":[{"n":"Vanilla latte","d":"Espresso, leche, vainilla y un toque de canela","p":"4,90 · 5,90"},{"n":"Caramel latte","d":"Espresso con leche y caramelo","p":"4,90 · 5,90"},{"n":"Hazelnut choco-latte","d":"Espresso, leche, avellana y cacao","p":"4,90 · 5,90"},{"n":"Brownie protein latte","d":"Cacao y proteína, sin azúcar","p":"5,90 · 6,90"},{"n":"Citrus coffee","d":"Espresso con zumo de naranja","p":"4,90 · 5,90"},{"n":"Mango oat matcha","d":"Matcha, mango y bebida de avena","p":"5,40 · 6,40"},{"n":"Raspberry summer matcha","d":"Matcha con frambuesa y leche","p":"5,40 · 6,40"},{"n":"Raspberry mint lemonade","d":"Limonada, frambuesa y menta fresca","p":"4,90 · 5,90"},{"n":"Cold brew latte","d":"Con leche o bebida vegetal","p":"5,40 · 6,40"},{"n":"Cold brew","d":"Solo, limpio y frío","p":"4,90 · 5,90"}]},"refrescos":{"seccion":"Refrescos bio, kombucha y agua","nota":"","items":[{"n":"Agua 500 ml / con gas 300 ml","p":"2,00"},{"n":"Mad sparkling water con electrolitos","p":"3,00"},{"n":"Gemellii tonic: pomelo rosa, bergamota, ginger beer","p":"3,00"},{"n":"La Fantástica: tónica con lúpulo, cola bio, cola sin azúcar, naranja, limón","p":"3,50"},{"n":"Brite: piña y mango, frambuesa y menta","p":"3,50"},{"n":"Linda zumo bio: limonada jengibre, limonada hibiscus, mandarina con romero","p":"3,50"},{"n":"Lindo té: negro limón, verde lima y jengibre","p":"3,50"},{"n":"Yoko iced tea matcha","p":"4,50"},{"n":"Kom-Buchito: limón, naranja, frutos rojos, ashwagandha","p":"4,00"}]}};
+</script>
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desk = matchMedia('(min-width: 900px)').matches;
+  var hd = document.getElementById('hd');
+  var lastY = 0;
+  addEventListener('scroll', function(){ var y = window.scrollY || 0; hd.classList.toggle('solid', y > 40); hd.classList.toggle('hide', y > 500 && y > lastY); lastY = y; }, {passive:true});
+
+  var v = document.getElementById('herovideo');
+  if (v) { if (matchMedia('(max-width:600px)').matches || reduce) v.remove(); else { v.addEventListener('canplay', function(){ v.style.opacity = 1; }, {once:true}); v.play && v.play().catch(function(){}); } }
+
+  var hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+  if (!hasGsap || reduce) { document.querySelectorAll('.step').forEach(function(s){ s.style.position='relative'; s.style.opacity=1; }); document.getElementById('big').classList.add('static'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(e){ var id=a.getAttribute('href'); var el=id.length>1&&document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el, {offset:-10}); } }); });
+  }
+
+  /* ---- hero: carga + salida ---- */
+  var h1 = document.getElementById('h1');
+  if (h1) { h1.innerHTML = h1.innerHTML.replace(/(<br\s*\/?>)/g, '').split('').map(function(l){ return '<span style="display:block;overflow:hidden"><span class="ln" style="display:block">' + l + '</span></span>'; }).join(''); }
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .from('#heromedia picture, #heromedia video', { scale: 1.1, duration: 2.6, ease: 'power2.out' }, 0)
+    .from('.hd', { y: -20, opacity: 0, duration: .9 }, .2)
+    .from('#h1 .ln', { yPercent: 110, duration: 1.1, stagger: .12 }, .35)
+    .from('[data-h]', { y: 18, opacity: 0, duration: .9, stagger: .08 }, .9)
+    .from('.hero .fl', { scale: 0, opacity: 0, duration: 1.2, stagger: .1, ease: 'back.out(1.6)' }, 1)
+    .from('.cue', { scaleY: 0, transformOrigin: '50% 0', duration: .8 }, 1.4);
+  gsap.to('#heromedia', { yPercent: 18, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('#herotx', { yPercent: -22, opacity: 0, ease: 'none', scrollTrigger: { trigger: '#hero', start: '30% top', end: 'bottom top', scrub: true } });
+
+  /* ---- flotantes: scroll + ratón ---- */
+  var fls = Array.prototype.slice.call(document.querySelectorAll('.fl'));
+  fls.forEach(function(el){
+    var d = parseFloat(el.dataset.depth || 1), r = parseFloat(el.dataset.rot || 0), inner = el.querySelector('i');
+    gsap.to(el, { y: -140 * d, rotation: r, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.to(inner, { y: 10, duration: 2.2 + d, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+  });
+  if (desk) {
+    var mx = 0, tx = 0; addEventListener('mousemove', function(e){ mx = (e.clientX / innerWidth - .5); }, {passive:true});
+    gsap.ticker.add(function(){ tx += (mx - tx) * .06; fls.forEach(function(el){ var d = parseFloat(el.dataset.depth || 1); el.style.marginLeft = (tx * 40 * d) + 'px'; }); });
+  }
+
+  /* ---- ticker + marquesina ---- */
+  var tk = document.getElementById('tk'); if (tk) { var w = tk.scrollWidth / 2; gsap.to(tk, { x: -w, duration: Math.max(30, w / 40), ease: 'none', repeat: -1 }); }
+  document.querySelectorAll('.mq .line').forEach(function(l){ var dir = parseFloat(l.dataset.dir || -1); gsap.fromTo(l, { xPercent: dir > 0 ? -18 : 0 }, { xPercent: dir > 0 ? 0 : -18, ease: 'none', scrollTrigger: { trigger: '.mq', start: 'top bottom', end: 'bottom top', scrub: true } }); });
+
+  /* ---- fichas: pin + pasos ---- */
+  var story = document.getElementById('story');
+  if (story && desk) {
+    var steps = Array.prototype.slice.call(document.querySelectorAll('#steps .step'));
+    var bgs = Array.prototype.slice.call(document.querySelectorAll('#visual img.bg'));
+    var scanum = document.getElementById('scanum'); var prog = document.getElementById('prog'); var D = window.__DEST || []; var n = steps.length; var cur = -1;
+    function go(i){
+      if (i === cur) return; var prev = cur; cur = i;
+      steps.forEach(function(st, k){ st.classList.toggle('on', k === i); });
+      gsap.killTweensOf(bgs);
+      bgs.forEach(function(b, k){ if (k !== i && k !== prev) gsap.set(b, { opacity: 0 }); });
+      if (prev >= 0) gsap.to(bgs[prev], { opacity: 0, scale: 1.04, duration: .7, ease: 'power2.inOut' });
+      gsap.fromTo(bgs[i], { opacity: 0, scale: 1.1, xPercent: 2 }, { opacity: 1, scale: 1, xPercent: 0, duration: 1, ease: 'power2.out' });
+      if (prog) prog.style.transform = 'scaleX(' + ((i + 1) / n) + ')';
+      if (scanum && D[i]) { scanum.textContent = D[i].sca; gsap.fromTo(scanum, { y: 12, opacity: .3 }, { y: 0, opacity: 1, duration: .5, ease: 'power2.out' }); }
+    }
+    // activación por posición real: el paso cuyo centro está más cerca del centro de la ventana
+    var ticking = false;
+    function pick(){ ticking = false; var mid = innerHeight * .5, best = 0, bd = 1e9; steps.forEach(function(st, k){ var r = st.getBoundingClientRect(); var d = Math.abs((r.top + r.bottom) / 2 - mid); if (d < bd) { bd = d; best = k; } }); go(best); }
+    function onS(){ if (!ticking) { ticking = true; requestAnimationFrame(pick); } }
+    addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); if (lenis) lenis.on('scroll', onS);
+    go(0); setTimeout(pick, 300);
+    // la imagen respira mientras se baja; la bolsa gira con toda la sección
+    gsap.fromTo('#visual', { yPercent: 2 }, { yPercent: -2, ease: 'none', scrollTrigger: { trigger: story, start: 'top bottom', end: 'bottom top', scrub: true } });
+    var bag = document.getElementById('bag');
+    if (bag) gsap.fromTo(bag, { rotation: -12, y: 30 }, { rotation: 8, y: -20, ease: 'none', scrollTrigger: { trigger: story, start: 'top bottom', end: 'bottom top', scrub: 1 } });
+    gsap.from('.svis .vis', { clipPath: 'inset(10% 10% 10% 10% round 22px)', ease: 'none', scrollTrigger: { trigger: story, start: 'top 90%', end: 'top 20%', scrub: true } });
+  }
+  gsap.from('#tlist li', { y: 18, opacity: 0, duration: .6, stagger: .03, ease: 'power3.out', scrollTrigger: { trigger: '#tlist', start: 'top 85%' } });
+
+  /* ---- reveals generales ---- */
+  document.querySelectorAll('.sec .sh, .fh > *, .vis2 > div, .sobre .in > div, .aula2 > div').forEach(function(el){ gsap.from(el, { y: 36, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }); });
+
+  /* ---- barra: entran girando + tilt ---- */
+  var tres = document.querySelectorAll('#tres figure');
+  tres.forEach(function(f, i){ gsap.from(f, { y: 140, rotation: (i - 1) * 7, opacity: 0, ease: 'power3.out', scrollTrigger: { trigger: '#tres', start: 'top 92%', end: 'top 35%', scrub: 1 } }); });
+  if (desk) tres.forEach(function(f){
+    f.addEventListener('mousemove', function(e){ var r = f.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; gsap.to(f, { rotationY: x * 10, rotationX: -y * 10, scale: 1.02, duration: .5, ease: 'power2.out', transformPerspective: 1000 }); });
+    f.addEventListener('mouseleave', function(){ gsap.to(f, { rotationY: 0, rotationX: 0, scale: 1, duration: .8, ease: 'power3.out' }); });
+  });
+  document.querySelectorAll('.par').forEach(function(img){ gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+
+  /* ---- sonoro: tocadiscos ---- */
+  var player = document.getElementById('player'), vinyl = document.getElementById('vinyl'), playBtn = document.getElementById('play');
+  var vname = document.getElementById('vname'), nowname = document.getElementById('nowname'), splink = document.getElementById('splink'), emb = document.getElementById('emb');
+  var current = null;
+  function setPlaying(on){ player.classList.toggle('playing', on); playBtn.setAttribute('aria-pressed', on); playBtn.setAttribute('aria-label', on ? 'Pausar' : 'Reproducir'); }
+  function load(sl, autoplay){
+    document.querySelectorAll('.sleeve').forEach(function(x){ x.classList.remove('on'); }); sl.classList.add('on'); current = sl;
+    var n = sl.dataset.n; splink.href = sl.dataset.url;
+    gsap.to([vname, nowname], { opacity: 0, y: -6, duration: .18, onComplete: function(){ vname.textContent = n; nowname.textContent = n; gsap.fromTo([vname, nowname], { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35 }); } });
+    gsap.fromTo(vinyl, { scale: .92 }, { scale: 1, duration: .6, ease: 'back.out(2)' });
+    if (window.__SPOTIFY_EMBED && sl.dataset.id) { emb.innerHTML = '<iframe title="Playlist ' + n + '" src="https://open.spotify.com/embed/playlist/' + sl.dataset.id + '?theme=0" allow="autoplay; encrypted-media" loading="lazy"></iframe>'; }
+    if (autoplay) setPlaying(true);
+  }
+  document.querySelectorAll('.sleeve').forEach(function(sl){ sl.addEventListener('click', function(e){ e.preventDefault(); load(sl, true); }); });
+  playBtn.addEventListener('click', function(){ var on = !player.classList.contains('playing'); setPlaying(on); if (on && !window.__SPOTIFY_EMBED && current) { /* sin embed: el play es la animación; el enlace abre Spotify */ } });
+  gsap.from('.plinth', { scale: .85, rotation: -20, opacity: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#deck', start: 'top 80%' } });
+  gsap.from('.ctrl', { y: 30, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '#deck', start: 'top 75%' } });
+  gsap.from('.sleeve', { scale: .9, opacity: 0, rotation: 3, transformOrigin: '50% 100%', duration: .6, stagger: .035, ease: 'power3.out', scrollTrigger: { trigger: '.crates', start: 'top 90%' } });
+  ScrollTrigger.create({ trigger: '#deck', start: 'top 60%', once: true, onEnter: function(){ setPlaying(true); } });
+
+  /* ---- aula: libros ---- */
+  gsap.from('#books .book', { scaleY: .6, opacity: 0, transformOrigin: '50% 100%', duration: .8, stagger: .07, ease: 'back.out(1.4)', scrollTrigger: { trigger: '#books', start: 'top 88%' } });
+
+  /* ---- llevar ---- */
+  gsap.from('.blk', { y: 40, opacity: 0, duration: 1, stagger: .15, ease: 'power3.out', scrollTrigger: { trigger: '.dos', start: 'top 80%' } });
+  gsap.from('.lst li', { x: -12, opacity: 0, duration: .5, stagger: .04, ease: 'power2.out', scrollTrigger: { trigger: '.dos', start: 'top 70%' } });
+
+  /* ---- carrete: arrastre + deriva ---- */
+  var car = document.getElementById('carrete');
+  if (car) {
+    var down = false, dragging = false, sx = 0, sl = 0, pid = null;
+    car.addEventListener('pointerdown', function(e){ if (e.pointerType === 'touch') return; down = true; dragging = false; sx = e.clientX; sl = car.scrollLeft; pid = e.pointerId; });
+    car.addEventListener('pointermove', function(e){ if (!down) return; var dx = e.clientX - sx; if (!dragging && Math.abs(dx) > 6) { dragging = true; car.classList.add('drag'); try { car.setPointerCapture(pid); } catch (err) {} } if (dragging) car.scrollLeft = sl - dx; });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(ev){ car.addEventListener(ev, function(){ down = false; if (dragging) { setTimeout(function(){ dragging = false; }, 0); } car.classList.remove('drag'); }); });
+    car.addEventListener('click', function(e){ if (dragging) { e.preventDefault(); e.stopPropagation(); } }, true);
+    gsap.from('#carrete > *', { x: 60, opacity: 0, duration: .8, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: car, start: 'top 88%' } });
+    if (desk) ScrollTrigger.create({ trigger: car, start: 'top bottom', end: 'bottom top', onUpdate: function(st){ if (!down) car.scrollLeft = st.progress * Math.min(420, car.scrollWidth - car.clientWidth); } });
+  }
+
+  /* ---- sobre ---- */
+  gsap.fromTo('#sobrebg', { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '#sobre', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.from('#foto', { y: 80, rotation: 4, opacity: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#foto', start: 'top 88%' } });
+
+  /* ---- footer: logotipo gigante ---- */
+  var big = document.querySelector('#big img');
+  if (big) gsap.fromTo(big, { yPercent: 40, opacity: .2 }, { yPercent: 0, opacity: .92, ease: 'none', scrollTrigger: { trigger: '#big', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+
+  /* ---- cajón de carta ---- */
+  var drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim'), drb = document.getElementById('drb'), drt = document.getElementById('drt'), drk = document.getElementById('drk');
+  var C = window.__CARTA || { secciones: [] }; var drOpen = false;
+  function rows(items){ return '<ul class="lst">' + items.map(function(it){ return '<li><span class="n">' + it.n + (it.d ? '<small>' + it.d + '</small>' : '') + '</span><span class="dots" aria-hidden="true"></span><span class="p">' + it.p + '\u00a0€</span></li>'; }).join('') + '</ul>'; }
+  function secHTML(sx){ return '<section class="cs"><h3>' + sx.seccion + (sx.nota ? '<em>' + sx.nota + '</em>' : '') + '</h3>' + rows(sx.items) + '</section>'; }
+  function openDrawer(key, title){
+    var html = '';
+    if (key === '*') { html = C.secciones.map(secHTML).join('') + secHTML(C.latas) + secHTML(C.refrescos); drk.textContent = 'La carta'; }
+    else if (key === '__latas') { html = secHTML(C.latas); drk.textContent = 'Para llevar'; }
+    else { var sx = C.secciones.filter(function(x){ return x.seccion === key; })[0]; html = sx ? secHTML(sx) : C.secciones.map(secHTML).join(''); drk.textContent = 'La carta'; }
+    drt.textContent = title || key; drb.innerHTML = html; drb.scrollTop = 0;
+    drawer.setAttribute('aria-hidden', 'false'); scrim.classList.add('on'); drOpen = true;
+    if (lenis) lenis.stop();
+    gsap.to(drawer, { x: 0, duration: .6, ease: 'power3.out' });
+    gsap.from('#drb .cs', { y: 16, opacity: 0, duration: .5, stagger: .06, delay: .15, ease: 'power2.out' });
+  }
+  function closeDrawer(){ if (!drOpen) return; drOpen = false; drawer.setAttribute('aria-hidden', 'true'); scrim.classList.remove('on'); gsap.to(drawer, { x: '104%', duration: .5, ease: 'power3.in' }); if (lenis) lenis.start(); }
+  gsap.set(drawer, { x: '104%' });
+  document.querySelectorAll('[data-carta]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); openDrawer(a.dataset.carta || '*', a.dataset.title); }); });
+  document.getElementById('drx').addEventListener('click', closeDrawer); scrim.addEventListener('click', closeDrawer);
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDrawer(); });
+
+  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+
+  /* ---- botones magnéticos ---- */
+  if (desk) document.querySelectorAll('.mag').forEach(function(b){
+    b.addEventListener('mousemove', function(e){ var r = b.getBoundingClientRect(); gsap.to(b, { x: (e.clientX - r.left - r.width / 2) * .25, y: (e.clientY - r.top - r.height / 2) * .35, duration: .4, ease: 'power2.out' }); });
+    b.addEventListener('mouseleave', function(){ gsap.to(b, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.5)' }); });
+  });
+})();
+</script>
+</body>
+</html>
