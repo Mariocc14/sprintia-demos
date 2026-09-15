@@ -54,26 +54,35 @@ h2 em,h1 em{font-style:italic;font-weight:500}
 .hero .media{position:absolute;inset:0;will-change:transform}
 .hero .media picture,.hero .media video{position:absolute;inset:0;will-change:transform}
 .hero .media img,.hero .media video{width:100%;height:100%;object-fit:cover;object-position:66% 50%}
+.hero .media video{object-position:62% 50%}
 .hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,14,12,.9) 0,rgba(18,14,12,.6) 40%,rgba(18,14,12,.05) 70%),linear-gradient(0deg,rgba(18,14,12,.88) 0,rgba(18,14,12,0) 45%)}
 .hero .tx{position:relative;z-index:2;padding:120px var(--pad) 56px;will-change:transform}
 .hero h1{font-size:clamp(58px,10.4vw,150px);line-height:.86;max-width:11ch;margin-bottom:28px}
 .hero .row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
 .hero .sub{font-size:clamp(15px,1.3vw,19px);line-height:1.45;color:var(--c60);max-width:38ch;margin:0}
 .hero .sub b{color:var(--crema);font-weight:500}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .cta{position:absolute;right:var(--pad);bottom:56px;z-index:3;display:flex;gap:12px;flex-wrap:wrap}
 .hero .tag{position:absolute;right:var(--pad);top:110px;z-index:2;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60);line-height:2}
 .hero .tag b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:400;font-style:italic;font-size:clamp(28px,3vw,44px);letter-spacing:0;text-transform:none;color:var(--cobre2);line-height:1}
 .hero .cue{position:absolute;left:50%;bottom:22px;z-index:2;width:1px;height:48px;background:linear-gradient(180deg,var(--c30),transparent);display:none}
 .hero .fl{z-index:2}
 @media (min-width:860px){.hero .cue{display:block}}
 @media (max-width:600px){
+  .hero{min-height:100svh;height:100svh;align-items:start}
   .hero .media img{object-position:50% 100%}
-  .hero .veil{background:linear-gradient(0deg,rgba(18,14,12,.2) 0,rgba(18,14,12,0) 30%),linear-gradient(180deg,rgba(18,14,12,.92) 0,rgba(18,14,12,.75) 42%,rgba(18,14,12,0) 62%)}
-  .hero{align-items:start}
-  .hero .tx{padding:88px 18px 0}
-  .hero .tag,.hero .fl{display:none}
-  .hero h1{margin-bottom:18px}
-  .hero .row{display:grid;gap:18px}
+  .hero .media video{object-position:62% 62%}
+  .hero .veil{background:linear-gradient(0deg,rgba(18,14,12,.78) 0,rgba(18,14,12,.15) 22%,rgba(18,14,12,0) 36%),linear-gradient(180deg,rgba(18,14,12,.94) 0,rgba(18,14,12,.82) 38%,rgba(18,14,12,.2) 52%,rgba(18,14,12,0) 60%)}
+  .hero .tx{padding:96px 18px 0}
+  .hero .tag{display:none}
+  .hero h1{font-size:clamp(46px,13.4vw,58px);margin-bottom:14px}
+  .hero .sub{font-size:15px;max-width:32ch}
+  .hero .row{display:block}
+  .hero .cta{left:18px;right:18px;bottom:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hero .cta .btn{justify-content:center;padding:15px 12px}
+  .hero .cue{display:none}
+  .hero .fl:nth-of-type(1){left:66%!important;top:15%!important;width:34px!important}
+  .hero .fl:nth-of-type(2){left:84%!important;top:26%!important;width:24px!important}
+  .hero .fl:nth-of-type(3){display:none}
 }
 
 /* ticker */
@@ -131,19 +140,19 @@ h2 em,h1 em{font-style:italic;font-weight:500}
 /* fichas · móvil (tarjetas) */
 .galm{display:none}
 @media (max-width:899px){
-  .galm{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad));padding:0 var(--pad);scrollbar-width:none;height:clamp(480px,70svh,600px)}
+  .galm{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad));padding:0 var(--pad);scrollbar-width:none;height:clamp(560px,80svh,700px)}
   .galm::-webkit-scrollbar{display:none}
 }
-.card{position:relative;overflow:hidden;background:var(--humo);border:1px solid var(--c12);border-radius:var(--r2);flex:0 0 82vw;scroll-snap-align:start;text-align:left;padding:0;color:inherit;font:inherit}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;filter:saturate(.92)}
-.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,.35) 0,rgba(18,14,12,0) 30%,rgba(18,14,12,0) 50%,rgba(18,14,12,.94) 100%)}
+.card{position:relative;overflow:hidden;background:var(--humo);border:1px solid var(--c12);border-radius:var(--r2);flex:0 0 84vw;scroll-snap-align:start;text-align:left;padding:0;color:inherit;font:inherit}
+.card img{position:absolute;left:0;right:0;top:0;width:100%;height:56%;object-fit:cover;object-position:50% 60%;filter:saturate(.92)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,12,.3) 0,rgba(18,14,12,0) 22%,rgba(18,14,12,0) 40%,var(--humo) 56%)}
 .card .sca{position:absolute;top:16px;right:16px;z-index:2;text-align:right;line-height:1}
 .card .sca b{display:block;font-family:var(--fr);font-variation-settings:"opsz" 144,"WONK" 1;font-weight:500;font-size:56px;letter-spacing:-.03em}
 .card .sca small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60)}
 .card .pais{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c60)}
-.card .bot{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:grid;gap:8px}
-.card h3{font-size:40px;line-height:.95}
-.card .notas{margin:0;font-size:15px;color:var(--crema);line-height:1.4}
+.card .bot{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;display:grid;gap:10px}
+.card h3{font-size:clamp(30px,8.6vw,38px);line-height:.95}
+.card .notas{margin:0;font-size:14.5px;color:var(--c60);line-height:1.45}
 .card .spec{grid-template-columns:1fr 1fr;max-width:none}
 .card .spec div:nth-child(2n){border-right:0}.card .spec div{border-bottom:1px solid var(--c12)}
 .card .pr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--c60)}
@@ -164,6 +173,7 @@ h2 em,h1 em{font-style:italic;font-weight:500}
 
 /* barra: tres cosas */
 .barra{position:relative;overflow:hidden}
+@media (max-width:860px){.barra .fl{display:none}}
 .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;perspective:1200px}
 .tres figure{margin:0;position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--humo);border:1px solid var(--c12);border-radius:var(--r2);will-change:transform;transform-style:preserve-3d}
 .tres img{width:100%;height:112%;object-fit:cover;will-change:transform}
@@ -283,6 +293,7 @@ h2 em,h1 em{font-style:italic;font-weight:500}
 .llevar{background:var(--humo);border-top:1px solid var(--c12);border-bottom:1px solid var(--c12);position:relative;overflow:hidden}
 .llevar .fl{z-index:3;display:none}
 @media (min-width:1560px){.llevar .fl{display:block}}
+@media (max-width:600px){.llevar .fl:nth-of-type(1){display:block;left:auto!important;right:-10px!important;top:-4px!important;bottom:auto!important;width:76px!important}}
 .llevar .wrap{max-width:1240px}
 .dos{display:grid;grid-template-columns:1fr 1fr;gap:56px;position:relative;z-index:2}
 .blk{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
@@ -299,7 +310,7 @@ h2 em,h1 em{font-style:italic;font-weight:500}
 .lst .dots{flex:1;border-bottom:1px dotted var(--c30);transform:translateY(-4px);min-width:14px}
 .lst .p{font-family:var(--mono);font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 @media (max-width:1000px){.dos{grid-template-columns:1fr;gap:40px}}
-@media (max-width:600px){.blk{grid-template-columns:1fr}.blk figure{aspect-ratio:16/10}.llevar .fl{display:none}}
+@media (max-width:600px){.blk{grid-template-columns:1fr}.blk figure{aspect-ratio:16/10}}
 
 /* sobre */
 .sobre{position:relative;min-height:88svh;overflow:hidden;display:grid;align-items:end}
@@ -404,9 +415,9 @@ h2 em,h1 em{font-style:italic;font-weight:500}
     <h1 id="h1">Café de especialidad<br>en <span class="cu">la Judería</span></h1>
     <div class="row">
       <p class="sub" data-h><b>Tostado cada semana en Córdoba.</b> Veintitrés orígenes en grano, latas selladas al momento y cookies hechas aquí.</p>
-      <div class="cta" data-h><a class="btn mag" href="carta.html" data-carta="*" data-title="La carta">Ver la carta</a><a class="btn alt mag" href="https://www.google.com/maps/search/?api=1&query=Tueste%20Specialty%20Coffee%2C%20Calle%20Deanes%2012%2C%20C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a></div>
     </div>
   </div>
+  <div class="cta" data-h><a class="btn mag" href="carta.html" data-carta="*" data-title="La carta">Ver la carta</a><a class="btn alt mag" href="https://www.google.com/maps/search/?api=1&query=Tueste%20Specialty%20Coffee%2C%20Calle%20Deanes%2012%2C%20C%C3%B3rdoba" target="_blank" rel="noopener">Cómo llegar</a></div>
   <span class="cue" aria-hidden="true"></span>
 </section>
 
@@ -625,7 +636,7 @@ window.__CARTA = {"secciones":[{"seccion":"Espresso","nota":"","items":[{"n":"Ri
   addEventListener('scroll', function(){ var y = window.scrollY || 0; hd.classList.toggle('solid', y > 40); hd.classList.toggle('hide', y > 500 && y > lastY); lastY = y; }, {passive:true});
 
   var v = document.getElementById('herovideo');
-  if (v) { if (matchMedia('(max-width:600px)').matches || reduce) v.remove(); else { v.addEventListener('canplay', function(){ v.style.opacity = 1; }, {once:true}); v.play && v.play().catch(function(){}); } }
+  if (v) { if (reduce) v.remove(); else { v.addEventListener('canplay', function(){ v.style.opacity = 1; }, {once:true}); var pl = v.play && v.play(); if (pl && pl.catch) pl.catch(function(){}); } }
 
   var hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
   if (!hasGsap || reduce) { document.querySelectorAll('.step').forEach(function(s){ s.style.position='relative'; s.style.opacity=1; }); document.getElementById('big').classList.add('static'); return; }
