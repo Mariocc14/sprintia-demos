@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hygge · Café, dulces y calma en el centro de Córdoba</title>
+<meta name="description" content="Café de especialidad, churros con chocolate, tartas de casa y el pastel cordobés de siempre. Abrimos a las 7:30, antes que nadie en el barrio.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F6F2EA">
+<meta property="og:title" content="Hygge · Café, dulces y calma en el centro de Córdoba"><meta property="og:description" content="Café de especialidad, churros con chocolate, tartas de casa y el pastel cordobés de siempre. Abrimos a las 7:30, antes que nadie en el barrio."><meta property="og:image" content="img/real-interior-logo.webp">
+<link rel="alternate" hreflang="es" href="./">
+<link rel="alternate" hreflang="en" href="en/">
+<link rel="alternate" hreflang="x-default" href="./">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="img/real-interior-logo.webp">
+<style>
+:root{--hueso:#F6F2EA;--arena:#E7DCCB;--arena2:#EFE7DA;--cafe:#3B2E25;--cafe2:#7A6A5C;--ocre:#C98A2E;--ocre2:#A86F1E;--linea:rgba(59,46,37,.14);--linea2:rgba(59,46,37,.08);
+--gl:"Gloock",Georgia,"Times New Roman",serif;--sans:"Outfit",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--pad:clamp(18px,3.2vw,44px);--r:18px;--r2:12px;color-scheme:light}
+*{box-sizing:border-box}
+html{background:var(--hueso);overflow-x:clip}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--hueso);color:var(--cafe);font-family:var(--sans);font-size:16px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--gl);font-weight:400;letter-spacing:-.02em;line-height:.98;text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--ocre)}
+.wrap{padding-left:var(--pad);padding-right:var(--pad);max-width:1480px;margin-left:auto;margin-right:auto}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--cafe2);margin:0 0 20px;display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ocre);flex:none}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:500;font-size:14px;padding:15px 24px;border-radius:999px;background:var(--cafe);color:var(--hueso);border:1px solid var(--cafe);transition:background .2s,color .2s,border-color .2s;white-space:nowrap;will-change:transform;cursor:pointer;font-family:inherit}
+.btn:hover{background:#2A1F18;border-color:#2A1F18}
+.btn.alt{background:transparent;color:var(--cafe);border-color:rgba(59,46,37,.28)}
+.btn.alt:hover{background:var(--cafe);color:var(--hueso);border-color:var(--cafe)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+.real,.prop{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(59,46,37,.55);padding:7px 10px;border-radius:999px;backdrop-filter:blur(4px);white-space:nowrap;flex:none}
+.prop{background:rgba(201,138,46,.8)}
+.ph{position:relative;overflow:hidden;border-radius:var(--r);background:var(--arena)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:2;display:flex;gap:8px;align-items:center}
+.ph .cap span:last-child{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+
+/* header */
+.hd{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);transition:background .3s,padding .3s,transform .4s,border-color .3s;border-bottom:1px solid transparent}
+.hd.solid{background:rgba(246,242,234,.86);backdrop-filter:blur(10px);padding-top:12px;padding-bottom:12px;border-color:var(--linea)}
+.hd.hide{transform:translateY(-110%)}
+.wm{display:inline-flex;align-items:baseline;gap:1px;text-decoration:none;color:var(--cafe);font-family:var(--gl);font-size:30px;letter-spacing:-.01em;line-height:1}
+.wm b{font-family:var(--sans);font-weight:600;font-size:30px}
+.wm i{font-style:normal;color:var(--ocre)}
+.hd nav{display:none;gap:26px;font-size:14px;font-weight:500;color:var(--cafe2)}
+.hd nav a{text-decoration:none;transition:color .2s}
+.hd nav a:hover{color:var(--cafe)}
+.hd .r{display:flex;gap:8px;align-items:center}
+.hd .lg,.hd .tel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;border:1px solid var(--linea);border-radius:999px;padding:9px 12px;color:var(--cafe);text-decoration:none;display:inline-flex;gap:7px;align-items:center;white-space:nowrap;line-height:1.2;background:rgba(246,242,234,.6)}
+.hd .lg b{font-weight:500}
+.hd .lg a{text-decoration:none;color:var(--cafe2);transition:color .2s}
+.hd .lg a:hover{color:var(--cafe)}
+.hd .lg i{font-style:normal;color:var(--linea)}
+.hd .tel .lab{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:0}
+.hd .tel .num{display:none}
+@media (min-width:900px){.hd nav{display:flex}.hd .tel .num{display:inline}.hd .tel .lab{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);background:var(--hueso)}
+.hero .tx{position:relative;z-index:2;padding:150px 40px 56px var(--pad);display:flex;flex-direction:column;justify-content:flex-end}
+.hero h1{font-size:clamp(52px,5.4vw,84px);margin:0 0 24px;max-width:12ch}
+.hero .sub{font-weight:300;font-size:18px;line-height:1.55;color:var(--cafe2);max-width:40ch;margin:0 0 30px}
+.hero .sub b{font-weight:500;color:var(--cafe)}
+.hero .cta{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:0 34px;border-top:1px solid var(--linea);padding-top:18px;width:max-content;max-width:100%}
+.facts div{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2)}
+.facts b{display:block;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:0;text-transform:none;color:var(--cafe);margin-top:4px}
+.facts .st{display:inline-flex;align-items:center;gap:7px}
+.facts .st i{width:7px;height:7px;border-radius:50%;background:#5A9E5C;box-shadow:0 0 0 3px rgba(90,158,92,.18)}
+.facts .st.off i{background:#B8563B;box-shadow:0 0 0 3px rgba(184,86,59,.18)}
+.hero .ph{margin:16px 16px 16px 0;border-radius:var(--r);min-height:60svh}
+.hero .ph img{object-position:50% 45%;will-change:transform}
+.hero .ph .cap{left:18px;bottom:16px}
+@media (max-width:700px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:0}
+  .hero .tx{padding:104px 18px 22px;order:1}
+  .hero h1{font-size:clamp(42px,11.5vw,54px);margin-bottom:14px}
+  .hero .sub{font-size:15px;margin-bottom:18px}
+  .hero .cta{margin-bottom:18px}.hero .btn{padding:13px 18px;font-size:13px}
+  .facts{grid-template-columns:1fr;gap:0;width:auto;padding-top:6px}
+  .facts div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--linea2)}
+  .facts div:last-child{border-bottom:0}
+  .facts b{font-size:14px;margin-top:0;text-align:right}
+  .hero .ph{order:2;margin:0 18px 18px;border-radius:16px;min-height:0;aspect-ratio:4/5}
+  .hero .ph img{object-position:50% 40%}
+}
+
+/* carrete */
+.strip{padding:clamp(40px,6vw,80px) 0 0}
+.strip .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:20px}
+.strip .top .lbl b{color:var(--cafe);font-weight:500}
+.carrete{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:0 var(--pad) 8px;scrollbar-width:none;cursor:grab;user-select:none}
+.carrete.drag{cursor:grabbing;scroll-snap-type:none}
+.carrete::-webkit-scrollbar{display:none}
+.carrete .ph{flex:0 0 auto;height:clamp(300px,42vh,460px);scroll-snap-align:start}
+.carrete .ph.v{aspect-ratio:3/4}.carrete .ph.h{aspect-ratio:16/10}.carrete .ph.s{aspect-ratio:4/3}
+.carrete .ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.carrete .ph:hover img{transform:scale(1.04)}
+.strip .top .lbl:last-child{white-space:nowrap}
+@media (max-width:700px){.carrete .ph{height:auto;width:80vw}.carrete .ph.v{aspect-ratio:4/5}.carrete .ph.h,.carrete .ph.s{aspect-ratio:4/3}}
+
+/* secciones */
+.sec{position:relative;padding-top:clamp(80px,11vw,150px);padding-bottom:clamp(40px,6vw,80px)}
+.sh{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:clamp(30px,4vw,56px)}
+.sh h2{font-size:clamp(40px,5vw,74px)}
+.sh p{margin:0;font-size:17px;line-height:1.55;color:var(--cafe2);font-weight:300;max-width:44ch}
+.sh p b{color:var(--cafe);font-weight:500}
+@media (max-width:860px){.sh{grid-template-columns:1fr;gap:18px}}
+
+/* dulces */
+.dgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr) minmax(0,.9fr);grid-template-rows:1fr 1fr;gap:14px}
+.dgrid .ph{will-change:transform}
+.dgrid .ph img{will-change:transform;height:112%;margin-top:-6%}
+.dgrid .a{grid-row:1/3;min-height:640px}
+.dgrid .b,.dgrid .c{min-height:0}
+.dgrid .list{grid-column:3;grid-row:1/3;background:var(--arena2);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column}
+.dgrid .list h3{font-size:30px;margin-bottom:6px}
+.dgrid .list .lbl{margin-bottom:22px;display:block}
+.lst{list-style:none;margin:0;padding:0}
+.lst li{display:flex;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--linea2);font-size:15px}
+.lst li:last-child{border-bottom:0}
+.lst .n{font-weight:500;color:var(--cafe)}
+.lst .n small{display:block;font-weight:300;font-size:13px;color:var(--cafe2);margin-top:2px;line-height:1.35}
+.lst .dots{flex:1;border-bottom:1px dotted rgba(59,46,37,.35);transform:translateY(-4px);min-width:16px}
+.lst .p{font-family:var(--mono);font-size:13px;color:var(--cafe);white-space:nowrap}
+.dgrid .list .more{margin-top:auto;padding-top:22px}
+@media (max-width:1000px){.dgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.dgrid .a{grid-row:auto;grid-column:1/3;min-height:0;aspect-ratio:16/10}.dgrid .b,.dgrid .c{aspect-ratio:4/3}.dgrid .list{grid-column:1/3;grid-row:auto}}
+@media (max-width:600px){.dgrid{grid-template-columns:1fr}.dgrid .a,.dgrid .list{grid-column:auto}.dgrid .a{aspect-ratio:4/3}.dgrid .list{padding:24px 20px}}
+
+/* café */
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.cgrid .ph{aspect-ratio:4/5;max-height:760px}
+.cgrid .ph img{height:112%;margin-top:-6%;will-change:transform}
+.orig{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.orig li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:26px 0;border-bottom:1px solid var(--linea);align-items:start}
+.orig .i{font-family:var(--gl);font-size:40px;color:var(--ocre);line-height:.9}
+.orig h3{font-size:clamp(28px,2.6vw,38px);margin-bottom:8px}
+.orig p{margin:0;font-weight:300;font-size:16px;line-height:1.55;color:var(--cafe2);max-width:42ch}
+.cgrid .more{margin-top:26px}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr}.cgrid .ph{aspect-ratio:4/3;order:-1}}
+
+/* el día */
+.dia .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dia .card{position:relative;background:var(--arena2);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dia .card:hover{transform:translateY(-4px)}
+.dia .card .ph{aspect-ratio:4/3;border-radius:0}
+.dia .card .ph img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.dia .card:hover .ph img{transform:scale(1.04)}
+.dia .card .tx{padding:22px 24px 26px}
+.dia .card .hora{font-family:var(--gl);font-size:46px;color:var(--ocre);line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.dia .card h3{font-size:26px;margin-bottom:8px}
+.dia .card p{margin:0;font-weight:300;font-size:15px;line-height:1.5;color:var(--cafe2)}
+.dia .card .go{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cafe)}
+@media (max-width:860px){.dia .tres{grid-template-columns:1fr}.dia .card{flex-direction:row;align-items:stretch}.dia .card .ph{flex:0 0 38%;aspect-ratio:auto}.dia .card .hora{font-size:34px}.dia .card h3{font-size:22px}.dia .card p{font-size:14px}}
+@media (max-width:480px){.dia .card{flex-direction:column}.dia .card .ph{aspect-ratio:16/10}}
+
+/* reseñas */
+.res .sh{margin-bottom:clamp(20px,3vw,40px)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.q{background:var(--hueso);border:1px solid var(--linea);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;gap:18px;min-height:260px}
+.q .stars{color:var(--ocre);letter-spacing:.14em;font-size:13px}
+.q p{margin:0;font-family:var(--gl);font-size:clamp(19px,1.5vw,23px);line-height:1.3;letter-spacing:-.01em;color:var(--cafe);text-wrap:pretty}
+.q footer{margin-top:auto;display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--cafe2)}
+.q footer b{font-weight:500;color:var(--cafe)}
+.res .all{margin-top:22px;display:flex;justify-content:flex-end}
+.res .all a{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cafe2);text-decoration:none;border-bottom:1px solid var(--linea);padding-bottom:4px}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}.q{min-height:0}}
+
+/* sobre */
+.sobre .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center;background:var(--arena);border-radius:calc(var(--r) + 6px);padding:clamp(24px,3vw,44px)}
+.sobre h2{font-size:clamp(34px,3.6vw,54px);margin-bottom:18px}
+.sobre p{margin:0;font-weight:300;font-size:17px;line-height:1.6;color:var(--cafe2);max-width:46ch}
+.sobre .ph{aspect-ratio:16/10}
+.sobre .ph img{object-position:50% 50%}
+@media (max-width:860px){.sobre .in{grid-template-columns:1fr}.sobre .ph{order:-1}}
+
+/* visita */
+.vis{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px);align-items:stretch}
+.vis h2{font-size:clamp(40px,4.6vw,68px);margin-bottom:14px}
+.vis .p{font-weight:300;font-size:17px;color:var(--cafe2);margin:0 0 28px;max-width:40ch}
+.vis dl{margin:0 0 28px;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;border-top:1px solid var(--linea);padding-top:20px}
+.vis dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2);padding-top:5px}
+.vis dd{margin:0;font-size:16px}
+.vis dd a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.vis .cta{display:flex;gap:12px;flex-wrap:wrap}
+.map{border-radius:var(--r);overflow:hidden;background:var(--arena);min-height:420px;position:relative}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.7) contrast(1.02)}
+.map .st{position:absolute;inset:0;display:grid;text-decoration:none}
+.map .st img{width:100%;height:100%;object-fit:cover}
+.map .st span{position:absolute;left:16px;bottom:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(59,46,37,.6);padding:9px 12px;border-radius:999px}
+@media (max-width:860px){.vis{grid-template-columns:1fr}.map{min-height:320px}}
+
+/* footer */
+.ft{margin-top:clamp(60px,8vw,110px);border-top:1px solid var(--linea);padding:40px 0 30px;overflow:hidden}
+.ft .big{font-family:var(--gl);font-size:clamp(90px,19vw,300px);line-height:.85;letter-spacing:-.03em;color:var(--cafe);white-space:nowrap;text-align:center;will-change:transform,opacity}
+.ft .big b{font-family:var(--sans);font-weight:600}
+.ft .big i{font-style:normal;color:var(--ocre)}
+.ft .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:30px;font-size:13px;color:var(--cafe2)}
+.ft .row a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.ft .note{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--cafe2);max-width:80ch;line-height:1.6}
+
+/* cajón de carta */
+.scrim{position:fixed;inset:0;background:rgba(59,46,37,.35);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .4s;z-index:60}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);z-index:61;background:var(--hueso);border-left:1px solid var(--linea);display:grid;grid-template-rows:auto 1fr auto;transform:translateX(104%);will-change:transform;box-shadow:-40px 0 80px rgba(59,46,37,.18)}
+.dr-head{display:flex;justify-content:space-between;align-items:flex-start;padding:26px 28px 14px;border-bottom:1px solid var(--linea)}
+.dr-head .eyebrow{margin-bottom:8px}
+.dr-head h3{font-size:34px}
+.dr-head .x{background:none;border:1px solid var(--linea);color:var(--cafe);width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;display:grid;place-items:center;line-height:1}
+.dr-body{overflow:auto;padding:10px 28px 20px;overscroll-behavior:contain}
+.dr-body .cs{padding:16px 0}
+.dr-body .cs h4{margin:0 0 6px;font-family:var(--gl);font-weight:400;font-size:24px;letter-spacing:-.01em;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.dr-body .cs h4 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe2)}
+.dr-foot{padding:14px 28px 22px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;color:var(--cafe2);line-height:1.5}
+
+/* carta.html */
+.cpage{padding-top:150px;padding-bottom:60px}
+.cpage h1{font-size:clamp(44px,6vw,90px);margin-bottom:16px}
+.cpage .lead{font-weight:300;font-size:18px;color:var(--cafe2);max-width:56ch;margin:0 0 12px}
+.cpage .nota{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--cafe2);margin:0 0 44px;max-width:80ch;line-height:1.6}
+.ccols{columns:2;column-gap:60px}
+.cs{break-inside:avoid;margin-bottom:34px}
+.cpage .cs h3{font-size:30px;margin-bottom:8px;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.cpage .cs h3 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe2)}
+@media (max-width:860px){.ccols{columns:1}.cpage{padding-top:110px}}
+.back{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2);margin-bottom:28px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hd" id="hd">
+  <a class="wm" href="index.html" aria-label="Hygge"><b>h</b>ygge<i>.</i></a>
+  <nav aria-label="Secciones">
+    <a href="#" data-carta="*" data-title="La carta">Carta</a>
+    <a href="#dulces">Dulces</a>
+    <a href="#cafe">Café</a>
+    <a href="#visita">Visítanos</a>
+  </nav>
+  <div class="r"><span class="lg" aria-label="Idioma"><b lang="es">ES</b><i>·</i><a href="en/" hreflang="en" lang="en">EN</a></span><a class="tel" href="tel:+34651076442"><span class="lab">Llamar</span><span class="num">651 07 64 42</span></a></div>
+</header>
+<main>
+<section class="hero" id="hero">
+  <div class="tx" id="herotx">
+    <p class="eyebrow" data-h>Cafetería · a dos pasos de la Mezquita</p>
+    <h1 id="h1">Café, dulces y <em>calma</em> en el centro de Córdoba.</h1>
+    <p class="sub" data-h><b>Café de especialidad, churros con chocolate, tartas de casa y el pastel cordobés de siempre.</b> Abrimos a las 7:30, antes que nadie en el barrio.</p>
+    <div class="cta" data-h><a class="btn mag" href="#" data-carta="*" data-title="La carta">Ver la carta</a><a class="btn alt mag" href="#visita">Cómo llegar</a></div>
+    <div class="facts" data-h>
+      <div>Horario<b><span class="st" id="openst"><i></i><span id="opentx">7:30 – 22:00, todos los días</span></span></b></div>
+      <div>Dónde<b>Corregidor Luis de la Cerda 66</b></div>
+      <div>Perros<b>Bienvenidos</b></div>
+    </div>
+  </div>
+  <figure class="ph" id="herofig"><img id="heroimg" src="img/real-interior-logo.webp" alt="Hygge" fetchpriority="high"><span class="cap"><span class="real">Foto real</span></span></figure>
+</section>
+
+<section class="strip" aria-label="Hygge">
+  <div class="wrap top"><p class="lbl" style="margin:0"><b>El local, en fotos.</b> Desliza o arrastra.</p><span class="lbl">6 fotos</span></div>
+  <div class="carrete" id="carrete">
+    <figure class="ph h"><img src="img/real-fachada.webp" alt="La puerta, en Corregidor Luis de la Cerda" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>La puerta, en Corregidor Luis de la Cerda</span></span></figure><figure class="ph s"><img src="img/real-vitrina-3.webp" alt="La barra y la vitrina" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>La barra y la vitrina</span></span></figure><figure class="ph s"><img src="img/real-mesa-tarta-cafe.webp" alt="Tarta y café con leche" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>Tarta y café con leche</span></span></figure><figure class="ph v"><img src="img/real-vitrina.webp" alt="Pastel cordobés recién hecho" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>Pastel cordobés recién hecho</span></span></figure><figure class="ph v"><img src="img/real-tarta-latte.webp" alt="Latte y tarta de la casa" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>Latte y tarta de la casa</span></span></figure><figure class="ph h"><img src="img/real-pastel-logo.webp" alt="Hojaldre con azúcar glas" loading="lazy" draggable="false"><span class="cap"><span class="real">Foto real</span><span>Hojaldre con azúcar glas</span></span></figure>
+  </div>
+</section>
+
+<section class="sec wrap" id="dulces">
+  <div class="sh"><div><p class="eyebrow">La vitrina</p><h2>Lo que hay <em>en la vitrina</em> esta mañana.</h2></div><p><b>Pastel cordobés, manolete, hojaldres, tartas de queso y de zanahoria, milhojas, brownies.</b> Cambia según el día. Lo que ves en las fotos es lo que hay.</p></div>
+  <div class="dgrid">
+    <figure class="ph a"><img class="par" src="img/real-vitrina-2.webp" alt="Hojaldres y tartas" loading="lazy"><span class="cap"><span class="real">Foto real</span><span>Hojaldres y tartas</span></span></figure><figure class="ph b"><img class="par" src="img/real-cookies.webp" alt="Pastel cordobés y hojaldres" loading="lazy"><span class="cap"><span class="real">Foto real</span><span>Pastel cordobés y hojaldres</span></span></figure><figure class="ph c"><img class="par" src="img/real-tarta.webp" alt="Tarta de la casa" loading="lazy"><span class="cap"><span class="real">Foto real</span><span>Tarta de la casa</span></span></figure>
+    <div class="list">
+      <h3>Dulces de la vitrina</h3><span class="lbl">Según el día · Precios orientativos</span>
+      <ul class="lst"><li><span class="n">Pastel cordobés<small>Hojaldre y cabello de ángel</small></span><span class="dots" aria-hidden="true"></span><span class="p">3,50 €</span></li><li><span class="n">Manolete<small>El dulce cordobés de hojaldre y crema</small></span><span class="dots" aria-hidden="true"></span><span class="p">3,90 €</span></li><li><span class="n">Pastel de Belém</span><span class="dots" aria-hidden="true"></span><span class="p">2,40 €</span></li><li><span class="n">Palmera de hojaldre</span><span class="dots" aria-hidden="true"></span><span class="p">2,60 €</span></li><li><span class="n">Milhojas de crema</span><span class="dots" aria-hidden="true"></span><span class="p">3,90 €</span></li><li><span class="n">Tarta de queso</span><span class="dots" aria-hidden="true"></span><span class="p">4,80 €</span></li><li><span class="n">Tarta de zanahoria</span><span class="dots" aria-hidden="true"></span><span class="p">4,80 €</span></li><li><span class="n">Tarta de manzana</span><span class="dots" aria-hidden="true"></span><span class="p">4,20 €</span></li><li><span class="n">Brownie</span><span class="dots" aria-hidden="true"></span><span class="p">3,60 €</span></li><li><span class="n">Cookie de la casa</span><span class="dots" aria-hidden="true"></span><span class="p">2,40 €</span></li></ul>
+      <div class="more"><a class="btn alt" href="#" data-carta="*" data-title="La carta">Ver toda la carta</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="cafe">
+  <div class="cgrid">
+    <div>
+      <p class="eyebrow">El café</p>
+      <h2 style="font-size:clamp(40px,4.6vw,68px);margin-bottom:18px">Especialidad de <em>Colombia, Brasil y Etiopía.</em></h2>
+      <p style="margin:0 0 30px;font-weight:300;font-size:17px;color:var(--cafe2);max-width:44ch"><b>Tres orígenes, siempre recién molidos.</b> Espresso, con leche, flat white o filtro. Leche de avena y soja sin coste.</p>
+      <ol class="orig"><li><span class="i">1</span><div><h3>Colombia</h3><p>Dulce y redondo. Chocolate con leche, caramelo y una acidez suave. El café con leche de la casa.</p></div></li><li><span class="i">2</span><div><h3>Brasil</h3><p>Cuerpo y nuez. Cacao, avellana tostada y muy poca acidez. El espresso que se pide solo.</p></div></li><li><span class="i">3</span><div><h3>Etiopía</h3><p>Floral y limpio. Jazmín, cítricos y té negro. Para tomar en filtro o en flat white.</p></div></li></ol>
+      <div class="more"><a class="btn alt" href="#" data-carta="Cafés" data-title="Cafés">Ver en la carta</a></div>
+    </div>
+    <figure class="ph"><img class="par" src="img/real-tarta-latte.webp" alt="" loading="lazy"><span class="cap"><span class="real">Foto real</span></span></figure>
+  </div>
+</section>
+
+<section class="sec wrap dia" id="dia">
+  <div class="sh"><div><p class="eyebrow">El día en Hygge</p><h2>De 7:30 <em>a 22:00.</em></h2></div><p><b>Abierto todos los días, de la primera tostada a la última copa.</b> Un solo local pequeño y tres momentos distintos.</p></div>
+  <div class="tres" id="tres">
+    <a class="card" href="#" data-carta="Desayunos" data-title="Desayunos"><figure class="ph"><img src="img/ai-tostada.webp" alt="" loading="lazy"><span class="cap"><span class="prop">Imagen de muestra</span></span></figure><div class="tx"><div class="hora">7:30</div><h3>Desayuno</h3><p>Tostadas con tomate, croissants a la plancha, churros con chocolate y zumo natural. Antes que abra el barrio.</p><span class="go">Ver en la carta →</span></div></a><a class="card" href="#" data-carta="Dulces de la vitrina" data-title="Dulces de la vitrina"><figure class="ph"><img src="img/real-mesa-tarta-cafe.webp" alt="" loading="lazy"><span class="cap"><span class="real">Foto real</span></span></figure><div class="tx"><div class="hora">12:00</div><h3>Café y dulce</h3><p>La vitrina llena. Un pastel cordobés, un manolete o una tarta con el café de especialidad.</p><span class="go">Ver en la carta →</span></div></a><a class="card" href="#" data-carta="Tarde" data-title="Tarde"><figure class="ph"><img src="img/real-fachada.webp" alt="" loading="lazy"><span class="cap"><span class="real">Foto real</span></span></figure><div class="tx"><div class="hora">19:00</div><h3>Vino y tapas</h3><p>Por la tarde, vino de Montilla-Moriles, cerveza fría y tapas sencillas frente a la Mezquita.</p><span class="go">Ver en la carta →</span></div></a>
+  </div>
+</section>
+
+<section class="sec wrap res" id="resenas">
+  <div class="sh"><div><p class="eyebrow">Reseñas</p><h2>Lo que dicen <em>al salir.</em></h2></div><p><b>Reseñas reales de Google.</b></p></div>
+  <div class="quotes" id="quotes">
+    <blockquote class="q"><span class="stars" aria-label="5/5">★★★★★</span><p>“Excelente cafetería. El ambiente es acogedor, tranquilo y perfecto para desayunar o trabajar. El café de especialidad tiene un sabor increíble y se nota la calidad de los granos.”</p><footer><b>Montse Mtnez.</b><span>Google · junio 2026</span></footer></blockquote><blockquote class="q"><span class="stars" aria-label="5/5">★★★★★</span><p>“Un oasis donde descansar y reponer fuerzas con un buen dulce. El personal atento y amable. Mucha variedad para verdaderos golosos.”</p><footer><b>Ander Carrero</b><span>Google · abril 2026</span></footer></blockquote><blockquote class="q"><span class="stars" aria-label="5/5">★★★★★</span><p>“Had a coffee and toast, very nice it was. Staff very friendly.”</p><footer><b>Caroline Vranckx</b><span>Google · septiembre 2026</span></footer></blockquote>
+  </div>
+  <div class="all"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hygge+Cafe+Corregidor+Luis+de+la+Cerda+66+Cordoba" target="_blank" rel="noopener">Todas las reseñas en Google ↗</a></div>
+</section>
+
+<section class="sec wrap sobre" id="sobre">
+  <div class="in">
+    <div><p class="eyebrow">Sobre Hygge</p><h2>Un local pequeño donde escapar del bullicio.</h2><p>Hygge es la palabra danesa para el confort de las cosas sencillas: una taza caliente entre las manos, un dulce, una mesa de madera y tiempo. Eso es lo que intentamos ofrecer cada día, al ladito de la Mezquita, desde las 7:30 de la mañana.</p></div>
+    <figure class="ph"><img class="par" src="img/real-pastel-logo.webp" alt="" loading="lazy"><span class="cap"><span class="real">Foto real</span></span></figure>
+  </div>
+</section>
+
+<section class="sec wrap" id="visita">
+  <div class="vis">
+    <div>
+      <p class="eyebrow">Visítanos</p>
+      <h2>Corregidor Luis de la Cerda, <em>66.</em></h2>
+      <p class="p">Del lado del río, a dos minutos andando de la Mezquita. Perros bienvenidos.</p>
+      <dl>
+        <dt>Dirección</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Hygge%20Cafe%2C%20Calle%20Corregidor%20Luis%20de%20la%20Cerda%2066%2C%20C%C3%B3rdoba" target="_blank" rel="noopener">Calle Corregidor Luis de la Cerda 66, 14003 Córdoba</a></dd>
+        <dt>Horario</dt><dd>Lunes a domingo · 7:30 – 22:00</dd>
+        <dt>Teléfono</dt><dd><a href="tel:+34651076442">651 07 64 42</a></dd>
+        <dt>Instagram</dt><dd><a href="https://instagram.com/hygge_coffeeandfun" target="_blank" rel="noopener">@hygge_coffeeandfun</a></dd>
+        <dt>Perros</dt><dd>Bienvenidos</dd>
+      </dl>
+      <div class="cta"><a class="btn mag" href="https://wa.me/34651076442?text=Hola%2C%20" target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="btn alt mag" href="tel:+34651076442">Llamar</a></div>
+    </div>
+    <div class="map"><iframe title="Mapa de Hygge" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Hygge%20Cafe%2C%20Calle%20Corregidor%20Luis%20de%20la%20Cerda%2066%2C%20C%C3%B3rdoba&output=embed"></iframe></div>
+  </div>
+</section>
+</main>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Carta" data-lenis-prevent>
+  <div class="dr-head"><div><p class="eyebrow" id="drk">La carta</p><h3 id="drt">La carta</h3></div><button class="x" id="drx" type="button" aria-label="Cerrar">×</button></div>
+  <div class="dr-body" id="drb"></div>
+  <div class="dr-foot"><span>Carta de muestra para la propuesta: productos vistos en el local, precios orientativos. Se sustituye por la vuestra.</span><a class="btn alt" href="carta.html">Carta en página</a></div>
+</aside>
+<footer class="ft">
+  <div class="wrap">
+    <div class="big" id="big" aria-hidden="true"><b>h</b>ygge<i>.</i></div>
+    <div class="row">
+      <span>Hygge · Calle Corregidor Luis de la Cerda 66, 14003 Córdoba</span>
+      <span><a href="https://instagram.com/hygge_coffeeandfun" target="_blank" rel="noopener">@hygge_coffeeandfun</a> · <a href="tel:+34651076442">651 07 64 42</a></span>
+      <span><a href="https://sprintiasolutions.com" target="_blank" rel="noopener">Web por Sprintia</a></span>
+    </div>
+    <p class="note">Propuesta de web para Hygge. Las fotos del local son reales (de su ficha de Google) y se marcan como tales; las imágenes de los churros y la tostada son de muestra y se sustituirían por una sesión de fotos. La carta es orientativa.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+window.__T = {"lang":"es","carta":"La carta","open_now":"Abierto ahora · hasta las {h}","closes_soon":"Cierra en {m} min","closed_opens":"Cerrado · abre a las {h}","closed_tomorrow":"Cerrado · mañana a las {h}","abre":"07:30","cierra":"22:00"};
+window.__CARTA = {"secciones":[{"seccion":"Desayunos","nota":"De 7:30 a 12:00","items":[{"n":"Tostada con tomate y aceite","p":"2,60"},{"n":"Tostada de mantequilla y mermelada","p":"2,60"},{"n":"Tostada con aguacate","d":"Con huevo poché +1,50","p":"4,50"},{"n":"Croissant a la plancha","p":"2,80"},{"n":"Croissant de queso","p":"3,20"},{"n":"Churros con chocolate","d":"Seis churros y chocolate a la taza","p":"4,90"},{"n":"Desayuno Hygge","d":"Café, tostada y zumo de naranja","p":"6,90"}]},{"seccion":"Dulces de la vitrina","nota":"Según el día","items":[{"n":"Pastel cordobés","d":"Hojaldre y cabello de ángel","p":"3,50"},{"n":"Manolete","d":"El dulce cordobés de hojaldre y crema","p":"3,90"},{"n":"Pastel de Belém","p":"2,40"},{"n":"Palmera de hojaldre","p":"2,60"},{"n":"Milhojas de crema","p":"3,90"},{"n":"Tarta de queso","p":"4,80"},{"n":"Tarta de zanahoria","p":"4,80"},{"n":"Tarta de manzana","p":"4,20"},{"n":"Brownie","p":"3,60"},{"n":"Cookie de la casa","p":"2,40"}]},{"seccion":"Cafés","nota":"Especialidad · Colombia, Brasil, Etiopía","items":[{"n":"Espresso","p":"1,80"},{"n":"Cortado","p":"1,90"},{"n":"Café con leche","p":"2,30"},{"n":"Cappuccino","p":"2,90"},{"n":"Flat white","p":"3,20"},{"n":"Latte","p":"3,20"},{"n":"Americano","p":"2,20"},{"n":"Filtro del día","d":"Pregunta por el origen","p":"3,00"},{"n":"Chocolate a la taza","p":"3,20"},{"n":"Matcha latte","p":"3,90"},{"n":"Té e infusiones","d":"Más de veinte referencias en la estantería","p":"2,60"}]},{"seccion":"Zumos y fríos","nota":"","items":[{"n":"Zumo de naranja natural","p":"3,60"},{"n":"Limonada casera","p":"3,20"},{"n":"Café con hielo","p":"2,30"},{"n":"Refrescos","p":"2,40"},{"n":"Agua","p":"1,60"}]},{"seccion":"Tarde","nota":"Vinos, cervezas y tapas","items":[{"n":"Caña","p":"2,40"},{"n":"Copa de vino","d":"Montilla-Moriles o tinto de la casa","p":"3,20"},{"n":"Tabla de quesos","p":"8,50"},{"n":"Tapa del día","p":"3,80"}]}]};
+</script>
+<script>
+(function(){
+  var T = window.__T || {};
+  function price(p){ return T.lang === 'en' ? '€' + String(p).replace(',', '.') : p + ' €'; }
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desk = matchMedia('(min-width: 900px)').matches;
+  var hd = document.getElementById('hd');
+  var lastY = 0;
+  addEventListener('scroll', function(){ var y = window.scrollY || 0; hd.classList.toggle('solid', y > 40); hd.classList.toggle('hide', y > 500 && y > lastY); lastY = y; }, {passive:true});
+
+  /* ---- estado de apertura en hora de Madrid ---- */
+  (function(){
+    var st = document.getElementById('openst'), tx = document.getElementById('opentx'); if (!st || !tx) return;
+    function mins(s){ var p = s.split(':'); return (+p[0]) * 60 + (+p[1]); }
+    function fmt(s){ return T.lang === 'en' ? s : s.replace(/^0/, ''); }
+    function tick(){
+      var now; try { var f = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date()); now = mins(f); } catch (e) { var d = new Date(); now = d.getHours() * 60 + d.getMinutes(); }
+      var a = mins(T.abre), b = mins(T.cierra), s;
+      if (now >= a && now < b) { var left = b - now; s = left <= 30 ? T.closes_soon.replace('{m}', left) : T.open_now.replace('{h}', fmt(T.cierra)); st.classList.remove('off'); }
+      else { s = (now < a ? T.closed_opens : T.closed_tomorrow).replace('{h}', fmt(T.abre)); st.classList.add('off'); }
+      tx.textContent = s;
+    }
+    tick(); setInterval(tick, 60000);
+  })();
+
+  var hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+  if (!hasGsap || reduce) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]:not([data-carta])').forEach(function(a){ a.addEventListener('click', function(e){ var id=a.getAttribute('href'); var el=id.length>1&&document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el, {offset:-10}); } }); });
+  }
+
+  /* ---- hero: carga ---- */
+  var h1 = document.getElementById('h1');
+  if (h1) {
+    var words = h1.innerHTML.split(/(\s+)/).filter(function(w){ return w.trim(); });
+    h1.innerHTML = words.map(function(w){ return '<span style="display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em"><span class="wd" style="display:inline-block">' + w + '</span></span>'; }).join(' ');
+  }
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .from('#herofig', { clipPath: 'inset(0 0 100% 0 round 18px)', duration: 1.4, ease: 'power4.inOut' }, 0)
+    .from('#heroimg', { scale: 1.12, duration: 2.4, ease: 'power2.out' }, 0)
+    .from('.hd', { y: -16, opacity: 0, duration: .8 }, .3)
+    .from('#h1 .wd', { yPercent: 110, duration: .9, stagger: .06 }, .4)
+    .from('[data-h]', { y: 14, opacity: 0, duration: .8, stagger: .08 }, .8);
+  gsap.to('#heroimg', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('#herotx', { yPercent: -10, opacity: 0, ease: 'none', scrollTrigger: { trigger: '#hero', start: '40% top', end: 'bottom top', scrub: true } });
+
+  /* ---- reveals ---- */
+  document.querySelectorAll('.sec .sh > *, .orig li, .sobre .in > div, .vis > div, .dgrid .list').forEach(function(el){ gsap.from(el, { y: 30, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }); });
+  document.querySelectorAll('.dgrid .ph, .cgrid .ph').forEach(function(el){ gsap.from(el, { clipPath: 'inset(8% 8% 8% 8% round 18px)', opacity: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }); });
+  document.querySelectorAll('.par').forEach(function(img){ gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+  gsap.from('#tres .card', { y: 60, opacity: 0, duration: .9, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '#tres', start: 'top 85%' } });
+  gsap.from('#quotes .q', { y: 40, opacity: 0, duration: .9, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '#quotes', start: 'top 85%' } });
+  gsap.from('.dgrid .lst li', { x: -10, opacity: 0, duration: .5, stagger: .05, ease: 'power2.out', scrollTrigger: { trigger: '.dgrid .list', start: 'top 80%' } });
+
+  /* ---- carrete: arrastre + deriva ---- */
+  var car = document.getElementById('carrete');
+  if (car) {
+    var down = false, dragging = false, sx = 0, sl = 0, pid = null;
+    car.addEventListener('pointerdown', function(e){ if (e.pointerType === 'touch') return; down = true; dragging = false; sx = e.clientX; sl = car.scrollLeft; pid = e.pointerId; });
+    car.addEventListener('pointermove', function(e){ if (!down) return; var dx = e.clientX - sx; if (!dragging && Math.abs(dx) > 6) { dragging = true; car.classList.add('drag'); try { car.setPointerCapture(pid); } catch (err) {} } if (dragging) car.scrollLeft = sl - dx; });
+    ['pointerup','pointercancel','pointerleave'].forEach(function(ev){ car.addEventListener(ev, function(){ down = false; if (dragging) { setTimeout(function(){ dragging = false; }, 0); } car.classList.remove('drag'); }); });
+    car.addEventListener('click', function(e){ if (dragging) { e.preventDefault(); e.stopPropagation(); } }, true);
+    gsap.from('#carrete > *', { x: 60, opacity: 0, duration: .8, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: car, start: 'top 88%' } });
+    if (desk) ScrollTrigger.create({ trigger: car, start: 'top bottom', end: 'bottom top', onUpdate: function(st){ if (!down) car.scrollLeft = st.progress * Math.min(360, car.scrollWidth - car.clientWidth); } });
+  }
+
+  /* ---- footer: logotipo gigante ---- */
+  var big = document.getElementById('big');
+  if (big) gsap.fromTo(big, { yPercent: 30, opacity: .15 }, { yPercent: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.ft', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+
+  /* ---- cajón de carta ---- */
+  var drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim'), drb = document.getElementById('drb'), drt = document.getElementById('drt'), drk = document.getElementById('drk');
+  var C = window.__CARTA || { secciones: [] }; var drOpen = false;
+  function rowsHTML(items){ return '<ul class="lst">' + items.map(function(it){ return '<li><span class="n">' + it.n + (it.d ? '<small>' + it.d + '</small>' : '') + '</span><span class="dots" aria-hidden="true"></span><span class="p">' + price(it.p) + '</span></li>'; }).join('') + '</ul>'; }
+  function secHTML(sx){ return '<section class="cs"><h4>' + sx.seccion + (sx.nota ? '<em>' + sx.nota + '</em>' : '') + '</h4>' + rowsHTML(sx.items) + '</section>'; }
+  function openDrawer(key, title){
+    var html = '';
+    if (key === '*') html = C.secciones.map(secHTML).join('');
+    else { var sx = C.secciones.filter(function(x){ return x.seccion === key; })[0]; html = sx ? secHTML(sx) : C.secciones.map(secHTML).join(''); }
+    drk.textContent = T.carta || 'La carta'; drt.textContent = title || key; drb.innerHTML = html; drb.scrollTop = 0;
+    drawer.setAttribute('aria-hidden', 'false'); scrim.classList.add('on'); drOpen = true;
+    if (lenis) lenis.stop();
+    gsap.to(drawer, { x: 0, duration: .6, ease: 'power3.out' });
+    gsap.from('#drb .cs', { y: 16, opacity: 0, duration: .5, stagger: .06, delay: .15, ease: 'power2.out' });
+  }
+  function closeDrawer(){ if (!drOpen) return; drOpen = false; drawer.setAttribute('aria-hidden', 'true'); scrim.classList.remove('on'); gsap.to(drawer, { x: '104%', duration: .5, ease: 'power3.in' }); if (lenis) lenis.start(); }
+  gsap.set(drawer, { x: '104%' });
+  document.querySelectorAll('[data-carta]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); openDrawer(a.dataset.carta || '*', a.dataset.title); }); });
+  document.getElementById('drx').addEventListener('click', closeDrawer); scrim.addEventListener('click', closeDrawer);
+  addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDrawer(); });
+
+  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+
+  /* ---- botones magnéticos ---- */
+  if (desk) document.querySelectorAll('.mag').forEach(function(b){
+    b.addEventListener('mousemove', function(e){ var r = b.getBoundingClientRect(); gsap.to(b, { x: (e.clientX - r.left - r.width / 2) * .22, y: (e.clientY - r.top - r.height / 2) * .3, duration: .4, ease: 'power2.out' }); });
+    b.addEventListener('mouseleave', function(){ gsap.to(b, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.5)' }); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu · Hygge</title>
+<meta name="description" content="Menu with prices.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F6F2EA">
+<meta property="og:title" content="Menu · Hygge"><meta property="og:description" content="Menu with prices."><meta property="og:image" content="../img/real-interior-logo.webp">
+<link rel="alternate" hreflang="es" href="../carta.html">
+<link rel="alternate" hreflang="en" href="carta.html">
+<link rel="alternate" hreflang="x-default" href="../carta.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="../img/real-interior-logo.webp">
+<style>
+:root{--hueso:#F6F2EA;--arena:#E7DCCB;--arena2:#EFE7DA;--cafe:#3B2E25;--cafe2:#7A6A5C;--ocre:#C98A2E;--ocre2:#A86F1E;--linea:rgba(59,46,37,.14);--linea2:rgba(59,46,37,.08);
+--gl:"Gloock",Georgia,"Times New Roman",serif;--sans:"Outfit",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--pad:clamp(18px,3.2vw,44px);--r:18px;--r2:12px;color-scheme:light}
+*{box-sizing:border-box}
+html{background:var(--hueso);overflow-x:clip}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--hueso);color:var(--cafe);font-family:var(--sans);font-size:16px;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--gl);font-weight:400;letter-spacing:-.02em;line-height:.98;text-wrap:balance}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--ocre)}
+.wrap{padding-left:var(--pad);padding-right:var(--pad);max-width:1480px;margin-left:auto;margin-right:auto}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--cafe2);margin:0 0 20px;display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ocre);flex:none}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:500;font-size:14px;padding:15px 24px;border-radius:999px;background:var(--cafe);color:var(--hueso);border:1px solid var(--cafe);transition:background .2s,color .2s,border-color .2s;white-space:nowrap;will-change:transform;cursor:pointer;font-family:inherit}
+.btn:hover{background:#2A1F18;border-color:#2A1F18}
+.btn.alt{background:transparent;color:var(--cafe);border-color:rgba(59,46,37,.28)}
+.btn.alt:hover{background:var(--cafe);color:var(--hueso);border-color:var(--cafe)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--ocre);outline-offset:3px}
+.real,.prop{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(59,46,37,.55);padding:7px 10px;border-radius:999px;backdrop-filter:blur(4px);white-space:nowrap;flex:none}
+.prop{background:rgba(201,138,46,.8)}
+.ph{position:relative;overflow:hidden;border-radius:var(--r);background:var(--arena)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:2;display:flex;gap:8px;align-items:center}
+.ph .cap span:last-child{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+
+/* header */
+.hd{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad);transition:background .3s,padding .3s,transform .4s,border-color .3s;border-bottom:1px solid transparent}
+.hd.solid{background:rgba(246,242,234,.86);backdrop-filter:blur(10px);padding-top:12px;padding-bottom:12px;border-color:var(--linea)}
+.hd.hide{transform:translateY(-110%)}
+.wm{display:inline-flex;align-items:baseline;gap:1px;text-decoration:none;color:var(--cafe);font-family:var(--gl);font-size:30px;letter-spacing:-.01em;line-height:1}
+.wm b{font-family:var(--sans);font-weight:600;font-size:30px}
+.wm i{font-style:normal;color:var(--ocre)}
+.hd nav{display:none;gap:26px;font-size:14px;font-weight:500;color:var(--cafe2)}
+.hd nav a{text-decoration:none;transition:color .2s}
+.hd nav a:hover{color:var(--cafe)}
+.hd .r{display:flex;gap:8px;align-items:center}
+.hd .lg,.hd .tel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;border:1px solid var(--linea);border-radius:999px;padding:9px 12px;color:var(--cafe);text-decoration:none;display:inline-flex;gap:7px;align-items:center;white-space:nowrap;line-height:1.2;background:rgba(246,242,234,.6)}
+.hd .lg b{font-weight:500}
+.hd .lg a{text-decoration:none;color:var(--cafe2);transition:color .2s}
+.hd .lg a:hover{color:var(--cafe)}
+.hd .lg i{font-style:normal;color:var(--linea)}
+.hd .tel .lab{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:0}
+.hd .tel .num{display:none}
+@media (min-width:900px){.hd nav{display:flex}.hd .tel .num{display:inline}.hd .tel .lab{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);background:var(--hueso)}
+.hero .tx{position:relative;z-index:2;padding:150px 40px 56px var(--pad);display:flex;flex-direction:column;justify-content:flex-end}
+.hero h1{font-size:clamp(52px,5.4vw,84px);margin:0 0 24px;max-width:12ch}
+.hero .sub{font-weight:300;font-size:18px;line-height:1.55;color:var(--cafe2);max-width:40ch;margin:0 0 30px}
+.hero .sub b{font-weight:500;color:var(--cafe)}
+.hero .cta{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:0 34px;border-top:1px solid var(--linea);padding-top:18px;width:max-content;max-width:100%}
+.facts div{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2)}
+.facts b{display:block;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:0;text-transform:none;color:var(--cafe);margin-top:4px}
+.facts .st{display:inline-flex;align-items:center;gap:7px}
+.facts .st i{width:7px;height:7px;border-radius:50%;background:#5A9E5C;box-shadow:0 0 0 3px rgba(90,158,92,.18)}
+.facts .st.off i{background:#B8563B;box-shadow:0 0 0 3px rgba(184,86,59,.18)}
+.hero .ph{margin:16px 16px 16px 0;border-radius:var(--r);min-height:60svh}
+.hero .ph img{object-position:50% 45%;will-change:transform}
+.hero .ph .cap{left:18px;bottom:16px}
+@media (max-width:700px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:0}
+  .hero .tx{padding:104px 18px 22px;order:1}
+  .hero h1{font-size:clamp(42px,11.5vw,54px);margin-bottom:14px}
+  .hero .sub{font-size:15px;margin-bottom:18px}
+  .hero .cta{margin-bottom:18px}.hero .btn{padding:13px 18px;font-size:13px}
+  .facts{grid-template-columns:1fr;gap:0;width:auto;padding-top:6px}
+  .facts div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--linea2)}
+  .facts div:last-child{border-bottom:0}
+  .facts b{font-size:14px;margin-top:0;text-align:right}
+  .hero .ph{order:2;margin:0 18px 18px;border-radius:16px;min-height:0;aspect-ratio:4/5}
+  .hero .ph img{object-position:50% 40%}
+}
+
+/* carrete */
+.strip{padding:clamp(40px,6vw,80px) 0 0}
+.strip .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:20px}
+.strip .top .lbl b{color:var(--cafe);font-weight:500}
+.carrete{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:0 var(--pad) 8px;scrollbar-width:none;cursor:grab;user-select:none}
+.carrete.drag{cursor:grabbing;scroll-snap-type:none}
+.carrete::-webkit-scrollbar{display:none}
+.carrete .ph{flex:0 0 auto;height:clamp(300px,42vh,460px);scroll-snap-align:start}
+.carrete .ph.v{aspect-ratio:3/4}.carrete .ph.h{aspect-ratio:16/10}.carrete .ph.s{aspect-ratio:4/3}
+.carrete .ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.carrete .ph:hover img{transform:scale(1.04)}
+.strip .top .lbl:last-child{white-space:nowrap}
+@media (max-width:700px){.carrete .ph{height:auto;width:80vw}.carrete .ph.v{aspect-ratio:4/5}.carrete .ph.h,.carrete .ph.s{aspect-ratio:4/3}}
+
+/* secciones */
+.sec{position:relative;padding-top:clamp(80px,11vw,150px);padding-bottom:clamp(40px,6vw,80px)}
+.sh{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:clamp(30px,4vw,56px)}
+.sh h2{font-size:clamp(40px,5vw,74px)}
+.sh p{margin:0;font-size:17px;line-height:1.55;color:var(--cafe2);font-weight:300;max-width:44ch}
+.sh p b{color:var(--cafe);font-weight:500}
+@media (max-width:860px){.sh{grid-template-columns:1fr;gap:18px}}
+
+/* dulces */
+.dgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr) minmax(0,.9fr);grid-template-rows:1fr 1fr;gap:14px}
+.dgrid .ph{will-change:transform}
+.dgrid .ph img{will-change:transform;height:112%;margin-top:-6%}
+.dgrid .a{grid-row:1/3;min-height:640px}
+.dgrid .b,.dgrid .c{min-height:0}
+.dgrid .list{grid-column:3;grid-row:1/3;background:var(--arena2);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column}
+.dgrid .list h3{font-size:30px;margin-bottom:6px}
+.dgrid .list .lbl{margin-bottom:22px;display:block}
+.lst{list-style:none;margin:0;padding:0}
+.lst li{display:flex;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--linea2);font-size:15px}
+.lst li:last-child{border-bottom:0}
+.lst .n{font-weight:500;color:var(--cafe)}
+.lst .n small{display:block;font-weight:300;font-size:13px;color:var(--cafe2);margin-top:2px;line-height:1.35}
+.lst .dots{flex:1;border-bottom:1px dotted rgba(59,46,37,.35);transform:translateY(-4px);min-width:16px}
+.lst .p{font-family:var(--mono);font-size:13px;color:var(--cafe);white-space:nowrap}
+.dgrid .list .more{margin-top:auto;padding-top:22px}
+@media (max-width:1000px){.dgrid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.dgrid .a{grid-row:auto;grid-column:1/3;min-height:0;aspect-ratio:16/10}.dgrid .b,.dgrid .c{aspect-ratio:4/3}.dgrid .list{grid-column:1/3;grid-row:auto}}
+@media (max-width:600px){.dgrid{grid-template-columns:1fr}.dgrid .a,.dgrid .list{grid-column:auto}.dgrid .a{aspect-ratio:4/3}.dgrid .list{padding:24px 20px}}
+
+/* café */
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.cgrid .ph{aspect-ratio:4/5;max-height:760px}
+.cgrid .ph img{height:112%;margin-top:-6%;will-change:transform}
+.orig{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.orig li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:26px 0;border-bottom:1px solid var(--linea);align-items:start}
+.orig .i{font-family:var(--gl);font-size:40px;color:var(--ocre);line-height:.9}
+.orig h3{font-size:clamp(28px,2.6vw,38px);margin-bottom:8px}
+.orig p{margin:0;font-weight:300;font-size:16px;line-height:1.55;color:var(--cafe2);max-width:42ch}
+.cgrid .more{margin-top:26px}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr}.cgrid .ph{aspect-ratio:4/3;order:-1}}
+
+/* el día */
+.dia .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dia .card{position:relative;background:var(--arena2);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dia .card:hover{transform:translateY(-4px)}
+.dia .card .ph{aspect-ratio:4/3;border-radius:0}
+.dia .card .ph img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.dia .card:hover .ph img{transform:scale(1.04)}
+.dia .card .tx{padding:22px 24px 26px}
+.dia .card .hora{font-family:var(--gl);font-size:46px;color:var(--ocre);line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.dia .card h3{font-size:26px;margin-bottom:8px}
+.dia .card p{margin:0;font-weight:300;font-size:15px;line-height:1.5;color:var(--cafe2)}
+.dia .card .go{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cafe)}
+@media (max-width:860px){.dia .tres{grid-template-columns:1fr}.dia .card{flex-direction:row;align-items:stretch}.dia .card .ph{flex:0 0 38%;aspect-ratio:auto}.dia .card .hora{font-size:34px}.dia .card h3{font-size:22px}.dia .card p{font-size:14px}}
+@media (max-width:480px){.dia .card{flex-direction:column}.dia .card .ph{aspect-ratio:16/10}}
+
+/* reseñas */
+.res .sh{margin-bottom:clamp(20px,3vw,40px)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.q{background:var(--hueso);border:1px solid var(--linea);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;gap:18px;min-height:260px}
+.q .stars{color:var(--ocre);letter-spacing:.14em;font-size:13px}
+.q p{margin:0;font-family:var(--gl);font-size:clamp(19px,1.5vw,23px);line-height:1.3;letter-spacing:-.01em;color:var(--cafe);text-wrap:pretty}
+.q footer{margin-top:auto;display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--cafe2)}
+.q footer b{font-weight:500;color:var(--cafe)}
+.res .all{margin-top:22px;display:flex;justify-content:flex-end}
+.res .all a{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cafe2);text-decoration:none;border-bottom:1px solid var(--linea);padding-bottom:4px}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}.q{min-height:0}}
+
+/* sobre */
+.sobre .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center;background:var(--arena);border-radius:calc(var(--r) + 6px);padding:clamp(24px,3vw,44px)}
+.sobre h2{font-size:clamp(34px,3.6vw,54px);margin-bottom:18px}
+.sobre p{margin:0;font-weight:300;font-size:17px;line-height:1.6;color:var(--cafe2);max-width:46ch}
+.sobre .ph{aspect-ratio:16/10}
+.sobre .ph img{object-position:50% 50%}
+@media (max-width:860px){.sobre .in{grid-template-columns:1fr}.sobre .ph{order:-1}}
+
+/* visita */
+.vis{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px);align-items:stretch}
+.vis h2{font-size:clamp(40px,4.6vw,68px);margin-bottom:14px}
+.vis .p{font-weight:300;font-size:17px;color:var(--cafe2);margin:0 0 28px;max-width:40ch}
+.vis dl{margin:0 0 28px;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;border-top:1px solid var(--linea);padding-top:20px}
+.vis dt{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2);padding-top:5px}
+.vis dd{margin:0;font-size:16px}
+.vis dd a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.vis .cta{display:flex;gap:12px;flex-wrap:wrap}
+.map{border-radius:var(--r);overflow:hidden;background:var(--arena);min-height:420px;position:relative}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.7) contrast(1.02)}
+.map .st{position:absolute;inset:0;display:grid;text-decoration:none}
+.map .st img{width:100%;height:100%;object-fit:cover}
+.map .st span{position:absolute;left:16px;bottom:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(59,46,37,.6);padding:9px 12px;border-radius:999px}
+@media (max-width:860px){.vis{grid-template-columns:1fr}.map{min-height:320px}}
+
+/* footer */
+.ft{margin-top:clamp(60px,8vw,110px);border-top:1px solid var(--linea);padding:40px 0 30px;overflow:hidden}
+.ft .big{font-family:var(--gl);font-size:clamp(90px,19vw,300px);line-height:.85;letter-spacing:-.03em;color:var(--cafe);white-space:nowrap;text-align:center;will-change:transform,opacity}
+.ft .big b{font-family:var(--sans);font-weight:600}
+.ft .big i{font-style:normal;color:var(--ocre)}
+.ft .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:30px;font-size:13px;color:var(--cafe2)}
+.ft .row a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.ft .note{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--cafe2);max-width:80ch;line-height:1.6}
+
+/* cajón de carta */
+.scrim{position:fixed;inset:0;background:rgba(59,46,37,.35);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .4s;z-index:60}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);z-index:61;background:var(--hueso);border-left:1px solid var(--linea);display:grid;grid-template-rows:auto 1fr auto;transform:translateX(104%);will-change:transform;box-shadow:-40px 0 80px rgba(59,46,37,.18)}
+.dr-head{display:flex;justify-content:space-between;align-items:flex-start;padding:26px 28px 14px;border-bottom:1px solid var(--linea)}
+.dr-head .eyebrow{margin-bottom:8px}
+.dr-head h3{font-size:34px}
+.dr-head .x{background:none;border:1px solid var(--linea);color:var(--cafe);width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;display:grid;place-items:center;line-height:1}
+.dr-body{overflow:auto;padding:10px 28px 20px;overscroll-behavior:contain}
+.dr-body .cs{padding:16px 0}
+.dr-body .cs h4{margin:0 0 6px;font-family:var(--gl);font-weight:400;font-size:24px;letter-spacing:-.01em;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.dr-body .cs h4 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe2)}
+.dr-foot{padding:14px 28px 22px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;color:var(--cafe2);line-height:1.5}
+
+/* carta.html */
+.cpage{padding-top:150px;padding-bottom:60px}
+.cpage h1{font-size:clamp(44px,6vw,90px);margin-bottom:16px}
+.cpage .lead{font-weight:300;font-size:18px;color:var(--cafe2);max-width:56ch;margin:0 0 12px}
+.cpage .nota{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--cafe2);margin:0 0 44px;max-width:80ch;line-height:1.6}
+.ccols{columns:2;column-gap:60px}
+.cs{break-inside:avoid;margin-bottom:34px}
+.cpage .cs h3{font-size:30px;margin-bottom:8px;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.cpage .cs h3 em{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cafe2)}
+@media (max-width:860px){.ccols{columns:1}.cpage{padding-top:110px}}
+.back{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe2);margin-bottom:28px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hd" id="hd">
+  <a class="wm" href="index.html" aria-label="Hygge"><b>h</b>ygge<i>.</i></a>
+  <nav aria-label="Sections">
+    <a href="#" data-carta="*" data-title="The menu">Menu</a>
+    <a href="index.html#dulces">Pastries</a>
+    <a href="index.html#cafe">Coffee</a>
+    <a href="index.html#visita">Visit us</a>
+  </nav>
+  <div class="r"><span class="lg" aria-label="Language"><a href="../carta.html" hreflang="es" lang="es">ES</a><i>·</i><b lang="en">EN</b></span><a class="tel" href="tel:+34651076442"><span class="lab">Call</span><span class="num">651 07 64 42</span></a></div>
+</header>
+<main class="cpage wrap">
+  <a class="back" href="index.html">← Back</a>
+  <p class="eyebrow">The menu</p>
+  <h1>The menu, <em>from 7:30 to 22:00.</em></h1>
+  <p class="lead">Breakfast from 7:30, the pastry case, specialty coffee and, in the evening, wine and tapas.</p>
+  <p class="nota">Sample menu for this proposal: products seen at the café, indicative prices. To be replaced with yours.</p>
+  <div class="ccols">
+    <section class="cs"><h3>Breakfast<em>7:30 to 12:00</em></h3><ul class="lst"><li><span class="n">Toast with tomato and olive oil</span><span class="dots" aria-hidden="true"></span><span class="p">€2.60</span></li><li><span class="n">Toast with butter and jam</span><span class="dots" aria-hidden="true"></span><span class="p">€2.60</span></li><li><span class="n">Avocado toast<small>Add a poached egg +1.50</small></span><span class="dots" aria-hidden="true"></span><span class="p">€4.50</span></li><li><span class="n">Grilled croissant</span><span class="dots" aria-hidden="true"></span><span class="p">€2.80</span></li><li><span class="n">Cheese croissant</span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Churros with hot chocolate<small>Six churros and thick hot chocolate</small></span><span class="dots" aria-hidden="true"></span><span class="p">€4.90</span></li><li><span class="n">Hygge breakfast<small>Coffee, toast and orange juice</small></span><span class="dots" aria-hidden="true"></span><span class="p">€6.90</span></li></ul></section><section class="cs"><h3>Pastries<em>Depending on the day</em></h3><ul class="lst"><li><span class="n">Pastel cordobés<small>Puff pastry with angel-hair pumpkin jam</small></span><span class="dots" aria-hidden="true"></span><span class="p">€3.50</span></li><li><span class="n">Manolete<small>Córdoba’s puff pastry and cream classic</small></span><span class="dots" aria-hidden="true"></span><span class="p">€3.90</span></li><li><span class="n">Pastel de Belém</span><span class="dots" aria-hidden="true"></span><span class="p">€2.40</span></li><li><span class="n">Puff pastry palmier</span><span class="dots" aria-hidden="true"></span><span class="p">€2.60</span></li><li><span class="n">Cream millefeuille</span><span class="dots" aria-hidden="true"></span><span class="p">€3.90</span></li><li><span class="n">Cheesecake</span><span class="dots" aria-hidden="true"></span><span class="p">€4.80</span></li><li><span class="n">Carrot cake</span><span class="dots" aria-hidden="true"></span><span class="p">€4.80</span></li><li><span class="n">Apple tart</span><span class="dots" aria-hidden="true"></span><span class="p">€4.20</span></li><li><span class="n">Brownie</span><span class="dots" aria-hidden="true"></span><span class="p">€3.60</span></li><li><span class="n">House cookie</span><span class="dots" aria-hidden="true"></span><span class="p">€2.40</span></li></ul></section><section class="cs"><h3>Coffee<em>Specialty · Colombia, Brazil, Ethiopia</em></h3><ul class="lst"><li><span class="n">Espresso</span><span class="dots" aria-hidden="true"></span><span class="p">€1.80</span></li><li><span class="n">Cortado</span><span class="dots" aria-hidden="true"></span><span class="p">€1.90</span></li><li><span class="n">Café con leche</span><span class="dots" aria-hidden="true"></span><span class="p">€2.30</span></li><li><span class="n">Cappuccino</span><span class="dots" aria-hidden="true"></span><span class="p">€2.90</span></li><li><span class="n">Flat white</span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Latte</span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Americano</span><span class="dots" aria-hidden="true"></span><span class="p">€2.20</span></li><li><span class="n">Filter of the day<small>Ask for the origin</small></span><span class="dots" aria-hidden="true"></span><span class="p">€3.00</span></li><li><span class="n">Hot chocolate</span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Matcha latte</span><span class="dots" aria-hidden="true"></span><span class="p">€3.90</span></li><li><span class="n">Tea and infusions<small>Over twenty on the shelf</small></span><span class="dots" aria-hidden="true"></span><span class="p">€2.60</span></li></ul></section><section class="cs"><h3>Juices and cold drinks</h3><ul class="lst"><li><span class="n">Fresh orange juice</span><span class="dots" aria-hidden="true"></span><span class="p">€3.60</span></li><li><span class="n">Homemade lemonade</span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Iced coffee</span><span class="dots" aria-hidden="true"></span><span class="p">€2.30</span></li><li><span class="n">Soft drinks</span><span class="dots" aria-hidden="true"></span><span class="p">€2.40</span></li><li><span class="n">Water</span><span class="dots" aria-hidden="true"></span><span class="p">€1.60</span></li></ul></section><section class="cs"><h3>Evening<em>Wine, beer and tapas</em></h3><ul class="lst"><li><span class="n">Small beer</span><span class="dots" aria-hidden="true"></span><span class="p">€2.40</span></li><li><span class="n">Glass of wine<small>Montilla-Moriles or house red</small></span><span class="dots" aria-hidden="true"></span><span class="p">€3.20</span></li><li><span class="n">Cheese board</span><span class="dots" aria-hidden="true"></span><span class="p">€8.50</span></li><li><span class="n">Tapa of the day</span><span class="dots" aria-hidden="true"></span><span class="p">€3.80</span></li></ul></section>
+  </div>
+</main>
+<footer class="ft">
+  <div class="wrap">
+    <div class="big" id="big" aria-hidden="true"><b>h</b>ygge<i>.</i></div>
+    <div class="row">
+      <span>Hygge · Calle Corregidor Luis de la Cerda 66, 14003 Córdoba</span>
+      <span><a href="https://instagram.com/hygge_coffeeandfun" target="_blank" rel="noopener">@hygge_coffeeandfun</a> · <a href="tel:+34651076442">651 07 64 42</a></span>
+      <span><a href="https://sprintiasolutions.com" target="_blank" rel="noopener">Website by Sprintia</a></span>
+    </div>
+    <p class="note">Website proposal for Hygge. The photos of the café are real (from its Google listing) and labelled as such; the churros and toast images are samples that a photo session would replace. The menu is indicative.</p>
+  </div>
+</footer>
+<script>document.getElementById('hd').classList.add('solid');</script>
+</body>
+</html>
