@@ -668,7 +668,7 @@ window.__CARTA = {"secciones":[{"seccion":"Espresso","nota":"","items":[{"n":"Ri
 
   /* ---- hero: carga + salida ---- */
   var h1 = document.getElementById('h1');
-  if (h1) { h1.innerHTML = h1.innerHTML.replace(/(<br\s*\/?>)/g, '').split('').map(function(l){ return '<span style="display:block;overflow:hidden"><span class="ln" style="display:block">' + l + '</span></span>'; }).join(''); }
+  if (h1) { h1.innerHTML = h1.innerHTML.replace(/(<br\s*\/?>)/g, '').split('').map(function(l){ return '<span style="display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em"><span class="ln" style="display:block">' + l + '</span></span>'; }).join(''); }
   gsap.timeline({ defaults: { ease: 'power3.out' } })
     .from('#heromedia picture, #heromedia video', { scale: 1.1, duration: 2.6, ease: 'power2.out' }, 0)
     .from('.hd', { y: -20, opacity: 0, duration: .9 }, .2)
