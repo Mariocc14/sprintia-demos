@@ -53,7 +53,8 @@ Cualquier servicio que ejecute un Dockerfile y tenga **disco persistente** para 
 1. Crea el servicio apuntando a la carpeta `lead-radar/` (o a un repo con solo esta carpeta).
 2. Añade un volumen montado en `/data`.
 3. Configura las variables de la tabla.
-4. Abre la URL, crea tus proyectos (o usa «Autoconfigurar») y pulsa «Buscar ahora».
+4. Abre la URL y pulsa «Buscar ahora». La primera vez se cargan solos los proyectos de
+   `proyectos.json` (Monkway, Phoodie y Remite); edítalos desde el panel o crea otros con «Autoconfigurar».
 
 En tu ordenador también funciona: `uvicorn app:app --port 8000` con las variables en el entorno.
 

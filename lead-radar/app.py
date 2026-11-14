@@ -104,10 +104,14 @@ def init_db() -> None:
         c.executescript(SCHEMA)
         for k, v in DEFAULT_SETTINGS.items():
             c.execute("INSERT OR IGNORE INTO settings(key, value) VALUES (?, ?)", (k, v))
-        if DEMO and not c.execute("SELECT 1 FROM projects").fetchone():
-            seed = json.loads((HERE / "tests" / "demo_projects.json").read_text(encoding="utf-8"))
-            for p in seed:
-                save_project_row(c, p)
+        # La primera vez (sin proyectos) carga los proyectos iniciales:
+        # los de ejemplo en modo demo, o proyectos.json en uso real.
+        if not c.execute("SELECT 1 FROM projects").fetchone():
+            seed_file = HERE / "tests" / "demo_projects.json" if DEMO else Path(
+                os.environ.get("SEED_PROJECTS", HERE / "proyectos.json"))
+            if seed_file.exists():
+                for p in json.loads(seed_file.read_text(encoding="utf-8")):
+                    save_project_row(c, p)
 
 
 def get_settings() -> dict:

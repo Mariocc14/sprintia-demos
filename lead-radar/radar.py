@@ -364,9 +364,9 @@ def classify(posts: list[Post], cfg: dict) -> list[tuple[Post, LeadVerdict]]:
 INTENT_PHRASES = [
     "recommend", "recommendation", "looking for", "alternative to", "alternatives to",
     "any suggestions", "what do you use", "best tool", "best app", "need a tool", "need an app",
-    "is there a tool", "is there an app", "switching from", "anyone know",
+    "is there a tool", "is there an app", "is there any", "any good app", "any good tool", "switching from", "anyone know",
     "recomienda", "recomendais", "recomendáis", "busco", "alguien conoce", "alternativa a",
-    "que usais", "qué usáis", "necesito una app", "necesito una herramienta",
+    "que usais", "qué usáis", "necesito una app", "necesito una herramienta", "alguna app", "alguna herramienta", "hay alguna",
 ]
 
 

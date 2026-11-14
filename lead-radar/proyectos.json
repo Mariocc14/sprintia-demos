@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Monkway",
+    "url": "",
+    "description": "App de productividad y crecimiento personal: ayuda a crear hábitos, organizar el día y avanzar en objetivos personales de forma constante.",
+    "ideal_customer": "Personas que quieren ser más disciplinadas y constantes (estudiantes, profesionales, emprendedores) y buscan una app para hábitos, rutinas y objetivos.",
+    "not_a_fit": "Equipos que buscan gestión de proyectos de empresa, o personas que piden ayuda médica o psicológica.",
+    "keywords": [
+      "habit tracker", "habit app", "habits app", "build habits", "productivity app", "routine app",
+      "daily planner app", "goal tracking", "goal tracker", "self improvement app", "personal growth app",
+      "discipline app", "stay consistent", "morning routine app", "habitica", "streaks app",
+      "app de hábitos", "app de habitos", "crear hábitos", "app de productividad", "rutina diaria", "ser constante"
+    ],
+    "negative_keywords": ["hiring", "i built", "i made", "my app", "launched", "promo code", "giveaway", "he creado", "mi app"],
+    "subreddits": ["productivity", "getdisciplined", "selfimprovement", "DecidingToBeBetter", "habits", "iosapps", "androidapps", "apps", "GetMotivated"],
+    "search_queries": [
+      "habit tracker app recommendation", "alternative to habitica", "best app for self improvement",
+      "productivity app for personal growth", "app para crear hábitos"
+    ],
+    "min_score": 7
+  },
+  {
+    "name": "Phoodie",
+    "url": "",
+    "description": "App para guardar restaurantes: apuntas los sitios que quieres probar o que te han gustado, con notas y fotos, y los encuentras rápido cuando decides dónde comer.",
+    "ideal_customer": "Gente a la que le gusta descubrir restaurantes y viajar, que hoy guarda los sitios en listas de Google Maps, notas del móvil o capturas de Instagram y lo tiene todo desordenado.",
+    "not_a_fit": "Dueños de restaurantes buscando software de gestión, reservas o TPV.",
+    "keywords": [
+      "save restaurants", "restaurants to try", "restaurant list", "restaurant app", "keep track of restaurants",
+      "restaurant wishlist", "places to eat list", "google maps list", "beli", "mapstr", "food spots",
+      "guardar restaurantes", "restaurantes que quiero probar", "lista de restaurantes", "app de restaurantes", "sitios para comer"
+    ],
+    "negative_keywords": ["hiring", "i built", "i made", "waiter", "server job", "pos system", "he creado", "camarero"],
+    "subreddits": ["foodies", "iosapps", "androidapps", "apps", "travel", "solotravel", "FoodNYC", "AskNYC", "madrid", "barcelona"],
+    "search_queries": [
+      "app to save restaurants", "how do you keep track of restaurants", "alternative to beli",
+      "google maps lists alternative restaurants", "app para guardar restaurantes"
+    ],
+    "min_score": 7
+  },
+  {
+    "name": "Remite",
+    "url": "",
+    "description": "SaaS que diseña y escribe emails con IA: describes lo que quieres comunicar y genera el email o la newsletter listos para enviar, con diseño y texto.",
+    "ideal_customer": "Pequeños negocios, ecommerce, creadores y solopreneurs que tienen que enviar newsletters o campañas de email pero no saben diseñarlas ni redactarlas, o les lleva demasiado tiempo.",
+    "not_a_fit": "Gente que busca enviar spam o cold email masivo, o desarrolladores que buscan APIs de email transaccional (SMTP, envío técnico).",
+    "keywords": [
+      "email template", "email design", "design emails", "newsletter design", "write emails", "email copy",
+      "email campaign", "marketing emails", "ai email", "email marketing tool", "mailchimp", "klaviyo",
+      "newsletter tool", "email builder",
+      "plantilla de email", "diseñar emails", "diseño de newsletter", "email marketing", "escribir emails", "newsletter"
+    ],
+    "negative_keywords": ["hiring", "i built", "i made", "smtp", "transactional", "cold email list", "he creado"],
+    "subreddits": ["emailmarketing", "marketing", "smallbusiness", "Entrepreneur", "ecommerce", "shopify", "Newsletters", "copywriting"],
+    "search_queries": [
+      "ai tool to write marketing emails", "best email template builder", "alternative to mailchimp for design",
+      "tool to design newsletters", "herramienta para diseñar emails"
+    ],
+    "min_score": 7
+  }
+]
