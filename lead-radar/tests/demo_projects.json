@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Facturo (ejemplo)",
+    "url": "https://example.com/facturo",
+    "description": "App de facturación para freelancers: crea facturas en 30 segundos, recordatorios automáticos de cobro y exporta para el gestor.",
+    "ideal_customer": "Freelancers y autónomos que facturan a pocos clientes y odian hacer papeleo.",
+    "not_a_fit": "Empresas con equipos de contabilidad o que necesitan un ERP.",
+    "keywords": ["invoice", "invoicing", "factura", "facturar", "facturación", "get paid", "late payment", "cobrar"],
+    "negative_keywords": ["hiring", "job offer", "I built", "he creado"],
+    "subreddits": ["freelance", "smallbusiness", "Entrepreneur", "spain"],
+    "search_queries": ["invoicing app freelancer", "alternative to freshbooks", "app facturas autónomo"],
+    "min_score": 7
+  },
+  {
+    "name": "Menúzen (ejemplo)",
+    "url": "https://example.com/menuzen",
+    "description": "Planificador semanal de comidas con lista de la compra automática según lo que tienes en la nevera.",
+    "ideal_customer": "Familias y personas ocupadas que quieren comer sano sin pensar cada día qué cocinar.",
+    "not_a_fit": "Restaurantes y nutricionistas profesionales.",
+    "keywords": ["meal plan", "meal planning", "grocery list", "what to cook", "menú semanal", "lista de la compra", "qué cocinar"],
+    "negative_keywords": ["recipe I made", "hiring"],
+    "subreddits": ["MealPrepSunday", "EatCheapAndHealthy", "Cooking", "parenting"],
+    "search_queries": ["meal planning app recommendation", "app menú semanal"],
+    "min_score": 7
+  }
+]
