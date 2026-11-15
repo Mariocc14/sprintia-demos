@@ -1,0 +1,5 @@
+data/
+state/
+out/
+.env
+__pycache__/

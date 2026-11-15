@@ -1,0 +1,6 @@
+data/
+state/
+out/
+config.yaml
+.env
+__pycache__/

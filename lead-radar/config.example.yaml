@@ -1,0 +1,20 @@
+# Solo para el modo sin panel (python radar.py). El panel web guarda los
+# proyectos en su base de datos. Copia este archivo a config.yaml y rellénalo.
+settings:
+  lookback_hours: 24
+  min_score: 7
+  model: claude-opus-5-5
+  effort: low
+  include_comments: true
+  sources: [reddit, hn]
+
+products:
+  - name: Mi producto
+    url: https://example.com
+    description: Qué es y qué problema resuelve, en 2-3 frases.
+    ideal_customer: Quién lo compra.
+    not_a_fit: Con quién no encaja.
+    keywords: [palabra 1, palabra 2]
+    negative_keywords: [hiring, I built]
+    subreddits: [SaaS, Entrepreneur]
+    search_queries: ["alternative to X", "recommend app for Y"]
