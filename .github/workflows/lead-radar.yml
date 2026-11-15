@@ -36,8 +36,8 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: lead-radar/state
-          key: lead-radar-state-${{ github.run_id }}
-          restore-keys: lead-radar-state-
+          key: lead-radar-state-v2-${{ github.run_id }}
+          restore-keys: lead-radar-state-v2-
 
       - name: Buscar leads
         env:
@@ -60,4 +60,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: lead-radar/state
-          key: lead-radar-state-${{ github.run_id }}
+          key: lead-radar-state-v2-${{ github.run_id }}
