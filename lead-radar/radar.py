@@ -78,7 +78,9 @@ def normalize(s: str) -> str:
 
 def load_config(path: Path) -> dict:
     with path.open(encoding="utf-8") as f:
-        cfg = yaml.safe_load(f)
+        cfg = yaml.safe_load(f)  # YAML también lee JSON
+    if isinstance(cfg, list):  # proyectos.json: solo la lista de productos
+        cfg = {"products": cfg}
     if not cfg or not cfg.get("products"):
         sys.exit(f"{path}: no hay productos configurados")
     cfg.setdefault("settings", {})
@@ -538,7 +540,11 @@ def main() -> int:
     print("Descargando…")
     if args.fixtures:
         raw = json.loads(Path(args.fixtures).read_text(encoding="utf-8"))
-        posts = [Post(**{**d, "created_utc": d.get("created_utc", time.time())}) for d in raw]
+        posts = []
+        for d in raw:
+            d = dict(d)
+            age = d.pop("age_min", 0)
+            posts.append(Post(**{**d, "created_utc": d.get("created_utc", time.time() - age * 60)}))
     else:
         posts = fetch_all(cfg, since)
 
@@ -572,8 +578,11 @@ def main() -> int:
     )
 
     print(f"\n{len(leads)} leads con nota ≥ {min_score}. Informe: {report}")
-    for p, v in leads:
-        print(f"  [{v.score}] {v.product} · {p.where} · {p.title[:70]} · {p.url}")
+    # En GitHub Actions los registros de un repo público los ve cualquiera:
+    # allí solo se imprime el recuento y los leads van por Telegram.
+    if not os.environ.get("GITHUB_ACTIONS"):
+        for p, v in leads:
+            print(f"  [{v.score}] {v.product} · {p.where} · {p.title[:70]} · {p.url}")
     if leads and not args.no_notify:
         notify_telegram(leads)
     return 0

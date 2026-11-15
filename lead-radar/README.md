@@ -45,7 +45,24 @@ DEMO_MODE=1 uvicorn app:app --port 8000
 | `APP_PASSWORD` | Proteger el panel (usuario `admin`) | La que tú quieras. **Ponla siempre si lo publicas en internet** |
 | `APP_NAME` | Nombre de la marca | Por defecto «Rastro» |
 
-### 2. Desplegar (necesita estar encendido 24/7)
+### 2a. Gratis: GitHub Actions + Telegram (sin panel)
+
+GitHub ejecuta `radar.py` cada 30 minutos con los proyectos de `proyectos.json` y te
+manda cada lead por Telegram con su respuesta sugerida. El panel web no se usa.
+
+1. El flujo está en `.github/workflows/lead-radar.yml`. GitHub solo ejecuta las tareas
+   programadas desde la rama principal, así que tiene que estar en `main`.
+2. En el repositorio: Settings → Secrets and variables → Actions.
+   - **Secrets:** `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `REDDIT_CLIENT_ID`,
+     `REDDIT_CLIENT_SECRET` y, para usar IA, `ANTHROPIC_API_KEY`.
+   - **Variables:** `LEAD_RADAR_ENABLED` = `true` y, opcional, `REDDIT_USER_AGENT`.
+3. Pestaña Actions → «Lead radar» → «Run workflow» para probarlo al momento.
+
+Notas: en un repositorio público los minutos de Actions son gratis e ilimitados, pero
+los registros son públicos (por eso solo muestran recuentos). GitHub pausa las tareas
+programadas si el repositorio pasa 60 días sin cambios; se reactivan desde la pestaña Actions.
+
+### 2b. Con panel web (necesita estar encendido 24/7)
 
 Cualquier servicio que ejecute un Dockerfile y tenga **disco persistente** para `/data`
 (Railway, Render, Fly.io, un VPS…):
