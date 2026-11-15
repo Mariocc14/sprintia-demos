@@ -579,7 +579,7 @@ def render_markdown(leads: list[tuple[Post, LeadVerdict]], stats: dict) -> str:
     return "\n".join(out)
 
 
-def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
+def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> bool:
     import re
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip().strip('"\'')
     # Acepta el id aunque se haya pegado con restos, p. ej. 'id":459754768' o con espacios.
@@ -588,7 +588,8 @@ def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
     if not token or not chat:
         if token or os.environ.get("TELEGRAM_CHAT_ID"):
             print("[aviso] Telegram: falta el token o el chat id no tiene un número válido", file=sys.stderr)
-        return
+        return False
+    all_ok = True
     for p, v in leads:
         text = (
             f"🎯 {v.score}/10 · {v.product} · {p.where}\n"
@@ -604,6 +605,7 @@ def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
             )
         except requests.RequestException as e:
             print(f"[aviso] Telegram: sin conexión ({type(e).__name__})", file=sys.stderr)
+            all_ok = False
             continue
         if not r.ok:
             # La descripción de Telegram explica el fallo y no incluye el token.
@@ -612,6 +614,8 @@ def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
             except ValueError:
                 why = r.text[:200]
             print(f"[aviso] Telegram {r.status_code}: {why}", file=sys.stderr)
+            all_ok = False
+    return all_ok
 
 
 # ---------------------------------------------------------------------------
@@ -626,7 +630,18 @@ def main() -> int:
     ap.add_argument("--fixtures", help="JSON con posts de prueba en lugar de descargar de internet")
     ap.add_argument("--no-llm", action="store_true", help="Solo filtro por palabras clave, sin llamar a Claude")
     ap.add_argument("--no-notify", action="store_true", help="No enviar a Telegram")
+    ap.add_argument("--test-telegram", action="store_true", help="Envía un mensaje de prueba a Telegram y termina")
     args = ap.parse_args()
+
+    if args.test_telegram:
+        test = Post(id="test", source="test", where="prueba", title="Rastro está conectado a Telegram",
+                    body="", url="https://github.com", author="", created_utc=time.time())
+        verdict = LeadVerdict(post_id="test", product="Prueba", is_lead=True, score=10,
+                              reason="Mensaje de prueba: si lo ves, los avisos funcionan.",
+                              suggested_reply="(aquí irá la respuesta sugerida de cada lead)")
+        ok = notify_telegram([(test, verdict)])
+        print("Telegram: mensaje de prueba enviado" if ok else "Telegram: no se pudo enviar (mira el aviso de arriba)")
+        return 0 if ok else 1
 
     cfg = load_config(Path(args.config))
     s = cfg["settings"]
