@@ -5,7 +5,8 @@ name: Lead radar
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # Minutos 7 y 37: GitHub retrasa o descarta más las tareas en punto y a y media.
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       test_telegram:
