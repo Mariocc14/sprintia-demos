@@ -138,7 +138,7 @@ class Reddit:
     def oauth(self) -> bool:
         return self.base.startswith("https://oauth")
 
-    PUBLIC_GAP = 6.0  # segundos entre peticiones sin claves (Reddit permite ~10/min)
+    PUBLIC_GAP = 10.0  # segundos entre peticiones sin claves (Reddit permite ~10/min)
 
     def _throttle(self) -> None:
         if not self.oauth:
@@ -303,8 +303,10 @@ def fetch_all(cfg: dict, since: float) -> list[Post]:
             attempt(f"r/{g} posts", reddit.subreddit_new, g)
             if cfg["settings"].get("include_comments", True):
                 attempt(f"r/{g} comentarios", reddit.subreddit_comments, g)
-        for q in queries:
-            attempt(f"Reddit búsqueda «{q}»", reddit.search, q)
+        # La búsqueda de Reddit sin claves casi siempre devuelve 403/429: solo con OAuth.
+        if reddit.oauth:
+            for q in queries:
+                attempt(f"Reddit búsqueda «{q}»", reddit.search, q)
     if "hn" in sources:
         for q in queries:
             attempt(f"HN «{q}»", hn_search, q, since)
@@ -578,8 +580,14 @@ def render_markdown(leads: list[tuple[Post, LeadVerdict]], stats: dict) -> str:
 
 
 def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
-    token, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
-    if not (token and chat):
+    import re
+    token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip().strip('"\'')
+    # Acepta el id aunque se haya pegado con restos, p. ej. 'id":459754768' o con espacios.
+    m = re.search(r"-?\d{5,}", os.environ.get("TELEGRAM_CHAT_ID") or "")
+    chat = m.group(0) if m else ""
+    if not token or not chat:
+        if token or os.environ.get("TELEGRAM_CHAT_ID"):
+            print("[aviso] Telegram: falta el token o el chat id no tiene un número válido", file=sys.stderr)
         return
     for p, v in leads:
         text = (
@@ -589,13 +597,21 @@ def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> None:
             f"Respuesta sugerida:\n{v.suggested_reply}\n\n{p.url}"
         )[:4000]
         try:
-            requests.post(
+            r = requests.post(
                 f"https://api.telegram.org/bot{token}/sendMessage",
                 json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
                 timeout=HTTP_TIMEOUT,
-            ).raise_for_status()
+            )
         except requests.RequestException as e:
-            print(f"[aviso] Telegram: {e}", file=sys.stderr)
+            print(f"[aviso] Telegram: sin conexión ({type(e).__name__})", file=sys.stderr)
+            continue
+        if not r.ok:
+            # La descripción de Telegram explica el fallo y no incluye el token.
+            try:
+                why = r.json().get("description", "")
+            except ValueError:
+                why = r.text[:200]
+            print(f"[aviso] Telegram {r.status_code}: {why}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------
