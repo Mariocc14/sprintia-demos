@@ -1,60 +1,65 @@
 [
   {
     "name": "Monkway",
-    "url": "",
-    "description": "App de productividad y crecimiento personal: ayuda a crear hábitos, organizar el día y avanzar en objetivos personales de forma constante.",
-    "ideal_customer": "Personas que quieren ser más disciplinadas y constantes (estudiantes, profesionales, emprendedores) y buscan una app para hábitos, rutinas y objetivos.",
-    "not_a_fit": "Equipos que buscan gestión de proyectos de empresa, o personas que piden ayuda médica o psicológica.",
+    "url": "https://monkway.app",
+    "description": "App de hábitos y tareas en una sola pantalla (iOS, Android y web). Empiezas con un camino ya hecho, llevas tus rachas sin culpa y organizas el día sin pasarte ni quemarte. Gratis para empezar, sin muro de registro.",
+    "ideal_customer": "Gente que quiere ser constante (estudiantes, profesionales, emprendedores) y hoy usa una app de hábitos y otra de tareas por separado, o abandona las apps de hábitos porque abruman o castigan perder la racha. Hispanohablantes y angloparlantes.",
+    "not_a_fit": "Equipos que buscan gestión de proyectos de empresa, o personas que piden ayuda médica o psicológica (TDAH, depresión): ahí no se recomienda una app.",
     "keywords": [
-      "habit tracker", "habit app", "habits app", "build habits", "productivity app", "routine app",
-      "daily planner app", "goal tracking", "goal tracker", "self improvement app", "personal growth app",
-      "discipline app", "stay consistent", "morning routine app", "habitica", "streaks app",
-      "app de hábitos", "app de habitos", "crear hábitos", "app de productividad", "rutina diaria", "ser constante"
+      "habit tracker", "habit app", "habits app", "habits and tasks", "habits and to-do", "to-do list and habits",
+      "routine app", "daily routine app", "streak", "streaks", "build habits", "stay consistent", "productivity app",
+      "goal tracker", "self improvement app", "atomic habits app", "habitica", "streaks app", "burnout",
+      "app de hábitos", "app de habitos", "hábitos y tareas", "rutina diaria", "rachas", "ser constante",
+      "app de productividad", "crear hábitos"
     ],
-    "negative_keywords": ["hiring", "i built", "i made", "my app", "launched", "promo code", "giveaway", "he creado", "mi app"],
-    "subreddits": ["productivity", "getdisciplined", "selfimprovement", "DecidingToBeBetter", "habits", "iosapps", "androidapps", "apps", "GetMotivated"],
+    "negative_keywords": ["hiring", "i built", "i made", "my app", "we launched", "promo code", "giveaway", "he creado", "mi app", "lanzamos"],
+    "subreddits": ["productivity", "getdisciplined", "selfimprovement", "DecidingToBeBetter", "habits", "iosapps", "androidapps", "apps", "GetMotivated", "studytips"],
     "search_queries": [
-      "habit tracker app recommendation", "alternative to habitica", "best app for self improvement",
-      "productivity app for personal growth", "app para crear hábitos"
+      "habit tracker and to-do list in one app", "alternative to habitica", "habit tracker that doesn't punish streaks",
+      "best app for daily routine", "app de hábitos y tareas"
     ],
     "min_score": 7
   },
   {
     "name": "Phoodie",
-    "url": "",
-    "description": "App para guardar restaurantes: apuntas los sitios que quieres probar o que te han gustado, con notas y fotos, y los encuentras rápido cuando decides dónde comer.",
-    "ideal_customer": "Gente a la que le gusta descubrir restaurantes y viajar, que hoy guarda los sitios en listas de Google Maps, notas del móvil o capturas de Instagram y lo tiene todo desordenado.",
-    "not_a_fit": "Dueños de restaurantes buscando software de gestión, reservas o TPV.",
+    "url": "https://phoodie.app",
+    "description": "App de iOS gratuita: un cuaderno de restaurantes y bares por ciudad. Busca en el carrete las fotos de comida, las agrupa por salida y guardas cada sitio con un gesto (qué pediste, precio, si volverías, puntuación). Las fotos se analizan en el móvil, sin subir nada. Disponible en inglés, español, italiano, alemán y francés.",
+    "ideal_customer": "Foodies que viajan o hacen escapadas pensando en dónde comer y quieren un cuaderno propio de sitios por ciudad. También quienes acumulan cientos de sitios en Mapstr, Beli o listas de Google Maps y no quieren pagar una suscripción por sus propios datos.",
+    "not_a_fit": "Usuarios de Android (solo hay app de iOS), dueños de restaurantes que buscan software de gestión o reservas, y quien solo pide recomendaciones de dónde comer.",
     "keywords": [
-      "save restaurants", "restaurants to try", "restaurant list", "restaurant app", "keep track of restaurants",
-      "restaurant wishlist", "places to eat list", "google maps list", "beli", "mapstr", "food spots",
-      "guardar restaurantes", "restaurantes que quiero probar", "lista de restaurantes", "app de restaurantes", "sitios para comer"
+      "restaurant journal", "restaurant diary", "food diary app", "food journal app", "log restaurants",
+      "keep track of restaurants", "track restaurants", "restaurants i've been to", "save restaurants",
+      "restaurant list", "restaurant tracker", "google maps saved places", "google maps lists", "mapstr", "beli",
+      "food photos", "camera roll", "places i've eaten",
+      "diario de restaurantes", "guardar restaurantes", "lista de restaurantes", "apuntar restaurantes",
+      "restaurantes que he probado", "app de restaurantes"
     ],
-    "negative_keywords": ["hiring", "i built", "i made", "waiter", "server job", "pos system", "he creado", "camarero"],
-    "subreddits": ["foodies", "iosapps", "androidapps", "apps", "travel", "solotravel", "FoodNYC", "AskNYC", "madrid", "barcelona"],
+    "negative_keywords": ["hiring", "i built", "i made", "waiter", "server job", "pos system", "android only", "he creado", "camarero"],
+    "subreddits": ["foodies", "iosapps", "iphone", "apps", "travel", "solotravel", "FoodNYC", "spain", "madrid", "barcelona"],
     "search_queries": [
-      "app to save restaurants", "how do you keep track of restaurants", "alternative to beli",
-      "google maps lists alternative restaurants", "app para guardar restaurantes"
+      "app to keep track of restaurants", "alternative to beli", "alternative to mapstr",
+      "restaurant journal app iphone", "app para guardar restaurantes"
     ],
     "min_score": 7
   },
   {
     "name": "Remite",
-    "url": "",
-    "description": "SaaS que diseña y escribe emails con IA: describes lo que quieres comunicar y genera el email o la newsletter listos para enviar, con diseño y texto.",
-    "ideal_customer": "Pequeños negocios, ecommerce, creadores y solopreneurs que tienen que enviar newsletters o campañas de email pero no saben diseñarlas ni redactarlas, o les lleva demasiado tiempo.",
-    "not_a_fit": "Gente que busca enviar spam o cold email masivo, o desarrolladores que buscan APIs de email transaccional (SMTP, envío técnico).",
+    "url": "https://www.remite.app",
+    "description": "Del brief al email de campaña listo para pegar en Klaviyo, Braze, Iterable, Salesforce o Brevo. Pegas el brief y genera el email con tu marca, con fallbacks en cada merge tag, bloques de producto y código que aguanta en Outlook y en modo oscuro. Incluye chat para editar y líneas de asunto A/B. Plan gratuito para empezar.",
+    "ideal_customer": "Email marketers, responsables de CRM/lifecycle y agencias de email de marcas de ecommerce y DTC que montan campañas en Klaviyo, Braze, Iterable o Salesforce y pierden horas maquetando HTML, peleándose con Outlook y el modo oscuro, o esperando a diseño y desarrollo.",
+    "not_a_fit": "Gente que busca enviar cold email o spam, problemas de entregabilidad o SMTP, desarrolladores de emails transaccionales, o quien busca una plataforma de envío (Remite no sustituye al CRM).",
     "keywords": [
-      "email template", "email design", "design emails", "newsletter design", "write emails", "email copy",
-      "email campaign", "marketing emails", "ai email", "email marketing tool", "mailchimp", "klaviyo",
-      "newsletter tool", "email builder",
-      "plantilla de email", "diseñar emails", "diseño de newsletter", "email marketing", "escribir emails", "newsletter"
+      "html email", "email template", "email templates", "email design", "email coding", "code emails",
+      "outlook rendering", "outlook breaks", "dark mode email", "mjml", "merge tag", "liquid template",
+      "klaviyo template", "klaviyo email", "braze email", "iterable", "salesforce marketing cloud", "brevo template",
+      "campaign email", "email builder", "email developer", "write marketing emails", "email copy", "subject line",
+      "plantilla de email", "maquetar emails", "diseñar emails", "email marketing"
     ],
-    "negative_keywords": ["hiring", "i built", "i made", "smtp", "transactional", "cold email list", "he creado"],
-    "subreddits": ["emailmarketing", "marketing", "smallbusiness", "Entrepreneur", "ecommerce", "shopify", "Newsletters", "copywriting"],
+    "negative_keywords": ["hiring", "job", "i built", "i made", "cold email", "cold outreach", "deliverability", "smtp", "spam folder", "he creado"],
+    "subreddits": ["emailmarketing", "Emailmarketing", "klaviyo", "marketingautomation", "ecommerce", "shopify", "DigitalMarketing", "webdev", "marketing"],
     "search_queries": [
-      "ai tool to write marketing emails", "best email template builder", "alternative to mailchimp for design",
-      "tool to design newsletters", "herramienta para diseñar emails"
+      "html email outlook dark mode", "klaviyo email template help", "fastest way to build campaign emails",
+      "ai tool for email marketing design", "alternative to stripo", "herramienta para maquetar emails"
     ],
     "min_score": 7
   }
