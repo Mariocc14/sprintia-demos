@@ -119,6 +119,8 @@ class Reddit:
         self.session = requests.Session()
         self.session.headers["User-Agent"] = USER_AGENT
         self.base = "https://www.reddit.com"
+        self.json_blocked = False   # sin claves: si el .json da 401/403, ir directo al RSS
+        self._last_public = 0.0
         cid, secret = os.environ.get("REDDIT_CLIENT_ID"), os.environ.get("REDDIT_CLIENT_SECRET")
         if cid and secret:
             auth = base64.b64encode(f"{cid}:{secret}".encode()).decode()
@@ -136,16 +138,29 @@ class Reddit:
     def oauth(self) -> bool:
         return self.base.startswith("https://oauth")
 
+    PUBLIC_GAP = 6.0  # segundos entre peticiones sin claves (Reddit permite ~10/min)
+
+    def _throttle(self) -> None:
+        if not self.oauth:
+            wait = self._last_public + self.PUBLIC_GAP - time.time()
+            if wait > 0:
+                time.sleep(wait)
+            self._last_public = time.time()
+
     def _fetch(self, path: str, params: dict) -> list[Post]:
         """API oficial con OAuth; sin claves, .json público y si lo bloquean, RSS."""
-        if not self.oauth:
+        if self.oauth:
+            return [self._to_post(d) for d in self._get(path, params)]
+        if not self.json_blocked:
             try:
+                self._throttle()
                 return [self._to_post(d) for d in self._get(path, params)]
             except requests.HTTPError as e:
                 if e.response is None or e.response.status_code not in (401, 403, 429):
                     raise
-            return self._rss(path, params)
-        return [self._to_post(d) for d in self._get(path, params)]
+                if e.response.status_code in (401, 403):
+                    self.json_blocked = True
+        return self._rss(path, params)
 
     def _get(self, path: str, params: dict) -> list[dict]:
         url = f"{self.base}{path}" if self.oauth else f"{self.base}{path}.json"
@@ -164,7 +179,13 @@ class Reddit:
         from email.utils import parsedate_to_datetime
 
         url = f"https://www.reddit.com{path}.rss" if path == "/search" else f"https://www.reddit.com{path}/.rss"
-        r = self.session.get(url, params={k: v for k, v in params.items() if k != "type"}, timeout=HTTP_TIMEOUT)
+        rss_params = {k: v for k, v in params.items() if k != "type"}
+        self._throttle()
+        r = self.session.get(url, params=rss_params, timeout=HTTP_TIMEOUT)
+        if r.status_code == 429:  # un reintento tras la espera que pide Reddit
+            time.sleep(min(60.0, float(r.headers.get("retry-after", "20") or 20)))
+            self._last_public = time.time()
+            r = self.session.get(url, params=rss_params, timeout=HTTP_TIMEOUT)
         r.raise_for_status()
         ns = {"a": "http://www.w3.org/2005/Atom"}
         posts = []
@@ -274,10 +295,14 @@ def fetch_all(cfg: dict, since: float) -> list[Post]:
             print(f"[aviso] {label}: {e}", file=sys.stderr)
 
     if reddit:
-        for sub in subs:
-            attempt(f"r/{sub} posts", reddit.subreddit_new, sub)
+        # Con la API oficial, una petición por subreddit. Sin claves, Reddit limita
+        # mucho: se agrupan varios subreddits en una sola petición (r/a+b+c).
+        size = 1 if reddit.oauth else 8
+        groups = ["+".join(subs[i:i + size]) for i in range(0, len(subs), size)]
+        for g in groups:
+            attempt(f"r/{g} posts", reddit.subreddit_new, g)
             if cfg["settings"].get("include_comments", True):
-                attempt(f"r/{sub} comentarios", reddit.subreddit_comments, sub)
+                attempt(f"r/{g} comentarios", reddit.subreddit_comments, g)
         for q in queries:
             attempt(f"Reddit búsqueda «{q}»", reddit.search, q)
     if "hn" in sources:
