@@ -112,7 +112,7 @@ class Reddit:
 
     Con REDDIT_CLIENT_ID y REDDIT_CLIENT_SECRET (app de tipo "script", gratis para
     uso personal) usa la API oficial con OAuth. Sin ellas intenta los .json
-    públicos, que Reddit suele bloquear desde servidores en la nube.
+    públicos y, si Reddit los bloquea, sus feeds RSS públicos.
     """
 
     def __init__(self) -> None:
@@ -132,14 +132,71 @@ class Reddit:
             self.session.headers["Authorization"] = f"Bearer {r.json()['access_token']}"
             self.base = "https://oauth.reddit.com"
 
+    @property
+    def oauth(self) -> bool:
+        return self.base.startswith("https://oauth")
+
+    def _fetch(self, path: str, params: dict) -> list[Post]:
+        """API oficial con OAuth; sin claves, .json público y si lo bloquean, RSS."""
+        if not self.oauth:
+            try:
+                return [self._to_post(d) for d in self._get(path, params)]
+            except requests.HTTPError as e:
+                if e.response is None or e.response.status_code not in (401, 403, 429):
+                    raise
+            return self._rss(path, params)
+        return [self._to_post(d) for d in self._get(path, params)]
+
     def _get(self, path: str, params: dict) -> list[dict]:
-        url = f"{self.base}{path}" if self.base.startswith("https://oauth") else f"{self.base}{path}.json"
+        url = f"{self.base}{path}" if self.oauth else f"{self.base}{path}.json"
         r = self.session.get(url, params={**params, "raw_json": 1}, timeout=HTTP_TIMEOUT)
-        if r.status_code == 429:
+        if r.status_code == 429 and self.oauth:
             time.sleep(int(float(r.headers.get("retry-after", "10"))))
             r = self.session.get(url, params={**params, "raw_json": 1}, timeout=HTTP_TIMEOUT)
         r.raise_for_status()
         return [c["data"] for c in r.json().get("data", {}).get("children", [])]
+
+    def _rss(self, path: str, params: dict) -> list[Post]:
+        """Feed Atom público de Reddit (/new/.rss, /comments/.rss, /search.rss)."""
+        import html
+        import re
+        import xml.etree.ElementTree as ET
+        from email.utils import parsedate_to_datetime
+
+        url = f"https://www.reddit.com{path}.rss" if path == "/search" else f"https://www.reddit.com{path}/.rss"
+        r = self.session.get(url, params={k: v for k, v in params.items() if k != "type"}, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        ns = {"a": "http://www.w3.org/2005/Atom"}
+        posts = []
+        for e in ET.fromstring(r.content).findall("a:entry", ns):
+            rid = (e.findtext("a:id", "", ns) or "").strip()
+            link = e.find("a:link", ns)
+            url_ = link.get("href", "") if link is not None else ""
+            content = e.findtext("a:content", "", ns) or ""
+            body = re.sub(r"\s+", " ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", content))).strip()
+            body = re.sub(r"submitted by /u/\S+.*$", "", body).strip()
+            cat = e.find("a:category", ns)
+            when = e.findtext("a:published", "", ns) or e.findtext("a:updated", "", ns)
+            try:
+                ts = dt.datetime.fromisoformat(when.replace("Z", "+00:00")).timestamp()
+            except ValueError:
+                try:
+                    ts = parsedate_to_datetime(when).timestamp()
+                except (TypeError, ValueError):
+                    ts = time.time()
+            is_comment = rid.startswith("t1_")
+            title = e.findtext("a:title", "", ns) or ""
+            posts.append(Post(
+                id=f"reddit:{rid}",
+                source="reddit",
+                where=f"r/{cat.get('term')}" if cat is not None else "Reddit",
+                title=re.sub(r"^/u/\S+ on ", "", title) if is_comment else title,
+                body=body,
+                url=url_,
+                author=(e.findtext("a:author/a:name", "", ns) or "").removeprefix("/u/"),
+                created_utc=ts,
+            ))
+        return posts
 
     @staticmethod
     def _to_post(d: dict) -> Post:
@@ -156,14 +213,13 @@ class Reddit:
         )
 
     def subreddit_new(self, sub: str, limit: int = 100) -> list[Post]:
-        return [self._to_post(d) for d in self._get(f"/r/{sub}/new", {"limit": limit})]
+        return self._fetch(f"/r/{sub}/new", {"limit": limit})
 
     def subreddit_comments(self, sub: str, limit: int = 100) -> list[Post]:
-        return [self._to_post(d) for d in self._get(f"/r/{sub}/comments", {"limit": limit})]
+        return self._fetch(f"/r/{sub}/comments", {"limit": limit})
 
     def search(self, query: str, limit: int = 50) -> list[Post]:
-        params = {"q": query, "sort": "new", "t": "day", "limit": limit, "type": "link"}
-        return [self._to_post(d) for d in self._get("/search", params)]
+        return self._fetch("/search", {"q": query, "sort": "new", "t": "day", "limit": limit, "type": "link"})
 
 
 def hn_search(query: str, since: float, limit: int = 50) -> list[Post]:
