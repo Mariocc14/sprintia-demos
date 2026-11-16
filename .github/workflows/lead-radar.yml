@@ -1,6 +1,11 @@
 # Radar de leads gratis: cada 30 minutos busca en Reddit y Hacker News y
 # manda los leads por Telegram. Solo se ejecuta si la variable del repositorio
 # LEAD_RADAR_ENABLED vale "true" (Settings → Secrets and variables → Actions).
+#
+# El programador de GitHub se salta la mayoría de ejecuciones (2 en 18 horas),
+# así que cada ejecución lanza la siguiente al terminar, 30 minutos después
+# de haber empezado. El cron solo sirve para reanudar la cadena si se corta.
+# Para pararlo todo: LEAD_RADAR_ENABLED = false.
 name: Lead radar
 
 on:
@@ -14,15 +19,21 @@ on:
         type: boolean
         default: false
 
+# Una sola ejecución a la vez y como mucho una en espera: si llega otra, GitHub
+# cancela la que esperaba, así que nunca hay dos cadenas en paralelo.
 concurrency:
   group: lead-radar
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: write   # para lanzar la siguiente ejecución
 
 jobs:
   scan:
     if: vars.LEAD_RADAR_ENABLED == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 50
     defaults:
       run:
         working-directory: lead-radar
@@ -69,3 +80,19 @@ jobs:
         with:
           path: lead-radar/state
           key: lead-radar-state-v2-${{ github.run_id }}
+
+      # Lanza la siguiente ejecución. Los eventos workflow_dispatch creados con
+      # GITHUB_TOKEN sí arrancan flujos (es una de las dos excepciones).
+      - name: Programar la siguiente búsqueda
+        if: ${{ !cancelled() && inputs.test_telegram != true }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STARTED: ${{ github.run_started_at }}
+        run: |
+          start=$(date -d "$STARTED" +%s 2>/dev/null || date +%s)
+          wait=$(( start + 30*60 - $(date +%s) ))
+          if [ "$wait" -gt 0 ]; then
+            echo "Siguiente búsqueda en $((wait / 60)) min"
+            sleep "$wait"
+          fi
+          gh workflow run lead-radar.yml --repo "$GITHUB_REPOSITORY" --ref main
