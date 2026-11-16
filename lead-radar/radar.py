@@ -299,8 +299,25 @@ def fetch_all(cfg: dict, since: float) -> list[Post]:
         # mucho: se agrupan varios subreddits en una sola petición (r/a+b+c).
         size = 1 if reddit.oauth else 8
         groups = ["+".join(subs[i:i + size]) for i in range(0, len(subs), size)]
+        pages = max(1, int(cfg["settings"].get("backfill_pages", 1)))
         for g in groups:
-            attempt(f"r/{g} posts", reddit.subreddit_new, g)
+            # Barrido: varias páginas de posts nuevos (100 por página) y lo más
+            # destacado de la semana. Normal: solo la primera página.
+            after = None
+            for page in range(pages):
+                params = {"limit": 100, **({"after": after} if after else {})}
+                try:
+                    got = reddit._fetch(f"/r/{g}/new", params)
+                except requests.RequestException as e:
+                    print(f"[aviso] r/{g} posts p{page + 1}: {e}", file=sys.stderr)
+                    break
+                posts.extend(got)
+                print(f"  r/{g} posts p{page + 1}: {len(got)}")
+                if len(got) < 50:
+                    break
+                after = got[-1].id.split(":", 1)[1]
+            if pages > 1:
+                attempt(f"r/{g} top semana", reddit._fetch, f"/r/{g}/top", {"limit": 100, "t": "week"})
             if reddit.oauth and cfg["settings"].get("include_comments", True):
                 attempt(f"r/{g} comentarios", reddit.subreddit_comments, g)
         # La búsqueda de Reddit sin claves casi siempre devuelve 403/429: solo con OAuth.
@@ -699,6 +716,8 @@ def main() -> int:
     ap.add_argument("--no-llm", action="store_true", help="Solo filtro por palabras clave, sin llamar a Claude")
     ap.add_argument("--no-notify", action="store_true", help="No enviar a Telegram")
     ap.add_argument("--test-telegram", action="store_true", help="Envía un mensaje de prueba a Telegram y termina")
+    ap.add_argument("--barrido", action="store_true",
+                    help="Barrido grande: ~500 posts por grupo de subreddits y los últimos 7 días")
     args = ap.parse_args()
 
     if args.test_telegram:
@@ -713,6 +732,8 @@ def main() -> int:
 
     cfg = load_config(Path(args.config))
     s = cfg["settings"]
+    if args.barrido:
+        s.update(backfill_pages=5, lookback_hours=168, max_llm_posts_per_run=300)
     state_path = Path(args.state)
     state = load_state(state_path)
     since = time.time() - float(s.get("lookback_hours", 24)) * 3600
@@ -764,6 +785,13 @@ def main() -> int:
         for p, v in leads:
             print(f"  [{v.score}] {v.product} · {p.where} · {p.title[:70]} · {p.url}")
     sent = 0
+    if args.barrido and not args.no_notify:
+        top = leads[:15]
+        send_telegram_text(
+            f"🔎 Barrido de los últimos 7 días: {len(posts)} posts revisados, "
+            f"{len(analysed)} analizados por Claude, {len(leads)} leads con nota ≥ {min_score}."
+            + (f" Te envío los {len(top)} mejores." if top else " Ninguno llegó a la nota mínima."))
+        leads = top
     if leads and not args.no_notify:
         sent = len(leads) if notify_telegram(leads) else 0
     if not args.fixtures:

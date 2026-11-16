@@ -18,6 +18,10 @@ on:
         description: "Solo enviar un mensaje de prueba a Telegram"
         type: boolean
         default: false
+      barrido:
+        description: "Barrido grande de los últimos 7 días (~5 min más)"
+        type: boolean
+        default: false
 
 # Una sola ejecución a la vez y como mucho una en espera: si llega otra, GitHub
 # cancela la que esperaba, así que nunca hay dos cadenas en paralelo.
@@ -71,6 +75,8 @@ jobs:
         run: |
           if [ "${{ inputs.test_telegram }}" = "true" ]; then
             python radar.py --config proyectos.json --test-telegram
+          elif [ -n "$ANTHROPIC_API_KEY" ] && [ "${{ inputs.barrido }}" = "true" ]; then
+            python radar.py --config proyectos.json --barrido
           elif [ -n "$ANTHROPIC_API_KEY" ]; then
             python radar.py --config proyectos.json
           else
