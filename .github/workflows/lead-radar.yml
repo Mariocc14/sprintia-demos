@@ -38,6 +38,10 @@ jobs:
       run:
         working-directory: lead-radar
     steps:
+      - name: Anotar la hora de inicio
+        run: echo "RUN_START=$(date +%s)" >> "$GITHUB_ENV"
+        working-directory: .
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -87,9 +91,9 @@ jobs:
         if: ${{ !cancelled() && inputs.test_telegram != true }}
         env:
           GH_TOKEN: ${{ github.token }}
-          STARTED: ${{ github.run_started_at }}
         run: |
-          start=$(date -d "$STARTED" +%s 2>/dev/null || date +%s)
+          # Sin hora de inicio se espera la media hora entera, nunca menos.
+          start=${RUN_START:-$(date +%s)}
           wait=$(( start + 30*60 - $(date +%s) ))
           if [ "$wait" -gt 0 ]; then
             echo "Siguiente búsqueda en $((wait / 60)) min"
