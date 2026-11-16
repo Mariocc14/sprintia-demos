@@ -301,7 +301,7 @@ def fetch_all(cfg: dict, since: float) -> list[Post]:
         groups = ["+".join(subs[i:i + size]) for i in range(0, len(subs), size)]
         for g in groups:
             attempt(f"r/{g} posts", reddit.subreddit_new, g)
-            if cfg["settings"].get("include_comments", True):
+            if reddit.oauth and cfg["settings"].get("include_comments", True):
                 attempt(f"r/{g} comentarios", reddit.subreddit_comments, g)
         # La búsqueda de Reddit sin claves casi siempre devuelve 403/429: solo con OAuth.
         if reddit.oauth:
@@ -326,10 +326,17 @@ def prefilter(posts: list[Post], cfg: dict, seen: dict) -> list[Post]:
         if p.author.lower() in {a.lower() for a in cfg["settings"].get("ignore_authors", [])}:
             continue
         text = normalize(p.text())
+        sub = p.where.removeprefix("r/").lower()
+        asks = any(normalize(ph) in text for ph in INTENT_PHRASES)
         for prod in cfg["products"]:
             kws = [normalize(k) for k in prod.get("keywords", [])]
             neg = [normalize(k) for k in prod.get("negative_keywords", [])]
-            if any(k in text for k in kws) and not any(n in text for n in neg):
+            if any(n in text for n in neg):
+                continue
+            in_its_sub = sub in {x.lower() for x in prod.get("subreddits", [])}
+            # Palabra clave del producto, o alguien pidiendo una app/herramienta en
+            # uno de sus subreddits (Claude decide luego si de verdad encaja).
+            if any(k in text for k in kws) or (in_its_sub and asks):
                 p.matched_products.append(prod["name"])
         if p.matched_products:
             out.append(p)
@@ -452,6 +459,8 @@ INTENT_PHRASES = [
     "is there a tool", "is there an app", "is there any", "any good app", "any good tool", "switching from", "anyone know",
     "recomienda", "recomendais", "recomendáis", "busco", "alguien conoce", "alternativa a",
     "que usais", "qué usáis", "necesito una app", "necesito una herramienta", "alguna app", "alguna herramienta", "hay alguna",
+    "which app", "what app", "any app", "an app that", "an app for", "app suggestions", "tool suggestions",
+    "suggest an app", "suggest a tool", "how do you keep track", "how do you track", "what tool",
 ]
 
 
@@ -579,6 +588,65 @@ def render_markdown(leads: list[tuple[Post, LeadVerdict]], stats: dict) -> str:
     return "\n".join(out)
 
 
+def _telegram_creds() -> tuple[str, str]:
+    import re
+    token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip().strip('"\'')
+    m = re.search(r"-?\d{5,}", os.environ.get("TELEGRAM_CHAT_ID") or "")
+    return token, (m.group(0) if m else "")
+
+
+def send_telegram_text(text: str) -> bool:
+    token, chat = _telegram_creds()
+    if not (token and chat):
+        return False
+    try:
+        r = requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
+                          json={"chat_id": chat, "text": text[:4000], "disable_web_page_preview": True},
+                          timeout=HTTP_TIMEOUT)
+    except requests.RequestException as e:
+        print(f"[aviso] Telegram: sin conexión ({type(e).__name__})", file=sys.stderr)
+        return False
+    if not r.ok:
+        print(f"[aviso] Telegram {r.status_code}: {r.text[:200]}", file=sys.stderr)
+    return r.ok
+
+
+DIGEST_HOUR = 21  # hora de Madrid a partir de la cual se manda el resumen del día
+
+
+def update_daily(state: dict, fetched: int, analysed: int,
+                 verdicts: list[tuple[Post, LeadVerdict]], sent: int) -> str | None:
+    """Acumula las cifras del día y devuelve el texto del resumen cuando toca enviarlo."""
+    from zoneinfo import ZoneInfo
+    now = dt.datetime.now(ZoneInfo("Europe/Madrid"))
+    today = now.date().isoformat()
+    d = state.get("daily")
+    if not d or d.get("date") != today:
+        d = {"date": today, "runs": 0, "fetched": 0, "analysed": 0, "sent": 0, "best": [], "digest_sent": False}
+    d["runs"] += 1
+    d["fetched"] += fetched
+    d["analysed"] += analysed
+    d["sent"] += sent
+    best = d["best"] + [
+        {"score": v.score, "product": v.product or (p.matched_products or ["?"])[0],
+         "title": (p.title or p.body)[:90], "url": p.url}
+        for p, v in verdicts
+    ]
+    d["best"] = sorted(best, key=lambda b: b["score"], reverse=True)[:3]
+    state["daily"] = d
+    if now.hour < DIGEST_HOUR or d["digest_sent"]:
+        return None
+    d["digest_sent"] = True
+    lines = [f"📊 Resumen de hoy · {d['runs']} búsquedas",
+             f"{d['fetched']} posts revisados, {d['analysed']} analizados por Claude, {d['sent']} leads enviados."]
+    if d["best"]:
+        lines.append("\nLos que más se acercaron:")
+        lines += [f"{b['score']}/10 · {b['product']} · {b['title']}\n{b['url']}" for b in d["best"]]
+    else:
+        lines.append("\nHoy nadie ha pedido nada parecido a tus productos.")
+    return "\n".join(lines)
+
+
 def notify_telegram(leads: list[tuple[Post, LeadVerdict]]) -> bool:
     import re
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip().strip('"\'')
@@ -664,7 +732,7 @@ def main() -> int:
     print(f"{len(posts)} descargados, {len(candidates)} candidatos tras el filtro de palabras clave")
 
     verdicts = keyword_only(candidates) if args.no_llm else (classify(candidates, cfg) if candidates else [])
-    min_score = int(s.get("min_score", 7))
+    min_score = int(s.get("min_score", 6))
     leads = sorted(
         [(p, v) for p, v in verdicts if v.is_lead and v.score >= min_score],
         key=lambda pv: pv[1].score, reverse=True,
@@ -695,8 +763,14 @@ def main() -> int:
     if not os.environ.get("GITHUB_ACTIONS"):
         for p, v in leads:
             print(f"  [{v.score}] {v.product} · {p.where} · {p.title[:70]} · {p.url}")
+    sent = 0
     if leads and not args.no_notify:
-        notify_telegram(leads)
+        sent = len(leads) if notify_telegram(leads) else 0
+    if not args.fixtures:
+        digest = update_daily(state, len(posts), len(analysed), verdicts, sent)
+        save_state(state_path, state)
+        if digest and not args.no_notify:
+            send_telegram_text(digest)
     return 0
 
 
